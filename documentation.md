@@ -5,7 +5,7 @@
 ###btrfs
 
 
-Btrfs is with ZFS the only filesystem that can detect and prevent silent-data-corruption when paired with ECC-RAM. Additionally you can create software-RAIDs very easily without any controller. We don’t use RAID 5 since restoring data is a pain and it creates much more IO’s which is not beneficial when working with datasets. Also the prices for huge harddisks are now very low. Btrfs will only work satisfying with Kernel 4.4 and above. Thats why we are using Debian stretch/sid. The command:
+Btrfs is with ZFS the only filesystem that can detect and prevent silent-data-corruption when paired with ECC-RAM. Additionally you can create software-RAIDs very easily without any controller. We don’t use RAID 5 since restoring data is a pain and it creates much more IO’s which is not beneficial when working with datasets. Also the prices for huge harddisks are now very low. Btrfs will only work satisfyingly with Kernel 4.4 and above. Thats why we are using Debian stretch/sid. The command:
 
 
 `btrfs fi show`
@@ -17,7 +17,7 @@ will show all set up btrfs-filesystems and the free space on them. Every fs will
 `btrfs scrub start /mountpoint`
 
 
-Will scrub the targeted fs. This means the fs will check all block-checksums and correct errors automatically. When started once it will run til finished. Scrubbing will take a lot of time (100 mb/s). You should scrub the fs once every month. The status of the acutal scrub can be checked with:
+Will scrub the targeted fs. This means the fs will check all block-checksums and correct errors automatically. When started once it will run til finished. Scrubbing will take a lot of time (100 mb/s). You should scrub the fs once every month. The status of the recent scrub can be checked with:
 
 
 `btrfs scrub status /mountpoint`
