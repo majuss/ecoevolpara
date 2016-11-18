@@ -85,12 +85,11 @@ You can look at the cronjobs with crontab -e. The scripts which get triggered be
 
 
 example:
----
-00 01 * * 7 [ $(date +\%d) -le 07 ] && /usr/local/bin/btrfs_scrub.sh 
+
+`00 01 * * 7 [ $(date +\%d) -le 07 ] && /usr/local/bin/btrfs_scrub.sh`
 
 
-00 12 * * 7 [ $(date +\%d) -le 07 ] && /usr/local/bin/maintenance_svalbard.sh
----
+`00 12 * * 7 [ $(date +\%d) -le 07 ] && /usr/local/bin/maintenance_svalbard.sh`
 
 
 ###Update blastdb nt, nr and taxdb
