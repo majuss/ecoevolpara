@@ -202,6 +202,7 @@ A seafile-ignore.txt should be included in every Library you wish to sync, espac
 
 
 
+here is a pdf file :download:`pdf <appendix/ChassisSC836.pdf>`
 
 
 
