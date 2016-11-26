@@ -11,9 +11,8 @@ Welcome to ecoevolpara's documentation!
    Debian
    Filesystem and harddiskmanagement
    Incremental backup
-   Custom cronjobs
+   cronjobs
    Geneious license server
-   Seafile
    Seafile
 
 
