@@ -23,33 +23,24 @@ Software
 
 
 
-
-
-
-
-
 here is a pdf file :download:`Chassis from Svalbard <appendix/pdfs/ChassisSC836.pdf>`
-
-
-
 
 to documentate:
 
-
-custom cronjobs
-backup
-vms
-geneiousvm
-update debian
-setting up new machine
-mount SAN
-seafle
-add cronjob scripts to appendix
-create script which setups a client with gui
-create a script which setups harriet with cli client
-about this documentation
-how it was build
-FAQ
+* custom cronjobs
+* backup
+* vms
+* geneiousvm
+* update debian
+* setting up new machine
+* mount SAN
+* seafle
+* add cronjob scripts to appendix
+* create script which setups a client with gui
+* create a script which setups harriet with cli client
+* about this documentation
+* how it was build
+* FAQ
 
 
 
