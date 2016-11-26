@@ -6,7 +6,7 @@ Filesystem and harddiskmanagement
 btrfs
 =====
 
-Btrfs is with ZFS the only filesystem that can detect and prevent silent-data-corruption when paired with ECC-RAM. Additionally you can create software-RAIDs very easily without any controller. We don’t use RAID 5 since restoring data is a pain and it creates much more IO’s which is not beneficial when working with datasets. Also the prices for huge harddisks are now very low. Btrfs will only work satisfyingly with Kernel 4.4 and above. Thats why we are using Debian stretch/sid. The command:
+Btrfs is with ZFS the only filesystem that can detect and prevent silent-data-corruption when paired with ECC-RAM. Additionally you can create software-RAIDs very easily without any controller. We don’t use RAID 5 since restoring data is a pain. Also the prices for huge harddisks are now very low. Btrfs will only work satisfyingly with Kernel 4.4 and above. Thats why we are using Debian stretch/sid. The command:
 ::
 
     btrfs fi show

@@ -22,6 +22,11 @@ Download an .iso file of an operating System.
 
 The usual QEMU-command we'll use is :code:`qemu-system-x86_64`.
 
+A typical command to start a QEMU-vm looks like that:
+::
+	qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 2048M  -k de -cpu host -smp cores=1,threads=1,sockets=1 -vga qxl -vnc :0 -hda /data/VMs/jessie.qcow2 -net nic,model=virtio -net user,hostfwd=tcp::27001-:27001,hostfwd=tcp::3306-:3306,hostfwd=tcp::$vms_ssh_port-:22,hostfwd=tcp::49630-:49630 -spice port=15300,addr=$server_IP
+
+
 ==========================================
 Connect to a Windows VM using spice-client
 ==========================================
