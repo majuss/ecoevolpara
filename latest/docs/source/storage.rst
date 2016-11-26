@@ -58,9 +58,11 @@ The SAN - storage area network - is a network storage attached over 8 Gbit fibre
 There is a manual to mount the SAN under Ubuntu: Multipathing-Ubuntu-1404.pdf (inside of the docu-directory).
 
 
-Additional to the manual see this error which will occur: http://pissedoffadmins.com/os/mount-unknown-filesystem-type-lvm2_member.html
+Additional to the manual see `this error <http://pissedoffadmins.com/os/mount-unknown-filesystem-type-lvm2_member.html/>`_ which will occur.
 
-
+Scan logical volumes
+::
+    lvscan
 load device module
 ::
     modprobe dm-mod

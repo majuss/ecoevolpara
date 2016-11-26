@@ -24,14 +24,9 @@ here is a pdf file :download:`Chassis from Svalbard <appendix/pdfs/ChassisSC836.
 
 to documentate:
 
-* custom cronjobs
-* backup
-* vms
-* geneiousvm
+
 * update debian
-* setting up new machine
-* mount SAN
-* seafle
+* setting up new client-machine
 * add cronjob scripts to appendix
 * create script which setups a client with gui
 * create a script which setups harriet with cli client
