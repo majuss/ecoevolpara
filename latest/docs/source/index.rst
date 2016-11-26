@@ -78,13 +78,16 @@ There is a manual to mount the SAN under Ubuntu: Multipathing-Ubuntu-1404.pdf (i
 Additional to the manual see this error which will occur: http://pissedoffadmins.com/os/mount-unknown-filesystem-type-lvm2_member.html
 
 
-> load device module
-modprobe dm-mod
-> change the volumes that exist to active
-vgchange -ay
-> mount the logical partition
-mkdir -p /mnt/VolGroup00/LogVol00
-mount /dev/VolGroup00/LogVol00 /mnt/VolGroup00/LogVol00
+load device module
+::
+    modprobe dm-mod
+change the volumes that exist to active
+::
+    vgchange -ay
+mount the logical partition
+::
+    mkdir -p /mnt/VolGroup00/LogVol00
+    mount /dev/VolGroup00/LogVol00 /mnt/VolGroup00/LogVol00
 
 
 
@@ -113,83 +116,98 @@ You can look at the cronjobs with crontab -e. The scripts which get triggered be
 
 
 example:
+::
+    00 01 * * 7 [ $(date +\%d) -le 07 ] && /usr/local/bin/btrfs_scrub.sh
+    00 12 * * 7 [ $(date +\%d) -le 07 ] && /usr/local/bin/maintenance_svalbard.sh`
 
-`00 01 * * 7 [ $(date +\%d) -le 07 ] && /usr/local/bin/btrfs_scrub.sh`
-
-
-`00 12 * * 7 [ $(date +\%d) -le 07 ] && /usr/local/bin/maintenance_svalbard.sh`
-
-
-###Update blastdb nt, nr and taxdb
-
+=================================================
+Update blastdb nt, nr and taxdb (Harriet, Beagle)
+=================================================
 
 This cronjob will download the actual blast databases nt and nr with wget over ftp. The script auomatically store the old dbs marked with a timestamp in a directory called old.blastdb. It is currently installed on beagle for testing purposes only and will run once on the first saturday off each month. This job is located in /usr/local/bin.
 
-
-###Backup with rdiff-backup (svalbard)
-
+===================================
+Backup with rdiff-backup (Svalbard)
+===================================
 
 This cronjob simply trigger the rdiff-backup.sh script at 3:00 each day which is usually located in /usr/local/bin on svalbard.
 
+===========================================
+btrfs scrubbing (Beagle, Harriet, Svalbard)
+===========================================
 
-###btrfs scrubbing (beagle, harriet, svalbard)
+This cronjob is starting a scrub every month on the first sunday at 01:00 by run the script $insertscriptname located in /usr/local/bin
 
-
-This cronjob is starting a scrub every month on the first sunday at 01:00. 
-
-
-###Starting geneious VM (beagle)
-
+=============================
+Starting geneious VM (beagle)
+=============================
 
 This cronjob will start a QEMU command to start the virtual machine running the Geneious license server. This license server is running in the vm due to incompatibilities with modern system libraries. Never update this vm!
 
 
 For furthy documentation about vm check x.x. or 2.4 for information on Geneious.
 
-
-###Maintenance report over Slack (beagle, harriet, svalbard)
-
+=========================================================
+Maintenance report over Slack (Beagle, Harriet, Svalbard)
+=========================================================
 
 This job will post a maintenance report every first sunday at 12:00 (after hopefully the scrubbing is done)
 
-
-##Geneious license server (running on beagle)
-
+*******************************************
+Geneious license server (running on beagle)
+*******************************************
 
 A lot of members of the institute are using a software called “geneious” to analyse DNA-data. We have 6 licenses which are ONLY compatible with the version 6.1.8 (you can get this old version here: http://www.geneious.com/previous-versions). The server providing the licenses is beagle. Additionally to the license server, beagle is running a mysql server, which provides the “shared database” for all geneious-Users at the institute.
 
+===============================
+Setup the mysql database-server
+===============================
 
-###Setup the mysql database-server https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/
+https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/
 
+=======================================
+Setting up the floating license manager 
+=======================================
 
-####Setting up the floating license manager 
-
-
-#Debian
+******
+Debian
+******
 
 Debian is a common and completely free Linux distribution. It is released in 3 release-branches. Stable, stretch and experimental. We are using the stretch release, since debian-stable is very conservtive and updates getting rolled out pretty slow.
 
-
-##Install software
+================
+Install software
+================
 
 First look if you can find the software you are looking for in the official debian repositories with:
+::
+    aptitude search $softwarename
 
-`aptitude search $softwarename`
+This will list all findings, if nothing get's posted your software is not inside the official repos. Then you have to evaluate if you really need this software... When you really need it google for a download link. You should go for a package with the ending ".deb" which indicates a debian package. Often these packages are listed under Ubuntu, since Ubuntu is a Debian-derivate. If the search finds your desired software you can easily install it via:
+::
+    aptitude install $softwarename
 
-This will list all findings, if nothing get's posted your software is not inside the official repos. Then you have to evaluate if you really need this software... When you really need it google for a download link. You should go for a package with the ending ".deb" which indicates a debian package. Often these packages are listed under Ubuntu, since Ubuntu is a Debian-derivate.
 
-##Update and upgrade Debian
 
-`aptitude update`
+=========================
+Update and upgrade Debian
+=========================
+::
+    aptitude update
 
 Will update the package list/cache. Always run this before you upgrading or installing software!
-
-`aptitude upgrade`
+::
+    aptitude upgrade
 
 Will upgrade all packages which are outdated.
 
+*******
+Seafile
+*******
 
-#Seafile
+================================
+Setting up the Server (Svalbard)
+================================
 
 Seafile is a program which enables us to host our own cloud system very much like Dropbox, iCloud or Onedrive. The mainthought behind it, is to synchronize all /home/ directories between harriet, beagle and all clients like the Dell Optiplex and the Intel NUCs. This will enable every user to log into any client computer and syncs their homes to it.
 
@@ -200,8 +218,10 @@ On the Client site there are 2 major branches. First of all there is harriet, wh
 To set up the seafile-gui client on a normal client computer with a clean debian install you need to first of all download it via aptitude, after adding the repo and key (LINK TO DL). When an error occurs while installing which includes the libssl1.0.0 you need to google the package for debian, download, and install it via dpkg -i.
 
 After installing it you have to add a global environment variable for the config file, because seafile can't sync sirectories which contain the config(".ccnet") directory so you have to make sure it gets stored at a different place with the env. variable.
-
-`export CCNET_CONF_DIR=/etc/seafile/$USER` in /etc/profile will create the variable for every user in the according directory. Now you have to create the directories for every user.
+::
+    export CCNET_CONF_DIR=/etc/seafile/$USER
+    
+ in /etc/profile will create the variable for every user in the according directory. Now you have to create the directories for every user.
 
 A seafile-ignore.txt should be included in every Library you wish to sync, espacially inside of the homes. The file should contain a wild card for all dot-files/directories. You should also exclude a directory which includes all github projects, to avoid sync conflicts with git.
 
@@ -210,7 +230,7 @@ A seafile-ignore.txt should be included in every Library you wish to sync, espac
 
 
 
-here is a pdf file :download:`pdf <appendix/ChassisSC836.pdf>`
+here is a pdf file :download:`Chassis from Svalbard <appendix/ChassisSC836.pdf>`
 
 
 
@@ -225,6 +245,9 @@ geneiousvm
 update debian
 setting up new machine
 mount SAN
+seafle
+FAQ
+
 
 
 
@@ -234,3 +257,17 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
+###
+FAQ
+###
+
+Q: A harddisk seems to be faulty what do I have to do?
+A:
+
+Q: I want to add a storage to Svalbard, how?
+A:
+
+Q: The Maintenance-report from one server shows "check the logs" what do I have to do?
+A: First check for a false alarm.
