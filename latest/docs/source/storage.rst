@@ -54,9 +54,7 @@ Mounting the SAN storage
 
 The SAN - storage area network - is a network storage attached over 8 Gbit fibre channel. Currently we have 15 TB of storage mounted on harriet at /SAN.
 
-
-There is a manual to mount the SAN under Ubuntu: Multipathing-Ubuntu-1404.pdf (inside of the docu-directory).
-
+Follow :download:`this manual <appendix/pdfs/Multipathing-Ubuntu-1404.pdf>` to mount the external storage.
 
 Additional to the manual see `this error <http://pissedoffadmins.com/os/mount-unknown-filesystem-type-lvm2_member.html/>`_ which will occur.
 

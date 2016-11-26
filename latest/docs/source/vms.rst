@@ -31,7 +31,7 @@ A typical command to start a QEMU-vm looks like that:
 Connect to a Windows VM using spice-client
 ==========================================
 
-The `spice-client <https://packages.debian.org/jessie/spice-client/> available in the Debian repos, provides a way to connect to a virtual machine running Windows with a graphical interface. This allows the user to use Software like the Microsoft Office Suite.
+The `spice-client <https://packages.debian.org/jessie/spice-client/>`_ available in the Debian repos, provides a way to connect to a virtual machine running Windows with a graphical interface. This allows the user to use Software like the Microsoft Office Suite.
 
 First you need to install the spice-client:
 ::
