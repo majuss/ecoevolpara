@@ -25,48 +25,49 @@ btrfs
 
 Btrfs is with ZFS the only filesystem that can detect and prevent silent-data-corruption when paired with ECC-RAM. Additionally you can create software-RAIDs very easily without any controller. We don’t use RAID 5 since restoring data is a pain and it creates much more IO’s which is not beneficial when working with datasets. Also the prices for huge harddisks are now very low. Btrfs will only work satisfyingly with Kernel 4.4 and above. Thats why we are using Debian stretch/sid. The command:
 ::
-    
+
     btrfs fi show
 
 
 will show all set up btrfs-filesystems and the free space on them. Every fs will handled with an UUID.
-
 ::
+
     btrfs scrub start /mountpoint
 
 
 Will scrub the targeted fs. This means the fs will check all block-checksums and correct errors automatically. When started once it will run til finished. Scrubbing will take a lot of time (100 mb/s). You should scrub the fs once every month. The status of the recent scrub can be checked with:
+::
 
-
-`btrfs scrub status /mountpoint`
+    btrfs scrub status /mountpoint
 
 
 To create a complete new RAID or add a harddisk to an existing one you first have to format the drive with a GPT:
+::
 
-
-`parted -s /dev/sdz mklabel gpt mkpart primary 1% 100%`
+    parted -s /dev/sdz mklabel gpt mkpart primary 1% 100%
 
 
 This command will use parted to create a GPT on sdz (you can read out the drive-letters with lsblk). You should restart the server after this step, because the new disk will likely not be detected correctly. After the restart you add the device to an existing RAID with:
-
-
-`btrfs device add /dev/sdz1 /`
+::
+    
+    btrfs device add /dev/sdz1 /
 
 
 Here sdz1 getting added to the RAID /. You can create a complete new RAID 1 from multiple devices with:
-
-
-`mkfs.btrfs -d raid1 -m raid1 /dev/sdc1 /dev/sdd1 /dev/sde1 /dev/sdf1`
+::
+    
+    mkfs.btrfs -d raid1 -m raid1 /dev/sdc1 /dev/sdd1 /dev/sde1 /dev/sdf1
 
 
 After adding devices to RAIDs you always have to balance the data between them.
+::
+    
+    btrfs balance start -mconvert=raid1 -dconvert=raid1 /
 
 
-`btrfs balance start -mconvert=raid1 -dconvert=raid1 /`
-
-
-###Mounting the SAN storage
-
+========================
+Mounting the SAN storage
+========================
 
 The SAN - storage area network - is a network storage attached over 8 Gbit fibre channel. Currently we have 15 TB of storage mounted on harriet at /SAN.
 
@@ -87,23 +88,26 @@ mount /dev/VolGroup00/LogVol00 /mnt/VolGroup00/LogVol00
 
 
 
-
-##Incremental backup
-
+******************
+Incremental backup
+******************
 
 Our backup from harriet and its mounted fibrechannel-space SAN is realised with rdiff-backup (installed with: aptitude install rdiff-backup). The software has to be installed on the server and the machine which will get backed up. Additionally the server needs a working root ssh-connection to all clients. This means you have to store the pub-key from the server on every client in /root/.ssh/authorized_keys. See 2.3.2 for the description of the cronjob which will trigger the backup.
 
 To restore any file from harriet you first have to login as the user rdiff-backup (password is "rdiff"), then you have to type:
-
-`rdiff-backup -r $days_to_go_back $file_to_restore $targed_path`
+::
+    
+    rdiff-backup -r $days_to_go_back $file_to_restore $targed_path
 
 So for example to restore alices whole home director from 10 days ago:
+::
+    
+    rdiff-backup -r 10D /data/backup_harriet/localstorage/alice /data/backup_restore/alice
 
-`rdiff-backup -r 10D /data/backup_harriet/localstorage/alice /data/backup_restore/alice`
 
-
-##Custom cronjobs
-
+***************
+Custom cronjobs
+***************
 
 You can look at the cronjobs with crontab -e. The scripts which get triggered be these jobs are usually located in /usr/local/bin. Make sure the scripts are executable (chmod +x).
 
