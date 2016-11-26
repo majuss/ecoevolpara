@@ -18,6 +18,7 @@ Welcome to ecoevolpara's documentation!
    vms
    about
    build
+   help
 
 
 

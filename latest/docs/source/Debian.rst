@@ -22,6 +22,7 @@ This will list all findings, if nothing get's posted your software is not inside
 Update and upgrade Debian
 =========================
 
+Test
 ::
     aptitude update
 
