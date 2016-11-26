@@ -15,6 +15,7 @@ Welcome to ecoevolpara's documentation!
    cronjobs
    geneious
    Seafile
+   vms
 
 
 
