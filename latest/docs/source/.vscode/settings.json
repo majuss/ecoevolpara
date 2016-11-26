@@ -1,5 +1,0 @@
-{
-    "restructuredtext.confPath" : "source/conf.py",
-    "restructuredtext.builtDocumentationPath" : "build/html",
-    "restructuredtext.updateOnTextChanged" : "true"
-}
