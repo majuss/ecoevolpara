@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Documentation-ecoevolpara's documentation!
+Welcome to ecoevolpara's documentation!
 =====================================================
 
 .. toctree::
@@ -112,10 +112,10 @@ So for example to restore alices whole home director from 10 days ago:
 Custom cronjobs
 ***************
 
-You can look at the cronjobs with crontab -e. The scripts which get triggered be these jobs are usually located in /usr/local/bin. Make sure the scripts are executable (chmod +x).
+You can look at the cronjobs with crontab -e. The scripts which get triggered by these jobs are usually located in /usr/local/bin. Make sure the scripts are executable (chmod +x).
 
 
-example:
+Example:
 ::
     00 01 * * 7 [ $(date +\%d) -le 07 ] && /usr/local/bin/btrfs_scrub.sh
     00 12 * * 7 [ $(date +\%d) -le 07 ] && /usr/local/bin/maintenance_svalbard.sh`
@@ -151,7 +151,9 @@ For furthy documentation about vm check x.x. or 2.4 for information on Geneious.
 Maintenance report over Slack (Beagle, Harriet, Svalbard)
 =========================================================
 
-This job will post a maintenance report every first sunday at 12:00 (after hopefully the scrubbing is done)
+This job will post a maintenance report every first sunday at 12:00.
+
+To set this job and script up on a complete new Debian and btrfs driven server you have to install smartctl. Slack API key, Slack-bot and a channel
 
 *******************************************
 Geneious license server (running on beagle)
@@ -192,6 +194,7 @@ This will list all findings, if nothing get's posted your software is not inside
 =========================
 Update and upgrade Debian
 =========================
+
 ::
     aptitude update
 
@@ -205,11 +208,13 @@ Will upgrade all packages which are outdated.
 Seafile
 *******
 
+
+Seafile is a program which enables us to host our own cloud system very much like Dropbox, iCloud or Onedrive. The mainthought behind it, is to synchronize all /home/ directories between harriet, beagle and all clients like the Dell Optiplex and the Intel NUCs. This will enable every user to log into any client computer and syncs their homes to it.
+
 ================================
 Setting up the Server (Svalbard)
 ================================
 
-Seafile is a program which enables us to host our own cloud system very much like Dropbox, iCloud or Onedrive. The mainthought behind it, is to synchronize all /home/ directories between harriet, beagle and all clients like the Dell Optiplex and the Intel NUCs. This will enable every user to log into any client computer and syncs their homes to it.
 
 The Server on which all seafile data is stored is Svalbard. On Svalbard a user named seafile drives the seafile-server software.
 
@@ -225,12 +230,17 @@ After installing it you have to add a global environment variable for the config
 
 A seafile-ignore.txt should be included in every Library you wish to sync, espacially inside of the homes. The file should contain a wild card for all dot-files/directories. You should also exclude a directory which includes all github projects, to avoid sync conflicts with git.
 
+===================================
+Setting up the home-sync on Harriet
+===================================
+
+===================
+Setting up a client
+===================
 
 
 
-
-
-here is a pdf file :download:`Chassis from Svalbard <appendix/ChassisSC836.pdf>`
+here is a pdf file :download:`Chassis_from_Svalbard <appendix/pdfs/ChassisSC836.pdf>`
 
 
 
@@ -246,6 +256,9 @@ update debian
 setting up new machine
 mount SAN
 seafle
+add cronjob scripts to appendix
+create script which setups a client with gui
+create a script which setups harriet with cli client
 FAQ
 
 
