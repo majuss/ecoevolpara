@@ -8,7 +8,12 @@ Welcome to ecoevolpara's documentation!
 
 .. toctree::
    :maxdepth: 3
-   
+   Debian
+   Filesystem and harddiskmanagement
+   Incremental backup
+   Custom cronjobs
+   Geneious license server
+   Seafile
    Seafile
 
 

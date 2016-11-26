@@ -25,7 +25,7 @@ After installing it you have to add a global environment variable for the config
 A seafile-ignore.txt should be included in every Library you wish to sync, espacially inside of the homes. The file should contain a wild card for all dot-files/directories. You should also exclude a directory which includes all github projects, to avoid sync conflicts with git.
 
 ===================================
-Setting up the home-sync on Harriet
+Setting up the home-sync (Harriet)
 ===================================
 
 ===================
