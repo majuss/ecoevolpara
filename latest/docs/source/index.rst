@@ -7,7 +7,8 @@ Welcome to ecoevolpara's documentation!
 =====================================================
 
 .. toctree::
-   :maxdepth: 6
+   :maxdepth: 3
+   
    Debian
    storage
    backup
