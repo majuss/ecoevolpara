@@ -7,18 +7,13 @@ Welcome to ecoevolpara's documentation!
 =====================================================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 6
    Debian
-   Filesystem and harddiskmanagement
-   Incremental backup
+   storage
+   backup
    cronjobs
-   Geneious license server
+   geneious
    Seafile
-
-
-########
-Software
-########
 
 
 
