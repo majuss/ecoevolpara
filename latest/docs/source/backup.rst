@@ -2,9 +2,9 @@
 Incremental backup
 ******************
 
-Our backup from harriet and its mounted fibrechannel-space SAN is realised with rdiff-backup (installed with: :code:`aptitude install rdiff-backup). The software has to be installed on the server and the machine which will get backed up. Additionally the server needs a working root ssh-connection to all clients. This means you have to store the pub-key from the server on every client in /root/.ssh/authorized_keys. See 2.3.2 for the description of the cronjob which will trigger the backup.
+Our backup from harriet and its mounted fibrechannel-space SAN is realised with rdiff-backup (installed with: :code:`aptitude install rdiff-backup`). The software has to be installed on the server and the machine which will get backed up. Additionally the server needs a working root ssh-connection to all clients. This means you have to store the pub-key from the server on every client in /root/.ssh/authorized_keys. See 2.3.2 for the description of the cronjob which will trigger the backup.
 
-To restore any file from harriet you first have to login as the user rdiff-backup (password is "---"), then you have to type:
+To restore any file from harriet you first have to login as the user rdiff-backup (password is found in the KeePassX-database), then you have to type:
 ::
     
     rdiff-backup -r $days_to_go_back $file_to_restore $targed_path

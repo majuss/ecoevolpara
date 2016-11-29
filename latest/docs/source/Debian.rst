@@ -12,7 +12,11 @@ First look if you can find the software you are looking for in the official debi
 ::
     aptitude search $softwarename
 
-This will list all findings, if nothing get's posted your software is not inside the official repos. Then you have to evaluate if you really need this software... When you really need it google for a download link. You should go for a package with the ending ".deb" which indicates a debian package. Often these packages are listed under Ubuntu, since Ubuntu is a Debian-derivate. If the search finds your desired software you can easily install it via:
+This will list all findings, if nothing get's posted your software is not inside the official repos. Then you have to evaluate if you really need this software... When you really need it google for a download link. You should go for a package with the ending ".deb" which indicates a debian package. Often these packages are listed under Ubuntu, since Ubuntu is a Debian-derivate.
+
+
+
+If the search finds your desired software you can easily install it via:
 ::
     aptitude install $softwarename
 
