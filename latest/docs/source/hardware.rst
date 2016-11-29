@@ -15,7 +15,7 @@ Svalbards chassis-manual can be found :download:`here <appendix/pdfs/ChassisSC83
 Monitoring the hardware
 =======================
 
-Look at maintenance reports in 
+Look at maintenance reports in Slack.
 
 -----------------
 CPU and RAM usage
@@ -29,8 +29,16 @@ Harddisks / Storage
 
 smartctl
 
-============
+------------
 Temperatures
-============
+------------
+
+sensors detect all - no input
+
+
+
+=======================================================
+Remotely connect via DRAC (Harriet) and IPMI (Svalbard)
+=======================================================
 
 

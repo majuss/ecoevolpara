@@ -15,3 +15,7 @@ So for example to restore alices whole home director from 10 days ago:
     rdiff-backup -r 10D /data/backup_harriet/localstorage/alice /data/backup_restore/alice
 
 The directory has to be owned by rdiff-backup so the user can write into it.
+
+delete old stuff
+
+rdiff-backup --remove-older-than 90D /localstorage/backup_harriet
