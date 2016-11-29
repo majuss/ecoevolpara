@@ -27,6 +27,25 @@ A typical command to start a QEMU-vm looks like that:
 	qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 2048M  -k de -cpu host -smp cores=1,threads=1,sockets=1 -vga qxl -vnc :0 -hda /data/VMs/jessie.qcow2 -net nic,model=virtio -net user,hostfwd=tcp::27001-:27001,hostfwd=tcp::3306-:3306,hostfwd=tcp::$vms_ssh_port-:22,hostfwd=tcp::49630-:49630 -spice port=15300,addr=$server_IP
 
 
+qemu-system-x86_64		QEMU command
+-nodefconfig			miau
+-machine accel=kvm 		nodefconf
+-enable-kvm				
+-m 2048M				amount of RAM you want to allocate to the VM
+-k de 					keyboard layout
+-cpu host 				pass the host-CPU identifier to the VM
+-smp					enable smp
+-cores=1				number of CPU cores
+-threads=1				number of logical threads
+-sockets=1				number of cpu sockets
+-vga qxl				protocol to passthrough the graphics
+-vnc :0					VNC Port -> 5900
+-hda					Path to harddisk
+-net nic,model=virtio	model of networkadapter
+-net user,hostfwd		forwarding ports from host to vm pe.: hostfwd=tcp::15000-:22 the ssh port of the vm is now reacheable through the port 15000
+
+
+
 ==========================================
 Connect to a Windows VM using spice-client
 ==========================================

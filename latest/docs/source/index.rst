@@ -65,7 +65,7 @@ FAQ
 **Q:**
    **I want to add a harddisk to Svalbard, how?**
 **A:**
-   *Just follow the guide inside filesystem and harddiskmanagement to add a drive to Svalbard. It is recommend to only add drives that support 24/7 usage like the WD Red (Pro).*
+   **Just follow the guide inside filesystem and harddiskmanagement to add a drive to Svalbard. It is recommend to only add drives that support 24/7 usage like the WD Red (Pro).**
 
 **Q:**
    **The Maintenance-report from one server shows "check the logs" what do I have to do?**
