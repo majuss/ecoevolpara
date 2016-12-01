@@ -58,7 +58,7 @@ First you need to install the spice-client:
 
 You invoke the spice-client with the command :code:`spicec`, additionally you have to provide an IP, a port and the password to connect to the vm.
 ::
-	spicec spicec -h $server_IP -p $$port -w $password
+	spicec spicec -h $server_IP -p $port -w $password
 
 ===============================
 Connect to a Linux VM using ssh
