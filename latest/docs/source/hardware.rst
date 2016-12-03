@@ -33,6 +33,8 @@ smartctl
 Temperatures
 ------------
 
+To monitor the temperature it is best and fastest to use the programm sensors. You install it via "aptitude install sensors". Then you hvae to detect all thermal sensors installed into the system.
+
 sensors detect all - no input
 
 
