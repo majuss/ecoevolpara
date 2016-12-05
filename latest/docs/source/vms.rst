@@ -45,6 +45,16 @@ qemu-system-x86_64		QEMU command
 -net user,hostfwd		forwarding ports from host to vm pe.: hostfwd=tcp::15000-:22 the ssh port of the vm is now reacheable through the port 15000
 
 
+--------------------------------------
+Create a new Debian-stable VM
+--------------------------------------
+
+Connect to Beagle (or a different machine which should host the VM) and download the Debian-iso `from this site<https://www.debian.org/CD/http-ftp/>`_. Right click the link for the amd64 netinstall and copy the link. Then enter :code:`wget`. paste the link and hit enter. This will download the install-image.
+
+
+-----------------------
+Create a new Windows VM
+-----------------------
 
 ==========================================
 Connect to a Windows VM using spice-client
