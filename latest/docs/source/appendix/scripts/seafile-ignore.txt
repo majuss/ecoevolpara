@@ -1,0 +1,16 @@
+#all Dotfiles
+.*
+.*/
+
+seafile_*
+seafile-data/
+seafile*
+../.git
+*/.git
+*.git/*
+*.git/
+.git/*
+.git*
+.git/
+.git/..
+git_*

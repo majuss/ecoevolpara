@@ -57,6 +57,7 @@ while true; do
 				echo "creating dir for user $username" #mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				echo "owning dir" #chown $username:$username /home/seafile/"$username" /etc/seafile/$username
 				echo "exporting env_var" #export CCNET_CONF_DIR=/etc/seafile/$username
+				
 				break;;
 
 
@@ -70,10 +71,11 @@ while true; do
         		echo "creating dir for user $username" #mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				echo "owning dir" #chown $username:$username /home/seafile/"$username" /etc/seafile/$username
 				echo "exporting env_var" #export CCNET_CONF_DIR=/etc/seafile/$username
+				echo "wget ignore list" #wget ignore list -O /home/$username
         		sudo -u $username seaf-cli init -c /etc/seafile_confs/$username -d /home/seafile/$username
         		sudo -u $username seaf-cli start -c /etc/seafile/$username
         		sudo -u $username seaf-cli sync -l $library_id -s https://svalbard.biologie.hu-berlin.de -d /home/$username -c /etc/seafile/$username -u $login_email -p login_password
-        		echo "wget ignore list" #wget ignore list -O /home/$username
+        		
 
 
         		break;;
