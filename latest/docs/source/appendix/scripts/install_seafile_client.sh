@@ -2,7 +2,7 @@
 
 ############functions###########
 
-add_repo () {
+add_repo (){
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
 echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
 aptitude update
@@ -58,7 +58,7 @@ while true; do
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
 				export CCNET_CONF_DIR=/etc/seafile/$username
 				wget $ignore_link -O /home/"$username"/seafile-ignore.txt
-				seafile-applet &&
+				sudo -u $username seafile-applet &
 				break;;
 
 
