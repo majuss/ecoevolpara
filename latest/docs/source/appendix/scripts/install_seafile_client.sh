@@ -3,6 +3,11 @@
 ############functions###########
 
 add_repo (){
+echo "##### Starting complete Software upgrade #####"
+aptitude update > /dev/null
+aptitude upgrade -y > /dev/null
+echo "##### Software upgrade finished #####"
+
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61; &
 echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
 aptitude update > /dev/null
@@ -49,14 +54,14 @@ ignore_link="https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/
 
 
 while true; do
-    read -p "Which client do you want to install? graphical[1] or commandline[2]. Or hit [3] to uninstall any previous installed client: " client_type
+    read -p "Which client do you want to install? graphical[1] or commandline[2]. Or hit [3] to uninstall any previous installed client or [4] when your home folder conflicts: " client_type
     case $client_type in
         [1]* )	add_repo
 				aptitude install -y seafile-gui
 				get_valid_username
 				mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				export CCNET_CONF_DIR=/etc/seafile/$username
+				sudo -u $username export CCNET_CONF_DIR=/etc/seafile/$username
 				wget $ignore_link -O /home/"$username"/seafile-ignore.txt
 				sudo -u $username seafile-applet &
 				break;;
@@ -71,7 +76,7 @@ while true; do
         		get_library_id
         		mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username /usr/local/bin/seafile_startup
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				export CCNET_CONF_DIR=/etc/seafile/$username
+				sudo -u $username export CCNET_CONF_DIR=/etc/seafile/$username
 				wget ignore list -O /home/$username
         		sudo -u $username seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
         		sudo -u $username seaf-cli start -c /etc/seafile/$username
@@ -89,6 +94,10 @@ while true; do
 				rm -rf /home/seafile/$username
 
 				break;;
+
+		[4]* )	get_valid_username
+				killall seafile-applet
+				rm -rf /home/$username/.ccnet
         * ) echo "Please answer 1, 2 or 3.";;
     esac
 done
