@@ -61,13 +61,26 @@ while true; do
 				get_valid_username
 				mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				sudo sh -c "echo 'export CCNET_CONF_DIR=/etc/seafile/$username' >> /home/$username/.bashrc"
-				source /etc/profile
+				echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/$username" >> /etc/security/pam_env.conf
+				#sudo sh -c "echo 'export CCNET_CONF_DIR=/etc/seafile/$username' >> /home/$username/.bashrc"
+				#source /etc/profile
+
 				wget $ignore_link -O /home/"$username"/seafile-ignore.txt
-				sudo -u $username seafile-applet &
-				break;;
 
+				while true; do
+					read -p "The window manager must now be restartet, this will close all open applications. Do now [1], later [2]: " restart
+					case $restart in
+						[1]*)	
+								sudo restart lightdm  
+								sudo restart gdm
+								break;;
+						
+						[2]*)	echo "Please restart your computer as soon as possible and don't use the GUI client without a restart."
+								break;;
 
+						*)		;;
+					esac
+				done
         [2]* )	add_repo
         		aptitude install -y seafile-cli
         		get_valid_username
@@ -77,8 +90,7 @@ while true; do
         		get_library_id
         		mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username /usr/local/bin/seafile_startup
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				#sudo -u $username export CCNET_CONF_DIR=/etc/seafile/$username
-				wget ignore list -O /home/$username
+				wget $ignore_link -O /home/$username
         		sudo -u $username seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
         		sudo -u $username seaf-cli start -c /etc/seafile/$username
         		sudo -u $username seaf-cli sync -l $library_id -s https://svalbard.biologie.hu-berlin.de -d $local_dir -c /etc/seafile/$username -u $login_email -p login_password
