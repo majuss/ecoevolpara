@@ -3,10 +3,10 @@
 ############functions###########
 
 add_repo (){
-echo "##### Starting complete Software upgrade #####"
+echo "##### Starting complete Software upgrade"
 aptitude update > /dev/null
 aptitude upgrade -y > /dev/null
-echo "##### Software upgrade finished #####"
+echo "##### Software upgrade finished"
 
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
 echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
@@ -42,7 +42,7 @@ get_login_password(){
 }
 
 get_local_dir(){
-	read -p "Enter local directory you want to sync: (/home/marius for example)" local_dir
+	read -p "Enter local directory you want to sync: (/home/marius for example): " local_dir
 }
 #################functions end###########
 
@@ -54,7 +54,7 @@ ignore_link="https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/
 
 
 while true; do
-    read -p "Which client do you want to install? graphical[1] or commandline[2]. Or hit [3] to uninstall any previous installed client or [4] when your home folder conflicts: " client_type
+    read -p "Which client do you want to install? graphical[1] or commandline[2]. Or hit [3] to uninstall any previous installed client or [4] when your home folder conflicts with system path: " client_type
     case $client_type in
         [1]* )	add_repo
 				aptitude install -y seafile-gui
@@ -62,17 +62,14 @@ while true; do
 				mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
 				echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/$username" >> /etc/security/pam_env.conf
-				#sudo sh -c "echo 'export CCNET_CONF_DIR=/etc/seafile/$username' >> /home/$username/.bashrc"
-				#source /etc/profile
-
 				wget $ignore_link -O /home/"$username"/seafile-ignore.txt
 
 				while true; do
 					read -p "The window manager must now be restartet, this will close all open applications. Do now [1], later [2]: " restart
 					case $restart in
 						[1]*)	
-								sudo restart lightdm  
-								sudo restart gdm
+								/etc/init.d/lightdm restart  
+								/etc/init.d/gdm restart
 								break;;
 						
 						[2]*)	echo "Please restart your computer as soon as possible and don't use the GUI client without a restart."
@@ -94,8 +91,8 @@ while true; do
 				wget $ignore_link -O /home/$username
         		sudo -u $username seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
         		sudo -u $username seaf-cli start -c /etc/seafile/$username
-        		sudo -u $username seaf-cli sync -l $library_id -s https://svalbard.biologie.hu-berlin.de -d $local_dir -c /etc/seafile/$username -u $login_email -p login_password
-        		echo "#!/bin/sh; seaf-cli start -c /etc/seafile/"$username"; sleep 2; seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"" >> /usr/local/bin/seafile_startup/start_"$username".sh
+        		sudo -u $username seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"
+        		echo -e "#!/bin/sh \n seaf-cli start -c /etc/seafile/"$username"; sleep 2; seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"" >> /usr/local/bin/seafile_startup/start_"$username".sh
 				chown $username:$username /usr/local/bin/seafile_startup/start_"$username".sh
 				cron_line="@reboot bash /usr/local/bin/seafile_startup/start_"$username".sh"
 				(crontab -l; echo "$cron_line" ) | sort | uniq | crontab -
@@ -117,8 +114,7 @@ while true; do
     esac
 done
 
-
-
+echo "###### Client installation finished"
 
 
 

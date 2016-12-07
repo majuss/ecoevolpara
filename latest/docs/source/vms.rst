@@ -51,7 +51,11 @@ Create a new Debian-stable VM
 
 Connect to Beagle (or a different machine which should host the VM) and download the Debian-iso `from this site<https://www.debian.org/CD/http-ftp/>`_. Right click the link for the amd64 netinstall and copy the link. Then enter :code:`wget`. paste the link and hit enter. This will download the install-image into the current working directory (:code:`pwd`).
 
+qemu-img create -f qcow2 /home/marius/debian_seafile.qcow2 50G
 
+qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 4000M  -k de -cpu host -smp cores=4,threads=1,sockets=1 -vga std -vnc :1 -hda /home/marius/debian_seafile.qcow2 -cdrom /home/marius/debian-8.6.0-amd64-netinst.iso.1 -net nic,model=virtio -net user,hostfwd=tcp::15351-:22
+
+connect with a vnc client
 
 
 -----------------------
