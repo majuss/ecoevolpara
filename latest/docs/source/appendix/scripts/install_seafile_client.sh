@@ -61,7 +61,8 @@ while true; do
 				get_valid_username
 				mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				sudo sh -c "echo 'export CCNET_CONF_DIR=/etc/seafile/$USER' >> /etc/profile"
+				sudo sh -c "echo 'export CCNET_CONF_DIR=/etc/seafile/$username' >> /home/$username/.bashrc"
+				source /etc/profile
 				wget $ignore_link -O /home/"$username"/seafile-ignore.txt
 				sudo -u $username seafile-applet &
 				break;;
