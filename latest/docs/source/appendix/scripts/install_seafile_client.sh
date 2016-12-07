@@ -3,9 +3,9 @@
 ############functions###########
 
 add_repo (){
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61; &
 echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
-aptitude update
+aptitude update > /dev/null
 }
 
 get_valid_username(){
@@ -49,7 +49,7 @@ ignore_link="https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/
 
 
 while true; do
-    read -p "Which client do you want to install? graphical[1] or commandline[2]. Or hit [3] to uninstall any previous installed client " client_type
+    read -p "Which client do you want to install? graphical[1] or commandline[2]. Or hit [3] to uninstall any previous installed client: " client_type
     case $client_type in
         [1]* )	add_repo
 				aptitude install -y seafile-gui
@@ -84,9 +84,9 @@ while true; do
 
         [3]* )	get_valid_username
 				aptitude purge -y seafile-cli seafile-gui
-				rm /usr/local/bin/seafile_startup/start_$username.sh
-				rm /etc/seafile/$username
-				rm /home/seafile/$username
+				rm -rf /usr/local/bin/seafile_startup/start_$username.sh
+				rm -rf /etc/seafile/$username
+				rm -rf /home/seafile/$username
 
 				break;;
         * ) echo "Please answer 1, 2 or 3.";;
