@@ -8,7 +8,7 @@ aptitude update > /dev/null
 aptitude upgrade -y > /dev/null
 echo "##### Software upgrade finished #####"
 
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61; &
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
 echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
 aptitude update > /dev/null
 }
@@ -61,7 +61,7 @@ while true; do
 				get_valid_username
 				mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				sudo -u $username export CCNET_CONF_DIR=/etc/seafile/$username
+				sudo sh -c "echo 'export CCNET_CONF_DIR=/etc/seafile/$USER' >> /etc/profile"
 				wget $ignore_link -O /home/"$username"/seafile-ignore.txt
 				sudo -u $username seafile-applet &
 				break;;
@@ -76,7 +76,7 @@ while true; do
         		get_library_id
         		mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username /usr/local/bin/seafile_startup
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				sudo -u $username export CCNET_CONF_DIR=/etc/seafile/$username
+				#sudo -u $username export CCNET_CONF_DIR=/etc/seafile/$username
 				wget ignore list -O /home/$username
         		sudo -u $username seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
         		sudo -u $username seaf-cli start -c /etc/seafile/$username
@@ -98,6 +98,7 @@ while true; do
 		[4]* )	get_valid_username
 				killall seafile-applet
 				rm -rf /home/$username/.ccnet
+				break;;
         * ) echo "Please answer 1, 2 or 3.";;
     esac
 done
