@@ -3,9 +3,9 @@
 ############functions###########
 
 add_repo () {
-echo "add key"			#apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
-echo "add repo"			#echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
-echo "aptitude update"	#aptitude update
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
+echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
+aptitude update
 }
 
 get_valid_username(){
@@ -58,6 +58,7 @@ while true; do
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
 				export CCNET_CONF_DIR=/etc/seafile/$username
 				wget $ignore_link -O /home/"$username"/seafile-ignore.txt
+				seafile-applet &&
 				break;;
 
 
@@ -75,23 +76,17 @@ while true; do
         		sudo -u $username seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
         		sudo -u $username seaf-cli start -c /etc/seafile/$username
         		sudo -u $username seaf-cli sync -l $library_id -s https://svalbard.biologie.hu-berlin.de -d $local_dir -c /etc/seafile/$username -u $login_email -p login_password
-        		echo "#!/bin/sh; seaf-cli start -c /etc/seafile/"$username"; sleep 2; seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"" >> /usr/local/bin/seafile_startup/start_"$username.sh"
-				chown $username:$username /usr/local/bin/seafile_startup/start_"$username.sh"
-				#sudo -u $username echo ""
-
-        		
-
-
+        		echo "#!/bin/sh; seaf-cli start -c /etc/seafile/"$username"; sleep 2; seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"" >> /usr/local/bin/seafile_startup/start_"$username".sh
+				chown $username:$username /usr/local/bin/seafile_startup/start_"$username".sh
+				cron_line="@reboot bash /usr/local/bin/seafile_startup/start_"$username".sh"
+				(crontab -l; echo "$cron_line" ) | sort | uniq | crontab -
         		break;;
 
         [3]* )	get_valid_username
 				aptitude purge -y seafile-cli seafile-gui
-				rm /usr/local/bin/seafile_startup/$username
+				rm /usr/local/bin/seafile_startup/start_$username.sh
 				rm /etc/seafile/$username
 				rm /home/seafile/$username
-
-
-
 
 				break;;
         * ) echo "Please answer 1, 2 or 3.";;
@@ -102,5 +97,9 @@ done
 
 
 
-#line="@reboot  /var/lib/seafile-client/seaf-cli-launcher"
-#(crontab -l; echo "$line" ) | uniq | crontab -
+
+
+
+
+
+
