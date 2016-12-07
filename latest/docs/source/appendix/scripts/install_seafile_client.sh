@@ -81,6 +81,7 @@ while true; do
 						*)		;;
 					esac
 				done
+				break;;
         [2]* )	add_repo
         		aptitude install -y seafile-cli
         		get_valid_username
