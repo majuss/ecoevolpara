@@ -102,7 +102,7 @@ while true; do
 
         [3]* )	get_valid_username
 				aptitude purge -y seafile-cli seafile-gui
-				rm -rf /usr/local/bin/seafile_startup/start_$username.sh
+				rm /usr/local/bin/seafile_startup/start_$username.sh
 				rm -rf /etc/seafile/$username
 				rm -rf /home/seafile/$username
 

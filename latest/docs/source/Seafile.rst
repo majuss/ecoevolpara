@@ -75,11 +75,13 @@ Setting up a client
 Debian GUI
 ----------
 
-It is recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI). If you want to use Seafile outside of the HU-network you need a HU-Account and a working VPN connection see :ref:`here for details <vpn>`.
+It is recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI). If you want to use Seafile outside of the HU-network you need a HU-Account and a working VPN connection see :ref:`here for details <_vpn>`.
 
 ^^^^^^^^^^^^^^
 With installer
 ^^^^^^^^^^^^^^
+
+Note: enter for "$username" your actual username like: "victor".
 
 1. Download the installer from above.
 2. Run it ìn the terminal (open it with the search function) with :code:`sudo bash install_seafile_client.sh`. You need sudo-privileges for this, or you login in as root with :code:`su root`.
@@ -87,7 +89,7 @@ With installer
 4. Enter your short username.
 5. Choose 1 and restart all window-servers.
 6. Search for :code:`seafile` and start it.
-7. In the first field choose the path: :code:`/home/seafile/$uername`
+7. In the first field enter the path: :code:`/home/seafile/$uername`
 8. In the next field, enter our server-url: :code:`https://svalbard.biologie.hu-berlin.de`, your user-email and password.
 9. When seafile starts up right click your home_$username and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home.
 

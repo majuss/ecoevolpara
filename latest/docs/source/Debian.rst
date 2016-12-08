@@ -57,3 +57,8 @@ sudo system-config-printer
 =============================
 Add programs to the autostart
 =============================
+
+
+.. figure:: appendix/pictures/startup1.jpg
+   :width: 120px
+   :alt: How to autostart a program
