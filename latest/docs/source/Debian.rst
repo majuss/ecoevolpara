@@ -4,6 +4,15 @@ Debian
 
 Debian is a common and completely free Linux distribution. It is released in 3 release-branches. Stable, stretch and experimental. We are using the stretch release, since debian-stable is very conservtive and updates getting rolled out pretty slow.
 
+
+===============================
+Administrator / Root privileges
+===============================
+
+Normal users don't have the privileges to install software and change system configurations like adding printers. The so called :code:`root` user is the administrator. You can change to that user with :code:`su root` if you know the password. Otherwise we use the program :code:`sudo` to provide normal users admin privs without using the user root directly. The privileged users are entered in :code:`visudo` with a line like that :code:`victor ALL=(ALL:ALL) ALL`.
+
+Victor then have the privs to call a program as administrator (root) with the :code:`sudo command`.
+
 ================
 Install software
 ================
@@ -35,3 +44,16 @@ Will update the package list/cache. Always run this before you upgrading or inst
     aptitude upgrade
 
 Will upgrade all packages which are outdated.
+
+
+=====================
+Working with printers
+=====================
+
+
+
+sudo system-config-printer
+
+=============================
+Add programs to the autostart
+=============================

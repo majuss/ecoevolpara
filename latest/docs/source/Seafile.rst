@@ -204,3 +204,4 @@ FAQ
 - no root
 - conflicts with system path
 - screenshot log init failed
+- the client indexing and uploading all the time and won't stop
