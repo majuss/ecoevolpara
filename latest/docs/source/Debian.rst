@@ -60,5 +60,5 @@ Add programs to the autostart
 
 
 .. figure:: appendix/pictures/startup1.jpg
-   :width: 120px
+   :width: 300px
    :alt: How to autostart a program

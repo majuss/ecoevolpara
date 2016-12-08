@@ -29,6 +29,15 @@ esac"
 done
 }
 
+check_pam_env(){
+pam_env_exists=$(cat /etc/security/pam_env.conf | grep CCNET | wc -l)
+	if [ "$pam_env_exists" -gt "0" ]
+		then echo "Env var already existend"
+	else
+		echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/\$USER" >> /etc/security/pam_env.conf
+	fi
+}
+
 get_library_id(){
 	read -p "Enter your seafile-library ID you want to sync (see documentation): " library_id
 }
@@ -62,12 +71,7 @@ while true; do
 				sudo -u $username dropbox stop
 				mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				pam_env_exists=$(cat /etc/security/pam_env.conf | grep CCNET | wc -l)
-				if [ "$pam_env_exists" -gt "0" ]
-					then echo "Env var already existend"
-					else
-					echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/$username" >> /etc/security/pam_env.conf
-				fi
+				check_pam_env
 				wget $ignore_link -O /home/"$username"/seafile-ignore.txt
 
 				while true; do
