@@ -3,7 +3,7 @@
 ############functions###########
 
 add_repo (){
-echo "##### Starting complete Software upgrade"
+echo "##### Starting complete Software upgrade. This can take several minutes..."
 aptitude update > /dev/null
 aptitude upgrade -y > /dev/null
 echo "##### Software upgrade finished"

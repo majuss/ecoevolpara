@@ -92,9 +92,9 @@ With Installer
 9. When seafile starts up right click your home_$username and choose :code:`existing folder` and enter the path to your home.
 
 
-^^^^^^^^^^^^^^^^^
-Without installer
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Without installer (dont use not finished)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To install the seafile-client you need root-privealeges. First add the key of the seafile-repo:
 ::
@@ -131,9 +131,9 @@ With installer
 8. Enter the seafile library ID. You get this ID if you log into seafile online, click onto the library and copy the ID out of the URL.
 
 
-^^^^^^^^^^^^^^^^^
-Without installer
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Without installer (dont use not finished)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You need the Library IDs of every Library you want to sync. You get it by opening seafile in a browser, open the library and copy it from the URL-bar.
 
