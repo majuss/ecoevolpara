@@ -78,11 +78,11 @@ Debian GUI
 It is recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI). If you want to use Seafile outside of the HU-network you need a HU-Account and a working VPN connection see :ref:`here for details <vpn>`.
 
 ^^^^^^^^^^^^^^
-With Installer
+With installer
 ^^^^^^^^^^^^^^
 
 1. Download the installer from above.
-2. Run it ìn the terminal (open it with the search function) with :code:`sudo bash install_seafile_client.sh`. You need sudo-privealeges for this, or you login in as root with :code:`su root`.
+2. Run it ìn the terminal (open it with the search function) with :code:`sudo bash install_seafile_client.sh`. You need sudo-privileges for this, or you login in as root with :code:`su root`.
 3. Choose graphical client.
 4. Enter your short username.
 5. Choose 1 and restart all window-servers.
@@ -96,7 +96,7 @@ With Installer
 Without installer (dont use not finished)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To install the seafile-client you need root-privealeges. 
+To install the seafile-client you need root-privileges. 
 
 First you need to update your operating system:
 ::
@@ -131,7 +131,7 @@ With installer
 ^^^^^^^^^^^^^^
 
 1. Download the installer from :download:`here <appendix/scripts/install_seafile_client.sh>`
-2. Run it with :code:`sudo bash install_seafile_client.sh`. You need sudo-privealeges for this, or you login in as root with :code:`su root`.
+2. Run it with :code:`sudo bash install_seafile_client.sh`. You need sudo-privileges for this, or you login in as root with :code:`su root`.
 3. Choose cli client.
 4. Enter your local short username.
 5. Enter your seafile login email.
