@@ -29,12 +29,13 @@ esac"
 done
 }
 
-check_pam_env(){
-pam_env_exists=$(cat /etc/security/pam_env.conf | grep CCNET | wc -l)
-	if [ "$pam_env_exists" -gt "0" ]
+check_env(){
+env_exists=$(cat /home/$username/.xsessionrc | grep CCNET | wc -l)
+	if [ "$env_exists" -gt "0" ]
 		then echo "Env var already existend"
 	else
-		echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/\$USER" >> /etc/security/pam_env.conf
+		echo -e "CCNET_CONF_DIR=/etc/seafile/\$USER" >> /home/$username/.xsessionrc
+		sudo chown $username:$username /home/$username/.xsessionrc
 	fi
 }
 
@@ -71,7 +72,7 @@ while true; do
 				sudo -u $username dropbox stop
 				mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				check_pam_env
+				check_env
 				wget $ignore_link -O /home/"$username"/seafile-ignore.txt
 
 				while true; do
