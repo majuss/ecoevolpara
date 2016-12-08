@@ -75,7 +75,7 @@ Setting up a client
 Debian GUI
 ----------
 
-It is recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI). If you want to use Seafile outside of the HU-network you need a HU-Account and a working VPN connection see here for details.
+It is recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI). If you want to use Seafile outside of the HU-network you need a HU-Account and a working VPN connection see :ref:`here for details <vpn>`.
 
 ^^^^^^^^^^^^^^
 With Installer
