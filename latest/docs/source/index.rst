@@ -19,6 +19,7 @@ Welcome to ecoevolpara's documentation!
    about
    build
    help
+   vpn
    appendix
 
 

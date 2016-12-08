@@ -20,7 +20,7 @@ The Server on which all seafile data is stored is Svalbard. On Svalbard a user n
 Setting up the server can be devided into 4 steps
 * Installing and setting up a MySQL database
 * Downloading and instlling the server-software
-*
+
 
 Steps here will only describe the procedure briefly since it will likely be completely different when the sever needs a new setup.
 
@@ -75,14 +75,14 @@ Setting up a client
 Debian GUI
 ----------
 
-It is recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI) `
+It is recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI). If you want to use Seafile outside of the HU-network you need a HU-Account and a working VPN connection see here for details.
 
 ^^^^^^^^^^^^^^
 With Installer
 ^^^^^^^^^^^^^^
 
 1. Download the installer from above.
-2. Run it with :code:`sudo bash install_seafile_client.sh`. You need sudo-privealeges for this, or you login in as root with :code:`su root`.
+2. Run it ìn the terminal (open it with the search function) with :code:`sudo bash install_seafile_client.sh`. You need sudo-privealeges for this, or you login in as root with :code:`su root`.
 3. Choose graphical client.
 4. Enter your short username.
 5. Choose 1 and restart all window-servers.
@@ -96,7 +96,14 @@ With Installer
 Without installer (dont use not finished)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To install the seafile-client you need root-privealeges. First add the key of the seafile-repo:
+To install the seafile-client you need root-privealeges. 
+
+First you need to update your operating system:
+::
+	sudo aptitude update
+	sudo aptitude upgrade
+
+After that add the key of the seafile-repo:
 ::
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
 Then add the repo itself with:
@@ -109,6 +116,8 @@ Then run an update of the package-list.
 And finally install the Client:
 ::
 	sudo aptitude install seafile-gui
+
+export env variable into blabla
 
 For the official manual see: `Seafile-manual on github <https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md>`_.
 
@@ -133,7 +142,7 @@ With installer
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Without installer (dont use not finished)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You need the Library IDs of every Library you want to sync. You get it by opening seafile in a browser, open the library and copy it from the URL-bar.
 
@@ -188,4 +197,10 @@ Updating the server-software
 Login as the user seafile with :code:`sudo su seafile` and stop the running server with :code:`/etc/init.d/seafile stop`. Then run the minor-upgrade script: :code:`bash /usr/local/bin/seafile-server/seafile-server-6.0.5/upgrade/minor-upgrade.sh`
 
 
+===
+FAQ
+===
 
+- no root
+- conflicts with system path
+- screenshot log init failed

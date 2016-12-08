@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ############functions###########
-
+dropbox stop
 add_repo (){
 echo "##### Starting complete Software upgrade. This can take several minutes..."
 aptitude update > /dev/null
@@ -59,6 +59,7 @@ while true; do
         [1]* )	add_repo
 				aptitude install -y seafile-gui
 				get_valid_username
+				sudo -u $username dropbox stop
 				mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
 				echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/$username" >> /etc/security/pam_env.conf
@@ -82,6 +83,7 @@ while true; do
         [2]* )	add_repo
         		aptitude install -y seafile-cli
         		get_valid_username
+        		sudo -u $username dropbox stop
         		get_login_email
         		get_login_password
         		get_local_dir
