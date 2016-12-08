@@ -43,7 +43,7 @@ Acquiring HTTPS for the domain
 ------------------------------
 
 
-
+Cut certs into chain. Get root cert from hu site
 
 ---------------------------------------
 Setting up init.d to control the server
@@ -64,18 +64,37 @@ Setting up the home-sync (Harriet)
 ===================================
 
 
-
+Do lots of stuff
 
 
 ===================
 Setting up a client
 ===================
 
-
-
 ----------
 Debian GUI
 ----------
+
+It is recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI) `
+
+^^^^^^^^^^^^^^
+With Installer
+^^^^^^^^^^^^^^
+
+1. Download the installer from above.
+2. Run it with :code:`sudo bash install_seafile_client.sh`. You need sudo-privealeges for this, or you login in as root with :code:`su root`.
+3. Choose graphical client.
+4. Enter your short username.
+5. Choose 1 and restart all window-servers.
+6. Search for :code:`seafile` and start it.
+7. In the first field choose the path: :code:`/home/seafile/$uername`
+8. In the next field, enter our server-url: :code:`https://svalbard.biologie.hu-berlin.de`, your user-email and password.
+9. When seafile starts up right click your home_$username and choose :code:`existing folder` and enter the path to your home.
+
+
+^^^^^^^^^^^^^^^^^
+Without installer
+^^^^^^^^^^^^^^^^^
 
 To install the seafile-client you need root-privealeges. First add the key of the seafile-repo:
 ::
@@ -97,6 +116,24 @@ For the official manual see: `Seafile-manual on github <https://github.com/haiwe
 ----------
 Debian CLI
 ----------
+
+^^^^^^^^^^^^^^
+With installer
+^^^^^^^^^^^^^^
+
+1. Download the installer from :download:`here <appendix/scripts/install_seafile_client.sh>`
+2. Run it with :code:`sudo bash install_seafile_client.sh`. You need sudo-privealeges for this, or you login in as root with :code:`su root`.
+3. Choose cli client.
+4. Enter your local short username.
+5. Enter your seafile login email.
+6. Enter your seafile login password.
+7. Enter the local directory you want to sync (/home/marius for example).
+8. Enter the seafile library ID. You get this ID if you log into seafile online, click onto the library and copy the ID out of the URL.
+
+
+^^^^^^^^^^^^^^^^^
+Without installer
+^^^^^^^^^^^^^^^^^
 
 You need the Library IDs of every Library you want to sync. You get it by opening seafile in a browser, open the library and copy it from the URL-bar.
 

@@ -30,7 +30,7 @@ done
 }
 
 get_library_id(){
-	read -p "Enter your seafile-library ID you want to sync: " library_id
+	read -p "Enter your seafile-library ID you want to sync (see documentation): " library_id
 }
 
 get_login_email(){
@@ -72,7 +72,7 @@ while true; do
 								/etc/init.d/gdm restart
 								break;;
 						
-						[2]*)	echo "Please restart your computer as soon as possible and don't use the GUI client without a restart."
+						[2]*)	echo "Please restart your computer as soon as possible and don't use the GUI client without a restart!"
 								break;;
 
 						*)		;;

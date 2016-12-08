@@ -1,6 +1,6 @@
-=======================================================
-Here comes a list and description of all appended files
-=======================================================
+========
+Appendix
+========
 
 
 - seafile-init.sh
