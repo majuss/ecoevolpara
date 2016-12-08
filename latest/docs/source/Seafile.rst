@@ -91,12 +91,13 @@ Note: enter for "$username" your actual username like: "victor".
 6. Search for :code:`seafile` and start it.
 7. In the first field enter the path: :code:`/home/seafile/$uername`
 8. In the next field, enter our server-url: :code:`https://svalbard.biologie.hu-berlin.de`, your user-email and password.
-9. When seafile starts up right click your home_$username and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home.
+9. When Seafile starts up right click your home_$username and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home.
+10. Add Seaflie to the autostart see here.
 
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Without installer (dont use not finished)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+Without installer
+^^^^^^^^^^^^^^^^^
 
 To install the seafile-client you need root-privileges. 
 
@@ -105,13 +106,13 @@ First you need to update your operating system:
 	sudo aptitude update
 	sudo aptitude upgrade
 
-After that add the key of the seafile-repo:
+After that add the key of the Seafile-repo:
 ::
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
 Then add the repo itself with:
 ::
 	echo deb http://dl.bintray.com/seafile-org/deb jessie main | sudo tee /etc/apt/sources.list.d/seafile.list
-Replce jessie with the Debian release you're using.
+Replce jessie with the Debian release you're using (:code:`lsb_release -a | grep Codename`).
 Then run an update of the package-list.
 ::
 	sudo aptitude update
@@ -119,10 +120,23 @@ And finally install the Client:
 ::
 	sudo aptitude install seafile-gui
 
-export env variable into blabla
+Then export the needed environment variable with:
+::
+	sudo echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/$username" >> /etc/security/pam_env.conf
+Create needed directories for the config and own them:
+::
+	sudo mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
+	sudo chown $username:$username /home/seafile/"$username" /etc/seafile/$username
+
+Log out of your x-server and back in with: 
+::
+	sudo /etc/init.d/lightdm restart  
+	sudo /etc/init.d/gdm restart
+
+Now follow the manual with the installer above from step 6.
+
 
 For the official manual see: `Seafile-manual on github <https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md>`_.
-
 
 ----------
 Debian CLI

@@ -62,7 +62,12 @@ while true; do
 				sudo -u $username dropbox stop
 				mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/$username" >> /etc/security/pam_env.conf
+				pam_env_exists=$(cat /etc/security/pam_env.conf | grep CCNET | wc -l)
+				if [ "$pam_env_exists" -gt "0" ]
+					then echo "Env var already existend"
+					else
+					echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/$username" >> /etc/security/pam_env.conf
+				fi
 				wget $ignore_link -O /home/"$username"/seafile-ignore.txt
 
 				while true; do
