@@ -42,7 +42,7 @@ sensors >> $save_to_file
 numberofgreps=$(($(grep "self-assessment test result: PASSED" $save_to_file | wc -l) + $(grep "with 0 errors" $save_to_file | wc -l))) #grep the number of: "self-assessment test result: PASSED" from smartctl and add it with "with 0 errors" from btrfs scrub status
 
 
-if [ "$servername"="svalbard" ]
+if [ "$servername" == "svalbard" ]
 	then
 	freespace_echo="There is "$(df -h | awk 'FNR == 9 {print $4}')" Space left on Svalbard."
 fi
