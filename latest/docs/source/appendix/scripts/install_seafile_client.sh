@@ -127,11 +127,3 @@ while true; do
 done
 
 echo "###### Client installation finished"
-
-
-
-
-
-
-
-

@@ -45,6 +45,13 @@ Will update the package list/cache. Always run this before you upgrading or inst
 
 Will upgrade all packages which are outdated.
 
+------------------------------------------
+Software that needs regular manual updates
+------------------------------------------
+- seafile server
+- rstudio server
+- 
+
 
 =====================
 Working with printers
@@ -60,5 +67,5 @@ Add programs to the autostart
 
 
 .. figure:: appendix/pictures/startup1.jpg
-   :width: 300px
+   :width: 450px
    :alt: How to autostart a program
