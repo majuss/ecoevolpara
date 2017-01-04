@@ -12,7 +12,7 @@ numberofdisks=$(lsblk -S | grep 'sas\|ata' | grep 'disk' | wc -l)						#get numb
 numberoffilesystems=$(btrfs fi show | grep uuid | wc -l)								#get the number of btrfs filesystems
 sum_diskfs=$((numberofdisks + numberoffilesystems))										#add the numberof disks and the number of btrfs filesystems together
 freespace_echo=""																		#initialize an empty textstring for the freespace report on svalbard
-mountpoints=($(mount | grep btrfs | awk '{print $3}'))									#write all btrfs mountpoints into an array
+mountpoints=$(mount | grep btrfs | awk '{print $3}')									#write all btrfs mountpoints into an array
 alphabet_array=( {a..z} )																#create an alphabet in an array
 
 for ((i=0; i<numberofdisks; i++))														#loop over the alphabet array as often as disks are installed
@@ -39,7 +39,7 @@ echo "---------------------------Status of all temp-sensors---------------------
 
 sensors >> $save_to_file
 
-numberofgreps=$(($(grep "self-assessment test result: PASSED" $save_to_file | wc -l) + $(grep "with 0 errors" $save_to_file | wc -l))) #grep the number of: "self-assessment test result: PASSED" from smartctl and add it with "with 0 errors" from btrfs scrub status
+numberofgreps=$(($(grep 'self-assessment test result: PASSED\|SMART Health Status: OK' $save_to_file | wc -l) + $(grep "with 0 errors" $save_to_file | wc -l))) #grep the number of: "self-assessment test result: PASSED" from smartctl and add it with "with 0 errors" from btrfs scrub status
 
 
 if [ "$servername" == "svalbard" ]
@@ -51,5 +51,5 @@ if [ "$numberofgreps" -eq "$sum_diskfs" ]
 	then
 	curl -F initial_comment="All tests passed succesfull :white_check_mark::white_check_mark::white_check_mark: $freespace_echo" -F file=@$save_to_file -F title=""$servername"'s maintenance report from $timestamp_v" -F token="$slack_apikey" -F channels="testing_bots" https://slack.com/api/files.upload
 else
-	curl -F initial_comment="Some tests were not succesfull :scream::rage::exclamation: You should worry about the disks or the filesystems:exclamation: Please check the logs:exclamation:" -F file=@$save_to_file -F title=""$servername"'s maintenance report from $timestamp_v" -F token="slack_apikey" -F channels="testing_bots" https://slack.com/api/files.upload
+	curl -F initial_comment="Some tests were not succesfull :scream::rage::exclamation: You should worry about the disks or the filesystems:exclamation: Please check the logs:exclamation:" -F file=@$save_to_file -F title=""$servername"'s maintenance report from $timestamp_v" -F token="$slack_apikey" -F channels="testing_bots" https://slack.com/api/files.upload
 fi
