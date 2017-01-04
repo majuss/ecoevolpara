@@ -12,7 +12,7 @@ On the Client site there are 2 major branches. First of all there is Harriet, wh
 The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. Ìt's only available inside of the HU-network. This means to download and upload files from our cloud you need to have a working VPN connection when you're located outside the HU.
 
 
-vpn/vpn_
+:ref:`vpn`	
 ================================
 Setting up the Server (Svalbard)
 ================================
