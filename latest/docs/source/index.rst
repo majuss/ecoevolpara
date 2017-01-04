@@ -16,6 +16,7 @@ Welcome to ecoevolpara's documentation!
    geneious
    Seafile
    vms
+   hardware
    about
    build
    help
