@@ -11,6 +11,8 @@ On the Client site there are 2 major branches. First of all there is Harriet, wh
 
 The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. Ìt's only available inside of the HU-network. This means to download and upload files from our cloud you need to have a working VPN connection when you're located outside the HU.
 
+
+vpn_
 ================================
 Setting up the Server (Svalbard)
 ================================
@@ -169,7 +171,7 @@ Follow the steps above for the GUI-client till the :code:`aptitude install`. For
 After installing the client you need to create several directories outside of your home directory to have a place where seafile can store the configuration files.
 
 
-Don't alter :code:`$USER` and :code:`currentuser`since it will grab the current user which is logged in automatically
+Don't alter :code:`$USER` and :code:`currentuser` since it will grab the current user which is logged in automatically
 ::
 	currentuser=$USER
 	sudo mkdir /home/seafile/$currentuser

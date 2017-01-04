@@ -3,7 +3,7 @@ How this documentation was made
 *******************************
 
 This documentation was build using `readthedocs.io <readthedocs.io>`_. And is written in restructured text (rst).
-You can find the github repository `here <https://github.com/majuss/ecoevolpara>`_
+You can find the github repository `here <https://github.com/majuss/ecoevolpara>`_.
 
 https://www.youtube.com/watch?v=oJsUvBQyHBs
 
