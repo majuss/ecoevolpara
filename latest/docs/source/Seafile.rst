@@ -97,9 +97,9 @@ Note: enter for "$username" your actual username like: "victor".
 10. Add Seaflie to the autostart see here.
 
 
-^^^^^^^^^^^^^^^^^
-Without installer
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Without installer (dont use BROKEN)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To install the seafile-client you need root-privileges. 
 
@@ -124,7 +124,7 @@ And finally install the Client:
 
 Then export the needed environment variable with:
 ::
-	sudo echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/$username" >> /etc/security/pam_env.conf
+	sudo echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/$username" >> /home/$username/.xsessionrc
 Create needed directories for the config and own them:
 ::
 	sudo mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
@@ -212,7 +212,9 @@ https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-
 Updating the server-software
 ============================
 
-Login as the user seafile with :code:`sudo su seafile` and stop the running server with :code:`/etc/init.d/seafile stop`. Then run the minor-upgrade script: :code:`bash /usr/local/bin/seafile-server/seafile-server-6.0.5/upgrade/minor-upgrade.sh`
+
+
+Login as the user seafile with :code:`sudo su seafile` and stop the running server with :code:`/etc/init.d/seafile stop`. Download the seafile-server-software from their site: https://www.seafile.com/en/download/ for example with: :code:`wget https://bintray.com/artifact/download/seafile-org/seafile/seafile-server_6.0.7_x86-64.tar.gz` then untar it: :code:`tar -xzf seafile-server_6.0.7_x86-64.tar.gz` and own it with :code:`sudo chown -R seafile:seafile seafile-server_6.0.7`. Copy the extracted directory to :code:`/usr/local/bin/seafile-server`. Then run the minor-upgrade script: :code:`bash /usr/local/bin/seafile-server/seafile-server-6.0.7/upgrade/minor-upgrade.sh`. After that start the server again with: :code:`/etc/init.d/seafile start` as the user seafile.
 
 
 ===
