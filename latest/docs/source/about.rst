@@ -6,4 +6,4 @@ This documentation should help the next admin and all users of the working group
 
 Most of the commands must be invoked with root-priveleages. You need to add your name to visudo or use :code:`su root`.  
 
-For a good Syntax reference see: `this <https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html>`_
+For a good Syntax reference see: `this <https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html>_

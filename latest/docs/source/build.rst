@@ -9,6 +9,19 @@ https://www.youtube.com/watch?v=oJsUvBQyHBs
 
 https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html
 
+Very often an error will occur on the readthedocs.org/projects/ecoevolpara/builds/ website.
+
+
+.. figure:: /appendix/pictures/git_submodule_error.png
+   :width: 120px
+   :alt: Sphinx Neo-Hittite
+
+This may always occur due to an change in the sphinx_rtd_theme repository.
+
+INSERT PICTURE HERE
+
+
+
 1. Ensure that there are no submodule sections in .git/config. If there are, remove them.
 2. Do git rm --cached <path_to_submodule>.
 
