@@ -51,14 +51,16 @@ Cut certs into chain. Get root cert from hu site
 Setting up init.d to control the server
 ---------------------------------------
 
-Copy the file from 
+Copy the file from :download:`here <appendix/scripts/seafile-init.sh>`.
 
-Create a new file under /etc/init.d/seafile with vim or nano.
+Create a new file under /etc/init.d/seafile with vim or nano and paste the content of the downloaded file into it and save.
 
-Now you can control the server with commands like:
-::
+Now you can control the server with commands like:::
 	/etc/init.d/seafile stop
 
+Note that only the user seafile can actually control the server. If you don't get any response from the init.d command it wasn't successful.
+
+See: https://manual.seafile.com/deploy/start_seafile_at_system_bootup.html
 
 
 ===================================
@@ -97,9 +99,9 @@ Note: enter for "$username" your actual username like: "victor".
 10. Add Seaflie to the autostart see here.
 
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Without installer (dont use BROKEN)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+Without installer
+^^^^^^^^^^^^^^^^^
 
 To install the seafile-client you need root-privileges. 
 
@@ -155,7 +157,7 @@ With installer
 5. Enter your seafile login email.
 6. Enter your seafile login password.
 7. Enter the local directory you want to sync (/home/marius for example).
-8. Enter the seafile library ID. You get this ID if you log into seafile online, click onto the library and copy the ID out of the URL.
+8. Enter the seafile library ID. You get this ID if you log into seafile via a browser, click onto the library and copy the ID out of the URL.
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -171,29 +173,32 @@ Follow the steps above for the GUI-client till the :code:`aptitude install`. For
 After installing the client you need to create several directories outside of your home directory to have a place where seafile can store the configuration files.
 
 
-Don't alter :code:`$USER` and :code:`currentuser` since it will grab the current user which is logged in automatically
+Don't alter :code:`$USER` and :code:`currentuser` since it will grab the current user which is logged in automatically. To create all necessary directories, run:
 ::
+
 	currentuser=$USER
-	sudo mkdir /home/seafile/$currentuser
-	sudo mkdir /etc/seafile_confs/$currentuser
-	sudo chown $USER:$currentuser /home/seafile/$currentuser
-	sudo chown $USER:$currentuser /etc/seafile_conf/$currentuser
+	mkdir /home/seafile /home/seafile/"$currentuser" /etc/seafile /etc/seafile/$currentuser /usr/local/bin/seafile_startup
 
+Then you need to change the permissions: 
+::
+	chown $currentuser:$currentuser /home/seafile/"$currentuser" /etc/seafile/$currentuser
 
+Now download the ignore-list to the local directory you want to sync:
+::
+	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/seafile-ignore.txt -O /path/to/dir
 
-seaf-cli init -c /etc/seafile_confs/$USER -d /home/seafile/$USER
+Initialise the seafile-client with:
+::
+	seaf-cli init -c /etc/seafile_confs/$USER -d /home/seafile/$USER
 seaf-cli start -c /etc/seafile_confs/$USER
 seaf-cli sync -l  -s https://svalbard.biologie.hu-berlin.de -u $Username -p $Password -c /etc/seafile_confs/$USER -d /home/$USER
 
-With 
 
-Downloading seafile-cli-init.sh
+
 
 
 
 https://manual.seafile.com/
-
-
 
 https://manual.seafile.com/deploy/using_mysql.html
 

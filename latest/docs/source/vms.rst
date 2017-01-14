@@ -61,6 +61,12 @@ connect with a vnc client
 -----------------------
 Create a new Windows VM
 -----------------------
+qemu-img create Windows10_iDrac.qcow2 50G -f qcow2
+
+sudo qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 4000M  -k de -cpu host -smp cores=4,threads=1,sockets=1 -vga std -vnc :1 -hda /home/marius/Windows10_iDrac.qcow2 -cdrom /home/marius/Win10_1607_EnglishInternational_x64.iso -net nic,model=e1000 -net user -usbdevice tablet
+
+
+
 
 ==========================================
 Connect to a Windows VM using spice-client

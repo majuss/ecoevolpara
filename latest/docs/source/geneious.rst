@@ -20,17 +20,44 @@ Inside of the Debian stable VM you need to download the `server software <http:/
 Setup the mysql database-server
 ===============================
 
-https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/
+`Tutorial <https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/>`_
 
 
 ============================
 Setting up a Geneious client
 ============================
 
-Wuff.
+
+-----
+macOS
+-----
+
+1. `Download the macOS-client. <https://assets.geneious.com/installers/geneious/release/Geneious_mac64_6_1_8.dmg>`_ Double click the .dmg to mount it and 
+2. Copy the Geneious.app to your Applications directory. Start Geneious. At the window which popped up click "Activate a license". Click on "Use floating license server". Now enter the credentials you got from the administrator.
+
+-------
+Windows
+-------
+
+1. `Download the Windows-client <https://assets.geneious.com/installers/geneious/release/Geneious_win64_6_1_8_with_jre.exe>`_
+2. Double click the .exe and click through the installer. When it's finished start Geneious, a window will pop up. Click on "Activate a license". Click on "Use floating license server". Now enter the credentials you got from the administrator.
+
+-----
+Linux
+-----
+
+1. `Download the Linux-client <https://assets.geneious.com/installers/geneious/release/Geneious_linux64_6_1_8_with_jre.sh>`_
+2. Run it with code: sudo bash ~/Downloads/Geneious_linux64_6_1_8_with_jre.sh and click through the suggested parameter.
+3. Now type "geneious" into the search and start it. At the window which popped up click "Activate a license". Click on "Use floating license server". Now enter the credentials you got from the administrator.
+
+
+
+
 
 ============================
 Log into the shared Database
 ============================
 
-To smth.
+1. Start Geneious and right click onto "Shared Database" on the left hand side and click "Connect to a set up database".
+2. Type into the username, password, Host. The database-name is "geneiousDB" and the Port 3306. For the database vendor choose MySQL. Then click on "More Options" and click the "Browse" button behind "Driver .jar file:" :download:`choose this file <appendix/various/geneious/mysql-connector-java-5.1.30-bin.jar>`.
+3. Click "Ok", you are now connected to the shared database.

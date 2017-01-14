@@ -66,7 +66,7 @@ ignore_link="https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/
 while true; do
     read -p "Which client do you want to install? graphical[1] or commandline[2]. Or hit [3] to uninstall any previous installed client or [4] when your home folder conflicts with system path: " client_type
     case $client_type in
-        [1]* )	add_repo
+        [1]* )	add_repo #case seafile-gui
 				aptitude install -y seafile-gui
 				get_valid_username
 				sudo -u $username dropbox stop
@@ -90,7 +90,7 @@ while true; do
 					esac
 				done
 				break;;
-        [2]* )	add_repo
+        [2]* )	add_repo #case seafile-cli
         		aptitude install -y seafile-cli
         		get_valid_username
         		sudo -u $username dropbox stop
@@ -100,7 +100,7 @@ while true; do
         		get_library_id
         		mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username /usr/local/bin/seafile_startup
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				wget $ignore_link -O /home/$username
+				wget $ignore_link -O $local_dir
         		sudo -u $username seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
         		sudo -u $username seaf-cli start -c /etc/seafile/$username
         		sudo -u $username seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"

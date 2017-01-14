@@ -1,4 +1,3 @@
-.. _vpn:
 ===
 VPN
 ===
@@ -16,9 +15,9 @@ macOS
 
 Or you can follow these steps:
 
-1. Go to the `Tunnelblick-website <https://tunnelblick.net/>`_ download the .dmg and drag the .app into your applictions directory.
+1. Go to the `Tunnelblick-website <https://tunnelblick.net/>`_ download the .dmg, double click it to mount and drag the .app into your applications directory.
 2. `Download <https://www.cms.hu-berlin.de/de/dl/netze/vpn/openvpn/hu-berlin.ovpn>`_ the HU-VPN configuration file and double click it.
-3. Follow the Tunnelblick instructions and enter your account details. A small smybol will show up in the status bar. 
+3. Follow the Tunnelblick instructions and enter your account details. A small symbol will show up in the status bar. 
 
 
 -----
@@ -37,7 +36,7 @@ Or you can follow these steps:
 Windows
 -------
 
-`This is the official manual from the HU for Linux <https://www.cms.hu-berlin.de/de/dl/netze/vpn/openvpn/windows10/ovpn-win10.pdf>`_
+`This is the official manual from the HU for Windows <https://www.cms.hu-berlin.de/de/dl/netze/vpn/openvpn/windows10/ovpn-win10.pdf>`_
 
 Or you can follow these steps:
 
