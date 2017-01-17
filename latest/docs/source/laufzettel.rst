@@ -2,6 +2,8 @@
 Laufzettel
 ==========
 
+Please get a confirmation for every item from Emanuel.
+
 =========================== ====
 Item						done
 =========================== ====
