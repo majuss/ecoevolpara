@@ -9,11 +9,11 @@ https://www.youtube.com/watch?v=oJsUvBQyHBs
 
 https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html
 
-Very often an error will occur on the readthedocs.org/projects/ecoevolpara/builds/ website.
+Very often an error will occur on the readthedocs.org/projects/ecoevolpara/builds/ website:
 
 
 .. figure:: /appendix/pictures/git_submodule_error.png
-   :width: 120px
+   :width: 600px
    :alt: Sphinx Neo-Hittite
 
 This may always occur due to an change in the sphinx_rtd_theme repository.
