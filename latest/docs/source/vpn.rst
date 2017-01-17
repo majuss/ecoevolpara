@@ -6,8 +6,6 @@ VPN means virtual private network. It is a software which will make the computer
 
 Here is the official manual from the `HU-website: <https://www.cms.hu-berlin.de/de/dl/netze/vpn>`_.
 
-
------
 macOS
 -----
 
@@ -19,8 +17,6 @@ Or you can follow these steps:
 2. `Download <https://www.cms.hu-berlin.de/de/dl/netze/vpn/openvpn/hu-berlin.ovpn>`_ the HU-VPN configuration file and double click it.
 3. Follow the Tunnelblick instructions and enter your account details. A small symbol will show up in the status bar. 
 
-
------
 Linux
 -----
 
@@ -32,7 +28,6 @@ Or you can follow these steps:
 2. `Download <https://www.cms.hu-berlin.de/de/dl/netze/vpn/openvpn/hu-berlin.ovpn>`_ the HU-VPN configuration file.
 3. Run :code:`sudo openvpn --config hu-berlin.ovpn
 
--------
 Windows
 -------
 

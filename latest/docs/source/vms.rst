@@ -5,7 +5,6 @@ Virtual machines
 Virtual machines or VMs proive a way to deploy software fast and easy (such as the geneious server). 
 
 
-======================
 Create a VM using QEMU
 ======================
 
@@ -45,7 +44,6 @@ qemu-system-x86_64		QEMU command
 -net user,hostfwd		forwarding ports from host to vm pe.: hostfwd=tcp::15000-:22 the ssh port of the vm is now reacheable through the port 15000
 
 
---------------------------------------
 Create a new Debian-stable VM
 --------------------------------------
 
@@ -58,7 +56,6 @@ qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 4000M  -k de -
 connect with a vnc client
 
 
------------------------
 Create a new Windows VM
 -----------------------
 qemu-img create Windows10_iDrac.qcow2 50G -f qcow2
@@ -66,9 +63,6 @@ qemu-img create Windows10_iDrac.qcow2 50G -f qcow2
 sudo qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 4000M  -k de -cpu host -smp cores=4,threads=1,sockets=1 -vga std -vnc :1 -hda /home/marius/Windows10_iDrac.qcow2 -cdrom /home/marius/Win10_1607_EnglishInternational_x64.iso -net nic,model=e1000 -net user -usbdevice tablet
 
 
-
-
-==========================================
 Connect to a Windows VM using spice-client
 ==========================================
 
@@ -82,11 +76,10 @@ You invoke the spice-client with the command :code:`spicec`, additionally you ha
 ::
 	spicec spicec -h $server_IP -p $port -w $password
 
-===============================
+
 Connect to a Linux VM using ssh
 ===============================
 
-==============================================
 Connect to a Linux VM using a VNC-client (GUI)
 ==============================================
 

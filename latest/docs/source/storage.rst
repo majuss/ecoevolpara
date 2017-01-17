@@ -2,7 +2,7 @@
 Filesystem and harddiskmanagement
 *********************************
 
-=====
+
 btrfs
 =====
 
@@ -48,7 +48,6 @@ After adding devices to RAIDs you always have to balance the data between them.
     btrfs balance start -mconvert=raid1 -dconvert=raid1 /
 
 
-========================
 Mounting the SAN storage
 ========================
 

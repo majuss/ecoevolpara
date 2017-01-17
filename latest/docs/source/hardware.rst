@@ -2,31 +2,26 @@
 Hardware
 ********
 
-========
 Svalbard
 ========
 
 Svalbards chassis-manual can be found :download:`here <appendix/pdfs/ChassisSC836.pdf>`. It is crucial to have a look at it, if you want to install new harddrives.
 
-=======================
 Monitoring the hardware
 =======================
 
 First of all you should take a look onto the maintenance reports from our bots in Slack. They will post a hardware-log and a short message if everything seems right or wrong.
 
------------------
 CPU and RAM usage
 -----------------
 
 Install and run the utility htop: :code:`aptitude install htop`.
 
--------------------
 Harddisks / Storage
 -------------------
 
 smartctl
 
-------------
 Temperatures
 ------------
 
@@ -36,11 +31,9 @@ To monitor the temperature it is best and fastest to use the programm sensors. Y
 
 For the temperatures of the harddrives you need to use :code:`smartctl -x "/dev/sd$f"` with admin privileges.
 
-=======================================================
 Remotely connect via iDRAC (Harriet) and IPMI (Svalbard)
 =======================================================
 
------
 iDrac
 -----
 
@@ -51,10 +44,7 @@ The recent IP to connect to harriets DRAC you can find in the IP-routing table. 
 To use the java-console, you need to start a specific preconfigured vm and connect to it, or you install java on your local computer and add a security-exception for the DRACs IP (https://141...).
 
 
-----
 IPMI
 ----
 
 Since Svalbard is not a Dell server he doesn't have a DRAC. Instead he's having a standard IPMI controller on the mainboard to control the server hardware remotely. The IP is also available in the table mentioned above. You can simply reach it with every standard webbrowser. A console is not available, since it would had required additional KVM hardware (as far as I know).
-
-

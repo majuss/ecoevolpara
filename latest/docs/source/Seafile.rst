@@ -12,8 +12,6 @@ On the Client site there are 2 major branches. First of all there is Harriet, wh
 The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. Ìt's only available inside of the HU-network. This means to download and upload files from our cloud you need to have a working VPN connection when you're located outside the HU.
 
 
-`vpn.html`__
-================================
 Setting up the Server (Svalbard)
 ================================
 
@@ -26,9 +24,6 @@ Setting up the server can be devided into 4 steps
 
 Steps here will only describe the procedure briefly since it will likely be completely different when the sever needs a new setup.
 
-
-
-
 To set up the seafile-gui client on a normal client computer with a clean debian install you need to first of all download it via aptitude, after adding the repo and key (LINK TO DL). When an error occurs while installing which includes the libssl1.0.0 you need to google the package for debian, download, and install it via dpkg -i.
 
 After installing it you have to add a global environment variable for the config file, because seafile can't sync sirectories which contain the config(".ccnet") directory so you have to make sure it gets stored at a different place with the env. variable.
@@ -39,15 +34,12 @@ After installing it you have to add a global environment variable for the config
 
 A seafile-ignore.txt should be included in every Library you wish to sync, espacially inside of the homes. The file should contain a wild card for all dot-files/directories. You should also exclude a directory which includes all github projects, to avoid sync conflicts with git.
 
-
-------------------------------
 Acquiring HTTPS for the domain
 ------------------------------
 
 
 Cut certs into chain. Get root cert from hu site
 
----------------------------------------
 Setting up init.d to control the server
 ---------------------------------------
 
@@ -62,26 +54,20 @@ Note that only the user seafile can actually control the server. If you don't ge
 
 See: https://manual.seafile.com/deploy/start_seafile_at_system_bootup.html
 
-
-===================================
 Setting up the home-sync (Harriet)
 ===================================
 
 
 Do lots of stuff
 
-
-===================
 Setting up a client
 ===================
 
-----------
 Debian GUI
 ----------
 
 It is recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI). If you want to use Seafile outside of the HU-network you need a HU-Account and a working VPN connection see :ref:`here for details <_vpn>`.
 
-^^^^^^^^^^^^^^
 With installer
 ^^^^^^^^^^^^^^
 
@@ -98,8 +84,6 @@ Note: enter for "$username" your actual username like: "victor".
 9. When Seafile starts up right click your home_$username and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home.
 10. Add Seaflie to the autostart see here.
 
-
-^^^^^^^^^^^^^^^^^
 Without installer
 ^^^^^^^^^^^^^^^^^
 
@@ -142,11 +126,9 @@ Now follow the manual with the installer above from step 6.
 
 For the official manual see: `Seafile-manual on github <https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md>`_.
 
-----------
 Debian CLI
 ----------
 
-^^^^^^^^^^^^^^
 With installer
 ^^^^^^^^^^^^^^
 
@@ -159,8 +141,6 @@ With installer
 7. Enter the local directory you want to sync (/home/marius for example).
 8. Enter the seafile library ID. You get this ID if you log into seafile via a browser, click onto the library and copy the ID out of the URL.
 
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Without installer (dont use not finished)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -193,11 +173,6 @@ Initialise the seafile-client with:
 seaf-cli start -c /etc/seafile_confs/$USER
 seaf-cli sync -l  -s https://svalbard.biologie.hu-berlin.de -u $Username -p $Password -c /etc/seafile_confs/$USER -d /home/$USER
 
-
-
-
-
-
 https://manual.seafile.com/
 
 https://manual.seafile.com/deploy/using_mysql.html
@@ -208,21 +183,11 @@ https://manual.seafile.com/deploy/https_with_nginx.html
 
 https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md
 
-
-
-
-
-
-============================
 Updating the server-software
 ============================
 
-
-
 Login as the user seafile with :code:`sudo su seafile` and stop the running server with :code:`/etc/init.d/seafile stop`. Download the seafile-server-software from their site: https://www.seafile.com/en/download/ for example with: :code:`wget https://bintray.com/artifact/download/seafile-org/seafile/seafile-server_6.0.7_x86-64.tar.gz` then untar it: :code:`tar -xzf seafile-server_6.0.7_x86-64.tar.gz` and own it with :code:`sudo chown -R seafile:seafile seafile-server_6.0.7`. Copy the extracted directory to :code:`/usr/local/bin/seafile-server`. Then run the minor-upgrade script: :code:`bash /usr/local/bin/seafile-server/seafile-server-6.0.7/upgrade/minor-upgrade.sh`. After that start the server again with: :code:`/etc/init.d/seafile start` as the user seafile.
 
-
-===
 FAQ
 ===
 

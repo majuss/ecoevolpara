@@ -3,10 +3,8 @@ Appendix
 ========
 
 
--------
 scripts
 -------
-
 
 :code:`seafile-init.sh`
 
