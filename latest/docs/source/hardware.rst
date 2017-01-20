@@ -20,7 +20,14 @@ Install and run the utility htop: :code:`aptitude install htop`.
 Harddisks / Storage
 -------------------
 
-smartctl
+To start a SMART-selftest of the drive sda (type lsblk to get a list of all drives and their identifiers) type:
+::
+	smartctl -t short /dev/sda
+
+To see the results of the test (the test will take ~3 minutes):
+::
+	smartctl -a /dev/sda
+
 
 Temperatures
 ------------

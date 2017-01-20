@@ -2,13 +2,21 @@
 Laufzettel
 ==========
 
+Student name, email, telephone
+
+====== ===================
+Name    
+E-Mail 
+Mobile 
+====== ===================
+
 Please get a confirmation for every item from Emanuel.
 
-=========================== ====
-Item						done
-=========================== ====
-Working	place				 
-Working Computer			 
+=========================== ==== ============
+Item						done confirmation
+=========================== ==== ============
+Workplace					 
+Working computer			 
 Keys						 
 
 Slack invite				 
@@ -17,6 +25,6 @@ Zotero invite
 
 Seafile introduction		 
 Server introduction			 
-Lab introduction			 
+Lab introduction
 Tierdienst introduction		 
-=========================== ====
+=========================== ==== ============

@@ -41,6 +41,7 @@ to documentate:
 * Laufzettel .rst and github .pdf
 * Dell Drac and svalbard IPMI
 * FAQ
+* interpret maintenance logfile
 
 
 
