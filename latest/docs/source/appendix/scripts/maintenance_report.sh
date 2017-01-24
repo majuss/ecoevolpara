@@ -21,7 +21,7 @@ done
 
 sleep 300																				#wait for the selftest to get finished
 
-echo "Check the documentation on: ecoevolpara.readthedocs.io on how to interpret this logfile." >> "$save_to_file"
+echo "Check the documentation on: ecoevolpara.readthedocs.io/en/latest/hardware.html#monitoring-the-hardware on how to interpret this logfile." >> "$save_to_file"
 echo "---------------------------SMART Status of all HDDs------------------------------" >> "$save_to_file"
 
 for ((i=0; i<numberofdisks; i++))														#loop over the alphabet array as often as disks are installed
