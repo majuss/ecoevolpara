@@ -78,11 +78,11 @@ while true; do
 				while true; do
 					read -p "The window manager must now be restartet, this will close all open applications. Do now [1], later [2]: " restart
 					case $restart in
-						[1]*)	
-								/etc/init.d/lightdm restart  
+						[1]*)
+								/etc/init.d/lightdm restart
 								/etc/init.d/gdm restart
 								break;;
-						
+
 						[2]*)	echo "Please restart your computer as soon as possible and don't use the GUI client without a restart!"
 								break;;
 
@@ -104,7 +104,9 @@ while true; do
         		sudo -u $username seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
         		sudo -u $username seaf-cli start -c /etc/seafile/$username
         		sudo -u $username seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"
-        		echo -e "#!/bin/sh \n seaf-cli start -c /etc/seafile/"$username"; sleep 2; seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"" >> /usr/local/bin/seafile_startup/start_"$username".sh
+        		seaf-cli start -c /etc/seafile/"$username"; sleep 2; seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"
+        		echo -e "seaf-cli start -c /etc/seafile/$username" >> /usr/local/bin/seafile_startup/start_"$username".sh
+        		#echo -e "#!/bin/sh \n seaf-cli start -c /etc/seafile/"$username"; sleep 2; seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"" >> /usr/local/bin/seafile_startup/start_"$username".sh
 				chown $username:$username /usr/local/bin/seafile_startup/start_"$username".sh
 				cron_line="@reboot bash /usr/local/bin/seafile_startup/start_"$username".sh"
 				(crontab -l; echo "$cron_line" ) | sort | uniq | crontab -

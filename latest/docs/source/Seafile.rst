@@ -29,7 +29,7 @@ To set up the seafile-gui client on a normal client computer with a clean debian
 After installing it you have to add a global environment variable for the config file, because seafile can't sync sirectories which contain the config(".ccnet") directory so you have to make sure it gets stored at a different place with the env. variable.
 ::
     export CCNET_CONF_DIR=/etc/seafile/$USER
-    
+
  in /etc/profile will create the variable for every user in the according directory. Now you have to create the directories for every user.
 
 A seafile-ignore.txt should be included in every Library you wish to sync, espacially inside of the homes. The file should contain a wild card for all dot-files/directories. You should also exclude a directory which includes all github projects, to avoid sync conflicts with git.
@@ -76,7 +76,7 @@ Note: enter for "$username" your actual username like: "victor".
 1. Download the installer from above.
 2. Run it ìn the terminal (open it with the search function) with :code:`sudo bash install_seafile_client.sh`. You need sudo-privileges for this, or you login in as root with :code:`su root`.
 3. Choose graphical client.
-4. Enter your short username.
+4. Enter your short local Debian username.
 5. Choose 1 and restart all window-servers.
 6. Search for :code:`seafile` and start it.
 7. In the first field enter the path: :code:`/home/seafile/$uername`
@@ -87,7 +87,7 @@ Note: enter for "$username" your actual username like: "victor".
 Without installer
 ^^^^^^^^^^^^^^^^^
 
-To install the seafile-client you need root-privileges. 
+To install the seafile-client you need root-privileges.
 
 First you need to update your operating system:
 ::
@@ -116,9 +116,9 @@ Create needed directories for the config and own them:
 	sudo mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 	sudo chown $username:$username /home/seafile/"$username" /etc/seafile/$username
 
-Log out of your x-server and back in with: 
+Log out of your x-server and back in with:
 ::
-	sudo /etc/init.d/lightdm restart  
+	sudo /etc/init.d/lightdm restart
 	sudo /etc/init.d/gdm restart
 
 Now follow the manual with the installer above from step 6.
@@ -135,7 +135,7 @@ With installer
 1. Download the installer from :download:`here <appendix/scripts/install_seafile_client.sh>`
 2. Run it with :code:`sudo bash install_seafile_client.sh`. You need sudo-privileges for this, or you login in as root with :code:`su root`.
 3. Choose cli client.
-4. Enter your local short username.
+4. Enter your local short Debian username.
 5. Enter your seafile login email.
 6. Enter your seafile login password.
 7. Enter the local directory you want to sync (/home/marius for example).
@@ -159,7 +159,7 @@ Don't alter :code:`$USER` and :code:`currentuser` since it will grab the current
 	currentuser=$USER
 	mkdir /home/seafile /home/seafile/"$currentuser" /etc/seafile /etc/seafile/$currentuser /usr/local/bin/seafile_startup
 
-Then you need to change the permissions: 
+Then you need to change the permissions:
 ::
 	chown $currentuser:$currentuser /home/seafile/"$currentuser" /etc/seafile/$currentuser
 
@@ -191,6 +191,7 @@ Login as the user seafile with :code:`sudo su seafile` and stop the running serv
 FAQ
 ===
 
+- no .ccnet directory found; you cant start seaf-cli without -c (confid dir)
 - no root
 - conflicts with system path
 - screenshot log init failed

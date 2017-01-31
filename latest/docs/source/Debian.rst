@@ -41,16 +41,21 @@ Software that needs regular manual updates
 ------------------------------------------
 - seafile server
 - rstudio server
-- 
+
 
 Working with printers
 =====================
 
-sudo system-config-printer
+If you want to add a printer you will need sudo privileges. Then run the printer-settings gui with:
+::
+	sudo system-config-printer
+
+This will open a window where you can add a printer. Click "Add" and have a look at the list of network-printers. Mind the printers IP adress (there should be a sticker on the printer or you can look them up in the IP-mapping table).
 
 Add programs to the autostart
 =============================
 
+Hit the windows-key and search for "startup", open the first search result "Startup Applications". Click on "Add" and choose your desired software.
 
 .. figure:: appendix/pictures/startup1.jpg
    :width: 450px

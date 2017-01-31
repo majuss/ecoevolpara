@@ -21,3 +21,7 @@ A custom bot that posts the results of SMART tests and the btrfs scrubbing into 
 :code:`seafile-ignore.txt`
 
 A seafile-ignore list which lists for example all dotfiles and exclude them.
+
+:code:`update_blastdb_cran.sh`
+
+Updates blast DBs automatically.

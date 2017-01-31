@@ -67,8 +67,8 @@ FAQ
 :**Q:**: **The Maintenance-report from one server shows "check the logs" what do I have to do?**
 :**A:**: **First check for a false alarm. Therefore you need to understand how it works, see here "link to section custom cron"**
 
-Q:
-A:
+Q: Dont get a picture, but pc boots up
+A: Press ctrl + alt + F1 to switch to terminal mode and reinstall the desktop manager und desktop. ctrl + alt + F7 to switch back to the graphical interface.
 
 
 
