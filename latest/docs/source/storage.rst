@@ -19,7 +19,7 @@ will show all set up btrfs-filesystems and the free space on them. Every fs will
 
 
 Will scrub the targeted fs. This means the fs will check all block-checksums and correct errors automatically. When started once it will run til finished. Scrubbing will take a lot of time (100 mb/s). You should scrub the fs once every month. The status of the recent scrub can be checked with:
-::      
+::
 
     btrfs scrub status /mountpoint
 

@@ -3,34 +3,34 @@
 ############functions###########
 dropbox stop
 add_repo (){
-echo "##### Starting complete Software upgrade. This can take several minutes..."
-aptitude update > /dev/null
-aptitude upgrade -y > /dev/null
-echo "##### Software upgrade finished"
+	echo "##### Starting complete Software upgrade. This can take several minutes..."
+	aptitude update > /dev/null
+	aptitude upgrade -y > /dev/null
+	echo "##### Software upgrade finished"
 
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
-echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
-aptitude update > /dev/null
+	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
+	echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
+	aptitude update > /dev/null
 }
 
 get_valid_username(){
-valid=$(cut -d: -f1 /etc/passwd | awk '{printf "%s|",$0} END {print ""}')
-choice=$SUDO_USER
-while true; do
-	read -p "Enter the local username from your account: (Default "$SUDO_USER"): " choice
+	valid=$(cut -d: -f1 /etc/passwd | awk '{printf "%s|",$0} END {print ""}')
+	choice=$SUDO_USER
+	while true; do
+		read -p "Enter the local username from your account: (Default "$SUDO_USER"): " 'choice'
 		eval "case \"$choice\" in
-  		  [$valid]* )
-     	   username="$choice"
-    	   break;;
-  		  *)
-    	    echo "invalid username"
-        ;;
-esac"
+		[$valid]* )
+		username="$choice"
+		break;;
+		*)
+		echo "invalid username"
+		;;
+	esac"
 done
 }
 
 check_env(){
-env_exists=$(cat /home/$username/.xsessionrc | grep CCNET | wc -l)
+	env_exists=$(cat /home/$username/.xsessionrc | grep CCNET | wc -l)
 	if [ "$env_exists" -gt "0" ]
 		then echo "Env var already existend"
 	else
@@ -40,19 +40,19 @@ env_exists=$(cat /home/$username/.xsessionrc | grep CCNET | wc -l)
 }
 
 get_library_id(){
-	read -p "Enter your seafile-library ID you want to sync (see documentation): " library_id
+	read -p "Enter your seafile-library ID you want to sync (see documentation): " 'library_id'
 }
 
 get_login_email(){
-	read -p "Enter your seafile login email: " login_email
+	read -p "Enter your seafile login email: " 'login_email'
 }
 
 get_login_password(){
-	read -p "Enter your seafile login password: " login_password
+	read -p "Enter your seafile login password: " 'login_password'
 }
 
 get_local_dir(){
-	read -p "Enter local directory you want to sync: (/home/marius for example): " local_dir
+	read -p "Enter local directory you want to sync: (/home/marius for example): " 'local_dir'
 }
 #################functions end###########
 
