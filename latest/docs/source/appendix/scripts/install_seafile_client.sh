@@ -29,13 +29,13 @@ get_valid_username(){
 done
 }
 
-check_env(){
-	env_exists=$(cat /home/$username/.xsessionrc | grep CCNET | wc -l)
+function check_env(){
+	env_exists=$(cat /home/$1/.xsessionrc | grep CCNET | wc -l)
 	if [ "$env_exists" -gt "0" ]
 		then echo "Env var already existend"
 	else
 		echo -e "CCNET_CONF_DIR=/etc/seafile/\$USER" >> /home/$username/.xsessionrc
-		sudo chown $username:$username /home/$username/.xsessionrc
+		sudo chown $1:$1 /home/$1/.xsessionrc
 	fi
 }
 
@@ -64,7 +64,7 @@ ignore_link="https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/
 
 
 while true; do
-    read -p "Which client do you want to install? graphical[1] or commandline[2]. Or hit [3] to uninstall any previous installed client or [4] when your home folder conflicts with system path: " client_type
+    read -p "Which client do you want to install? graphical[1] or commandline[2]. Hit [3] to uninstall any previous installed client or [4] when your home folder conflicts with system path." client_type
     case $client_type in
         [1]* )	add_repo #case seafile-gui
 				aptitude install -y seafile-gui
@@ -72,7 +72,7 @@ while true; do
 				sudo -u $username dropbox stop
 				mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
 				chown $username:$username /home/seafile/"$username" /etc/seafile/$username
-				check_env
+				check_env $username
 				wget $ignore_link -O /home/"$username"/seafile-ignore.txt
 
 				while true; do
@@ -117,15 +117,30 @@ while true; do
 				rm /usr/local/bin/seafile_startup/start_$username.sh
 				rm -rf /etc/seafile/$username
 				rm -rf /home/seafile/$username
-
 				break;;
 
 		[4]* )	get_valid_username
 				killall seafile-applet
 				rm -rf /home/$username/.ccnet
+				check_env
+
 				break;;
-        * ) echo "Please answer 1, 2 or 3.";;
+        * ) echo "Please answer 1, 2, 3 or 4.";;
     esac
 done
 
 echo "###### Client installation finished"
+
+
+
+
+#!/bin/bash
+# declare an array called array and define 3 vales
+
+arrayHomes=($(cd /home; ls -d */))
+for i in "${arrayHomes[@]}"
+do
+	mkdir /home/seafile /home/seafile/"$i" /etc/seafile /etc/seafile/$i
+	chown $i:$i /home/seafile/"$i" /etc/seafile/$i
+	check_env $i
+done
