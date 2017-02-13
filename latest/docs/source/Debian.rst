@@ -68,10 +68,11 @@ Paste the key onto the end of the file. If .ssh doesn't exist you can create it 
 
 .. tip::
 
-    Create a ssh-config on your client machine with: :code:`nano ~/.ssh/config`. And enter the servers IP, username and a shortcut to quickly connect to your servers. It should look like this:::
-    Host sw 				#shortcut
-	HostName 192.168.178.1	#server IP
-	User marius				#server username
+    Create a ssh-config on your client machine with: :code:`nano ~/.ssh/config`. And enter the servers IP, username and a shortcut to quickly connect to your servers. It should look like this:
+    ::
+    	Host sw 				#shortcut
+		HostName 192.168.178.1	#server IP
+		User marius				#server username
 
 	And then call it with :code:`ssh sw`.
 
