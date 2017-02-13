@@ -9,7 +9,7 @@ Seafile is a program which enables us to host our own cloud system very much lik
 On the Client site there are 2 major branches. First of all there is Harriet, who synces the home directories through the seaf-cli client which runs individually for every user on Harriet. On the normal clients every user can simply use the gui client or he can setup the cli client if desired.
 
 
-The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. Ìt's only available inside of the HU-network. This means to download and upload files from our cloud you need to have a working VPN connection when you're located outside the HU.
+The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. Ìt's only available inside of the HU-network. This means to download and upload files from our cloud you need to have a working `VPN connection <http://ecoevolpara.readthedocs.io/en/latest/vpn.html>`_ when you're located outside the HU.
 
 
 Setting up the Server (Svalbard)
@@ -17,20 +17,13 @@ Setting up the Server (Svalbard)
 
 The Server on which all seafile data is stored is Svalbard. On Svalbard a user named seafile drives the seafile-server software.
 
-Setting up the server can be devided into 4 steps
-* Installing and setting up a MySQL database
-* Downloading and instlling the server-software
-
+Setting up the server can be devided into two steps
+- Installing and setting up a MySQL database
+- Downloading and instlling the server-software
 
 Steps here will only describe the procedure briefly since it will likely be completely different when the sever needs a new setup.
 
 To set up the seafile-gui client on a normal client computer with a clean debian install you need to first of all download it via aptitude, after adding the repo and key (LINK TO DL). When an error occurs while installing which includes the libssl1.0.0 you need to google the package for debian, download, and install it via dpkg -i.
-
-After installing it you have to add a global environment variable for the config file, because seafile can't sync sirectories which contain the config(".ccnet") directory so you have to make sure it gets stored at a different place with the env. variable.
-::
-    export CCNET_CONF_DIR=/etc/seafile/$USER
-
- in /etc/profile will create the variable for every user in the according directory. Now you have to create the directories for every user.
 
 A seafile-ignore.txt should be included in every Library you wish to sync, espacially inside of the homes. The file should contain a wild card for all dot-files/directories. You should also exclude a directory which includes all github projects, to avoid sync conflicts with git.
 
@@ -58,6 +51,8 @@ Setting up the home-sync (Harriet)
 ===================================
 
 
+
+
 Do lots of stuff
 
 Setting up a client
@@ -71,23 +66,21 @@ It is recommended to use our custom :download:`Installer <appendix/scripts/insta
 With installer
 ^^^^^^^^^^^^^^
 
-Note: enter for "$username" your actual username like: "victor".
-
 1. Download the installer from above.
-2. Run it ìn the terminal (open it with the search function) with :code:`sudo bash install_seafile_client.sh`. You need sudo-privileges for this, or you login in as root with :code:`su root`.
-3. Choose graphical client.
-4. Enter your short local Debian username.
-5. Choose 1 and restart all window-servers.
-6. Search for :code:`seafile` and start it.
-7. In the first field enter the path: :code:`/home/seafile/$uername`
-8. In the next field, enter our server-url: :code:`https://svalbard.biologie.hu-berlin.de`, your user-email and password.
-9. When Seafile starts up right click your home_$username and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home.
-10. Add Seaflie to the autostart see here.
+2. Run it in the terminal (open it with the search function) with :code:`sudo bash install_seafile_client.sh`. You need sudo-privileges for this, or you login in as root with :code:`su root`.
+3. Choose graphical client. And follow the instructions.
+4. Search for :code:`seafile` and start it.
+5. In the first field enter the path: :code:`/home/seafile/$uername`
+6. In the next field, enter our server-url: :code:`https://svalbard.biologie.hu-berlin.de`, your user-email and password (both provided by the admin.
+7. When Seafile starts up right click your home_$username and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home.
+8. Add Seaflie to the autostart see `here <http://ecoevolpara.readthedocs.io/en/latest/Debian.html#add-programs-to-the-autostart>`_.
 
 Without installer
 ^^^^^^^^^^^^^^^^^
 
 To install the seafile-client you need root-privileges.
+
+Note: replace $username with your actual local username (echo $USER).
 
 First you need to update your operating system:
 ::
@@ -100,7 +93,7 @@ After that add the key of the Seafile-repo:
 Then add the repo itself with:
 ::
 	echo deb http://dl.bintray.com/seafile-org/deb jessie main | sudo tee /etc/apt/sources.list.d/seafile.list
-Replce jessie with the Debian release you're using (:code:`lsb_release -a | grep Codename`).
+Replace jessie with the Debian release you're using (:code:`lsb_release -a | grep Codename`).
 Then run an update of the package-list.
 ::
 	sudo aptitude update
@@ -121,7 +114,7 @@ Log out of your x-server and back in with:
 	sudo /etc/init.d/lightdm restart
 	sudo /etc/init.d/gdm restart
 
-Now follow the manual with the installer above from step 6.
+Now follow the manual with the installer above from step 4.
 
 
 For the official manual see: `Seafile-manual on github <https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md>`_.
@@ -141,8 +134,8 @@ With installer
 7. Enter the local directory you want to sync (/home/marius for example).
 8. Enter the seafile library ID. You get this ID if you log into seafile via a browser, click onto the library and copy the ID out of the URL.
 
-Without installer (dont use not finished)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Without installer
+^^^^^^^^^^^^^^^^^
 
 You need the Library IDs of every Library you want to sync. You get it by opening seafile in a browser, open the library and copy it from the URL-bar.
 
@@ -152,26 +145,33 @@ Follow the steps above for the GUI-client till the :code:`aptitude install`. For
 
 After installing the client you need to create several directories outside of your home directory to have a place where seafile can store the configuration files.
 
+Replace $username with your local username.
 
-Don't alter :code:`$USER` and :code:`currentuser` since it will grab the current user which is logged in automatically. To create all necessary directories, run:
 ::
-
-	currentuser=$USER
-	mkdir /home/seafile /home/seafile/"$currentuser" /etc/seafile /etc/seafile/$currentuser /usr/local/bin/seafile_startup
+	sudo mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username /usr/local/bin/seafile_startup
 
 Then you need to change the permissions:
 ::
-	chown $currentuser:$currentuser /home/seafile/"$currentuser" /etc/seafile/$currentuser
+	sudo chown $username:$username /home/seafile/"$username" /etc/seafile/$username
 
 Now download the ignore-list to the local directory you want to sync:
 ::
-	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/seafile-ignore.txt -O /path/to/dir
+	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/seafile-ignore.txt -O $/path/to/dir
 
 Initialise the seafile-client with:
 ::
-	seaf-cli init -c /etc/seafile_confs/$USER -d /home/seafile/$USER
-seaf-cli start -c /etc/seafile_confs/$USER
-seaf-cli sync -l  -s https://svalbard.biologie.hu-berlin.de -u $Username -p $Password -c /etc/seafile_confs/$USER -d /home/$USER
+	seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
+	seaf-cli start -c /etc/seafile/$username
+	seaf-cli sync -l -s https://svalbard.biologie.hu-berlin.de -u $Username -p $Password -c /etc/seafile/$username -d /home/$username
+
+Save a startup script and setup a 
+::
+	echo -e "seaf-cli start -c /etc/seafile/$username" >> /usr/local/bin/seafile_startup/start_"$username".sh
+	chown $username:$username /usr/local/bin/seafile_startup/start_"$username".sh
+	cron_line="@reboot bash /usr/local/bin/seafile_startup/start_"$username".sh"
+	(crontab -l; echo "$cron_line" ) | sort | uniq | crontab -
+
+Official Seafile Links:
 
 https://manual.seafile.com/
 
@@ -191,7 +191,7 @@ Login as the user seafile with :code:`sudo su seafile` and stop the running serv
 FAQ
 ===
 
-- no .ccnet directory found; you cant start seaf-cli without -c (confid dir)
+- Q: no .ccnet directory found. A: you can't start seaf-cli without -c (confid dir)
 - no root
 - conflicts with system path
 - screenshot log init failed

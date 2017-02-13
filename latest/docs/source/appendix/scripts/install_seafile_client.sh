@@ -117,7 +117,6 @@ install_cli_client(){
 	sudo -u $username seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
 	sudo -u $username seaf-cli start -c /etc/seafile/$username
 	sudo -u $username seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"
-	seaf-cli start -c /etc/seafile/"$username"; sleep 2; seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"
 	echo -e "seaf-cli start -c /etc/seafile/$username" >> /usr/local/bin/seafile_startup/start_"$username".sh
 	chown $username:$username /usr/local/bin/seafile_startup/start_"$username".sh
 	cron_line="@reboot bash /usr/local/bin/seafile_startup/start_"$username".sh"
