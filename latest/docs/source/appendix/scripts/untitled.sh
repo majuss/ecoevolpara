@@ -70,16 +70,33 @@ do
   sleep 0.5
 done
 
+whiptail --title "Menu example" --menu "Choose an option" 25 78 16 \
+"Graphical" "Return to the main menu." \
+"Commandline" "Add a user to the system." \
+"Conflicts" "Select this if your folder conflicts with system path (see ecoevolpara.rtfd.io)." \
+"Uninstall" "Uninstall any previous installed Seafile client." \
+"Exit" "Exits the Installer." 2>selection
+
+choice=$(cat selection)
+echo $choice
 
 
-
-
-
-
-
-
-
-
+case $choice in
+        [Graphical]* )
+            echo "gui"
+        ;;
+        [Commandline]* )
+            echo "cmd"
+        ;;
+        [Conflicts]* )
+            echo "Fixing..."
+        ;;
+        [Uninstall]* )
+            echo "Uninstalling..."
+        ;;
+        [Exit]* )
+        ;;
+esac
 
 NEWT_COLORS='
   window=,red
