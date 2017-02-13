@@ -81,7 +81,16 @@ To monitor the temperature it is best and fastest to use the programm sensors. Y
 
 :code:`sensors detect --auto`
 
-For the temperatures of the harddrives you need to use :code:`smartctl -x "/dev/sd$f"` with admin privileges.
+For the temperatures of the harddrives you need to use some code like this:
+::
+while true
+	do sleep 2
+		for f in a b c d g h
+		do echo "$f"
+		smartctl -x "/dev/sd$f"|grep Temperature
+	done
+echo ""
+done
 
 Remotely connect via iDRAC (Harriet) and IPMI (Svalbard)
 =======================================================
@@ -89,7 +98,7 @@ Remotely connect via iDRAC (Harriet) and IPMI (Svalbard)
 iDrac
 -----
 
-With the integrated Dell Remote Access Controller you can manage the server remotely. It's basically a tiny computer inside of the server. 
+With the integrated Dell Remote Access Controller you can manage the server remotely. It's basically a tiny computer inside of the server.
 
 The recent IP to connect to harriets DRAC you can find in the IP-routing table. You have to enter the IP into a browser and then you will be prompted with an username and password. Both can be found in the groups keepass-database. With the help of the DRAC and a java console you are able to mount .iso files into the system and install new operating systems remotely.
 

@@ -11,6 +11,12 @@ Normal users don't have the privileges to install software and change system con
 
 Victor then have the privs to call a program as administrator (root) with the :code:`sudo command`.
 
+.. warning::
+
+   Never run unnecessarily programs as root. Such as :code:`git` or you bioinfromatical pipelines. You can actually damage the servers integrity.
+
+INSERT WARNING
+
 Install software
 ================
 
@@ -27,7 +33,6 @@ If the search finds your desired software you can easily install it via:
 Update and upgrade Debian
 =========================
 
-Test
 ::
     aptitude update
 
@@ -42,6 +47,33 @@ Software that needs regular manual updates
 - seafile server
 - rstudio server
 
+
+Connect to a server via ssh
+===========================
+
+On the client machine you have to create ssh keys with:
+::
+	ssh-keygen
+
+Then cat the created id_rsa.pub key:
+::
+	cat ~/.ssh/id_rsa.pub
+
+Copy the output. Now you need a already working connection to the server or you send the key to someone who can add it onto the server.
+To add the key on the server run (replace $username with your actual username on the server):
+::
+	nano /home/$username/.ssh/authorized_keys
+
+Paste the key onto the end of the file. If .ssh doesn't exist you can create it with :code:`mkdir`. Now test your ssh connection to the server.
+
+.. tip::
+
+    Create a ssh-config on your client machine with: :code:`nano ~/.ssh/config`. And enter the servers IP, username and a shortcut to quickly connect to your servers. It should look like this:::
+    Host sw 				#shortcut
+	HostName 192.168.178.1	#server IP
+	User marius				#server username
+
+	And then call it with :code:`ssh sw`.
 
 Working with printers
 =====================

@@ -9,7 +9,7 @@ Seafile is a program which enables us to host our own cloud system very much lik
 On the Client site there are 2 major branches. First of all there is Harriet, who synces the home directories through the seaf-cli client which runs individually for every user on Harriet. On the normal clients every user can simply use the gui client or he can setup the cli client if desired.
 
 
-The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. Ìt's only available inside of the HU-network. This means to download and upload files from our cloud you need to have a working `VPN connection <http://ecoevolpara.readthedocs.io/en/latest/vpn.html>`_ when you're located outside the HU.
+The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. Ìt's only available inside of the HU-network. This means to download and upload files from our cloud you need to have a working VPN connection <http://ecoevolpara.readthedocs.io/en/latest/vpn.html>`_ when you're located outside the HU.
 
 
 Setting up the Server (Svalbard)
@@ -40,7 +40,7 @@ Copy the file from :download:`here <appendix/scripts/seafile-init.sh>`.
 
 Create a new file under /etc/init.d/seafile with vim or nano and paste the content of the downloaded file into it and save.
 
-Now you can control the server with commands like:::
+Now you can control the server with commands like (as the user seafile; sudo su seafile):::
 	/etc/init.d/seafile stop
 
 Note that only the user seafile can actually control the server. If you don't get any response from the init.d command it wasn't successful.
