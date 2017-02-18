@@ -70,7 +70,7 @@ do
   sleep 0.5
 done
 
-whiptail --title "Menu example" --menu "Choose an option" 25 78 16 \
+whiptail --title "Menu example" --menu "Choose a client to install." 25 120 16 \
 "Graphical" "Return to the main menu." \
 "Commandline" "Add a user to the system." \
 "Conflicts" "Select this if your folder conflicts with system path (see ecoevolpara.rtfd.io)." \

@@ -158,12 +158,22 @@ case $clientChoice in
 
     [Uninstall]*)
 		get_valid_username
-		aptitude_command "purge -y seafile-cli seafile-gui"
-		killall seafile-applet
-		rm -rf /home/$username/.ccnet /home/$username/Seafile /home/$username/seafile /home/seafile/$username /etc/seafile/$username
-		rm /usr/local/bin/seafile_startup/start_$username.sh
-		whiptail --title "Finished" --infobox "Uninstallation is finished." 8 78
-		break;;
+		if (whiptail --title "Seafile uninstall" --yesno "this will delete:
+			- /home/$username/.ccnet
+			- /home/$username/Seafile
+			- /home/$username/seafile
+			- /home/seafile/$username
+			- /etc/seafile/$username
+			sure you want to proceed?." 20 78) then
+			aptitude_command "purge -y seafile-cli seafile-gui"
+			killall seafile-applet
+			rm -rf /home/$username/.ccnet /home/$username/Seafile /home/$username/seafile /home/seafile/$username /etc/seafile/$username
+			rm /usr/local/bin/seafile_startup/start_$username.sh
+			whiptail --title "Finished" --infobox "Uninstallation is finished." 8 78
+		else
+  			echo "uninstall aborted"
+		fi
+		;;
 
     [Exit]* )
     break;;

@@ -15,8 +15,6 @@ Victor then have the privs to call a program as administrator (root) with the :c
 
    Never run unnecessarily programs as root. Such as :code:`git` or you bioinfromatical pipelines. You can actually damage the servers integrity.
 
-INSERT WARNING
-
 Install software
 ================
 
@@ -32,6 +30,8 @@ If the search finds your desired software you can easily install it via:
 
 Update and upgrade Debian
 =========================
+
+It is recommended to update and upgrade the system regulary.
 
 ::
     aptitude update

@@ -81,7 +81,7 @@ To monitor the temperature it is best and fastest to use the programm sensors. Y
 
 :code:`sensors detect --auto`
 
-For the temperatures of the harddrives you need to use some code like this:
+For the temperatures of the harddrives you need to use root and some code like this:
 ::
 while true
 	do sleep 2
