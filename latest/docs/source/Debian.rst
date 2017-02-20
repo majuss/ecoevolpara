@@ -34,7 +34,7 @@ Update and upgrade Debian
 It is recommended to update and upgrade the system regulary.
 
 ::
-    aptitude update
+	aptitude update
 
 Will update the package list/cache. Always run this before you upgrading or installing software!
 ::

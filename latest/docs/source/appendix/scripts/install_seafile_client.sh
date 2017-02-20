@@ -113,6 +113,7 @@ install_cli_client(){
     get_local_dir
     get_library_id
     create_dirs $username
+    #rm -rf /etc/seafile/$username
 	get_ignoLink $local_dir
 	sudo -u $username seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
 	sudo -u $username seaf-cli start -c /etc/seafile/$username

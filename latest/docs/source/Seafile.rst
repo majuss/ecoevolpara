@@ -40,7 +40,8 @@ Copy the file from :download:`here <appendix/scripts/seafile-init.sh>`.
 
 Create a new file under /etc/init.d/seafile with vim or nano and paste the content of the downloaded file into it and save.
 
-Now you can control the server with commands like:::
+Now you can control the server with commands like:
+::
 	/etc/init.d/seafile stop
 
 Note that only the user seafile can actually control the server. If you don't get any response from the init.d command it wasn't successful.
@@ -49,8 +50,6 @@ See: https://manual.seafile.com/deploy/start_seafile_at_system_bootup.html
 
 Setting up the home-sync (Harriet)
 ===================================
-
-
 
 
 Do lots of stuff
@@ -80,8 +79,6 @@ Without installer
 
 To install the seafile-client you need root-privileges.
 
-Note: replace $username with your actual local username (echo $USER).
-
 First you need to update your operating system:
 ::
 	sudo aptitude update
@@ -103,11 +100,11 @@ And finally install the Client:
 
 Then export the needed environment variable with:
 ::
-	sudo echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/$username" >> /home/$username/.xsessionrc
+	sudo echo -e "CCNET_CONF_DIR\t DEFAULT=/etc/seafile/$USER" >> /home/$USER/.xsessionrc
 Create needed directories for the config and own them:
 ::
-	sudo mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username
-	sudo chown $username:$username /home/seafile/"$username" /etc/seafile/$username
+	sudo mkdir /home/seafile /home/seafile/$USER /etc/seafile /etc/seafile/$USER
+	sudo chown $USER:$USER /home/seafile/$USER /etc/seafile/$USER
 
 Log out of your x-server and back in with:
 ::
@@ -126,7 +123,7 @@ With installer
 ^^^^^^^^^^^^^^
 
 1. Download the installer from :download:`here <appendix/scripts/install_seafile_client.sh>`
-2. Run it with :code:`sudo bash install_seafile_client.sh`. You need sudo-privileges for this, or you login in as root with :code:`su root`.
+2. Run it with :code:`sudo bash install_seafile_client.sh`. You need sudo-privileges for this.
 3. Choose cli client.
 4. Enter your local short Debian username.
 5. Enter your seafile login email.
@@ -145,30 +142,28 @@ Follow the steps above for the GUI-client till the :code:`aptitude install`. For
 
 After installing the client you need to create several directories outside of your home directory to have a place where seafile can store the configuration files.
 
-Replace $username with your local username.
-
 ::
-	sudo mkdir /home/seafile /home/seafile/"$username" /etc/seafile /etc/seafile/$username /usr/local/bin/seafile_startup
+	sudo mkdir /home/seafile /home/seafile/$USER /etc/seafile /usr/local/bin/seafile_startup
 
 Then you need to change the permissions:
 ::
-	sudo chown $username:$username /home/seafile/"$username" /etc/seafile/$username
+	sudo chown $USER:$USER /home/seafile/$USER
 
 Now download the ignore-list to the local directory you want to sync:
 ::
-	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/seafile-ignore.txt -O $/path/to/dir
+	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/seafile-ignore.txt -O /home/$USER
 
 Initialise the seafile-client with:
 ::
-	seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
-	seaf-cli start -c /etc/seafile/$username
-	seaf-cli sync -l -s https://svalbard.biologie.hu-berlin.de -u $Username -p $Password -c /etc/seafile/$username -d /home/$username
+	seaf-cli init -c /etc/seafile/$USER -d /home/seafile/$USER
+	seaf-cli start -c /etc/seafile/$USER
+	seaf-cli sync -l -s https://svalbard.biologie.hu-berlin.de -u $Seafile_useremail -p $Password -c /etc/seafile/$USER -d /home/$USER
 
-Save a startup script and setup a 
+Save a startup script and setup a cronjob
 ::
-	echo -e "seaf-cli start -c /etc/seafile/$username" >> /usr/local/bin/seafile_startup/start_"$username".sh
-	chown $username:$username /usr/local/bin/seafile_startup/start_"$username".sh
-	cron_line="@reboot bash /usr/local/bin/seafile_startup/start_"$username".sh"
+	echo -e "seaf-cli start -c /etc/seafile/$USER >> /usr/local/bin/seafile_startup/start_$USER.sh
+	chown $USER:$USER /usr/local/bin/seafile_startup/start_$USER.sh
+	cron_line="@reboot bash /usr/local/bin/seafile_startup/start_$USER.sh"
 	(crontab -l; echo "$cron_line" ) | sort | uniq | crontab -
 
 Official Seafile Links:
@@ -182,6 +177,60 @@ https://manual.seafile.com/deploy/deploy_with_nginx.html
 https://manual.seafile.com/deploy/https_with_nginx.html
 
 https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md
+
+Setting up Seafile-WebDAV
+=========================
+https://manual.seafile.com/extension/webdav.html
+
+
+/usr/local/bin/seafile-server/conf/seafdav.conf
+::
+	[WEBDAV]
+
+	# Default is false. Change it to true to enable SeafDAV server.
+	enabled = true
+
+	port = 8080
+
+	# Change the value of fastcgi to true if fastcgi is to be used
+	fastcgi = false
+
+	# If you deploy seafdav behind nginx/apache, you need to modify "share_name".
+	share_name = /seafdav
+
+
+/etc/nginx/sites-available/seafile.conf
+
+::
+	 location /zotero {
+        fastcgi_pass    127.0.0.1:8080;
+        fastcgi_param   SCRIPT_FILENAME     $document_root$fastcgi_script_name;
+        fastcgi_param   PATH_INFO           $fastcgi_script_name;
+
+        fastcgi_param   SERVER_PROTOCOL     $server_protocol;
+        fastcgi_param   QUERY_STRING        $query_string;
+        fastcgi_param   REQUEST_METHOD      $request_method;
+        fastcgi_param   CONTENT_TYPE        $content_type;
+        fastcgi_param   CONTENT_LENGTH      $content_length;
+        fastcgi_param   SERVER_ADDR         $server_addr;
+        fastcgi_param   SERVER_PORT         $server_port;
+        fastcgi_param   SERVER_NAME         $server_name;
+        fastcgi_param   HTTPS               on;
+        fastcgi_param   HTTP_SCHEME         https;
+
+        client_max_body_size 0;
+        proxy_connect_timeout  36000s;
+        proxy_read_timeout  36000s;
+        proxy_send_timeout  36000s;
+        send_timeout  36000s;
+
+        # This option is only available for Nginx >= 1.8.0. See more details below.
+        proxy_request_buffering off;
+
+        access_log      /var/log/nginx/seafdav.access.log;
+        error_log       /var/log/nginx/seafdav.error.log;
+    }
+
 
 Updating the server-software
 ============================
