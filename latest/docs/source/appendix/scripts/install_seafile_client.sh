@@ -10,7 +10,6 @@ aptitude_command(){
   		sleep 0.5
 	done
 }
-# git clone ccnet install g++ gcc make valac >= 0.8 libsearpc1 automake libparted-dev sqlite3 libsqlite3-dev libsearpc-dev
 add_repo (){
 	echo "##### Starting complete Software upgrade. This can take several minutes..."
 	aptitude_command update
@@ -18,7 +17,8 @@ add_repo (){
 	wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
 	dpkg -i libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
 	aptitude_command "upgrade -y"
-	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/ccnet-init -O /usr/bin/
+	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/ccnet-init -P /usr/bin/
+	chmod +x /usr/bin/ccnet-init
 	echo "##### Software upgrade finished"
 	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
 	echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
