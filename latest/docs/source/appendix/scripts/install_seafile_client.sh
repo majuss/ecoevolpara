@@ -10,16 +10,21 @@ aptitude_command(){
   		sleep 0.5
 	done
 }
-
+# git clone ccnet install g++ gcc make valac >= 0.8 libsearpc1 automake libparted-dev sqlite3 libsqlite3-dev libsearpc-dev
 add_repo (){
 	echo "##### Starting complete Software upgrade. This can take several minutes..."
 	aptitude_command update
+	aptitude_command "install -y dirmngr"
+	wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
+	dpkg -i libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
 	aptitude_command "upgrade -y"
+	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/ccnet-init -O /usr/bin/
 	echo "##### Software upgrade finished"
 	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
 	echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
 	aptitude_command update
 	aptitude_command "install -y $1"
+	rm libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
 }
 
 get_valid_username(){
@@ -29,10 +34,10 @@ get_valid_username(){
     choice=$(cat userSelect)
     eval "case $choice in
         [$valid]* )
-        username="$choice"
+        username=$(echo $choice | tr -s /)
         ;;
     esac"
-    rm userselect
+    rm userSelect
 }
 
 check_env(){
@@ -128,7 +133,7 @@ install_cli_client(){
 
 #################variable initiation###
 username="$SUDO_USER"
-arrayHomes=($(cd /home; ls -d */))
+arrayHomes=($(cd /home; ls -d */ | tr -d /))
 #################variable initiation end###
 
 whiptail --title "Seafile installer" --menu "Choose a client to install. The installer cannot be cancelled." 25 120 16 \
@@ -180,5 +185,5 @@ case $clientChoice in
     break;;
 esac
 
-rm clientselect
+rm clientSelect
 echo "###### Client installation finished"
