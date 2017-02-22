@@ -141,13 +141,12 @@ Follow the steps above for the GUI-client till the :code:`aptitude install`. For
 	sudo aptitude install seafile-cli
 
 After installing the client you need to create several directories outside of your home directory to have a place where seafile can store the configuration files.
-
 ::
-	sudo mkdir /home/seafile /home/seafile/$USER /etc/seafile /usr/local/bin/seafile_startup
+	sudo mkdir /home/seafile /home/seafile/$USER /etc/seafile/$USER /usr/local/bin/seafile_startup
 
 Then you need to change the permissions:
 ::
-	sudo chown $USER:$USER /home/seafile/$USER
+	sudo chown $USER:$USER /home/seafile/$USER /etc/seafile/$USER
 
 Now download the ignore-list to the local directory you want to sync:
 ::
@@ -155,13 +154,13 @@ Now download the ignore-list to the local directory you want to sync:
 
 Initialise the seafile-client with:
 ::
-	seaf-cli init -c /etc/seafile/$USER -d /home/seafile/$USER
+	seaf-cli init -c /etc/seafile/$USER/conf_dir -d /home/seafile/$USER
 	seaf-cli start -c /etc/seafile/$USER
-	seaf-cli sync -l -s https://svalbard.biologie.hu-berlin.de -u $Seafile_useremail -p $Password -c /etc/seafile/$USER -d /home/$USER
+	seaf-cli sync -l -s https://svalbard.biologie.hu-berlin.de -u $Seafile_useremail -p $Password -c /etc/seafile/$USER/conf_dir -d /home/$USER
 
 Save a startup script and setup a cronjob
 ::
-	echo -e "seaf-cli start -c /etc/seafile/$USER >> /usr/local/bin/seafile_startup/start_$USER.sh
+	echo -e "seaf-cli start -c /etc/seafile/$USER/conf_dir >> /usr/local/bin/seafile_startup/start_$USER.sh
 	chown $USER:$USER /usr/local/bin/seafile_startup/start_$USER.sh
 	cron_line="@reboot bash /usr/local/bin/seafile_startup/start_$USER.sh"
 	(crontab -l; echo "$cron_line" ) | sort | uniq | crontab -

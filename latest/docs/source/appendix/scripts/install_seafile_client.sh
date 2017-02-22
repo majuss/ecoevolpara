@@ -25,7 +25,7 @@ add_repo (){
 get_valid_username(){
     valid=$(cut -d: -f1 /etc/passwd | awk '{printf "%s|",$0} END {print ""}')
     choice=$SUDO_USER
-    whiptail --inputbox "Enter the local username from your account: (Default "$SUDO_USER")" 8 78 Blue --title "Debian username" 2>userSelect
+    whiptail --inputbox "Enter the local username from your account: (Default "$SUDO_USER")" 8 78 $USER --title "Debian username" 2>userSelect
     choice=$(cat userSelect)
     eval "case $choice in
         [$valid]* )
@@ -47,7 +47,7 @@ check_env(){
 
 get_library_id(){
 	exitstatus=1
-	while [[ $exitstatus != [0] ]];do library_id=$(whiptail --inputbox "Enter your Seafile-library ID you want to sync (see documentation):" 8 78 Blue --title "Seafile-LiberaryID" 3>&1 1>&2 2>&3); exitstatus=$?; done
+	while [[ $exitstatus != [0] ]];do library_id=$(whiptail --inputbox "Enter your Seafile-library ID you want to sync (see documentation):" 8 78 --title "Seafile-LiberaryID" 3>&1 1>&2 2>&3); exitstatus=$?; done
 }
 
 get_login_email(){
@@ -62,7 +62,7 @@ get_login_password(){
 
 get_local_dir(){
 	exitstatus=1
-	while [[ $exitstatus != [0] ]];do local_dir=$(whiptail --passwordbox "Enter local directory you want to sync: (/home/marius for example):" 8 78 /home/ --title "Directory to sync" 3>&1 1>&2 2>&3); exitstatus=$?; done
+	while [[ $exitstatus != [0] ]];do local_dir=$(whiptail --inputbox "Enter local directory you want to sync: (/home/marius for example):" 8 78 /home/ --title "Directory to sync" 3>&1 1>&2 2>&3); exitstatus=$?; done
 }
 
 create_dirs(){
@@ -115,9 +115,9 @@ install_cli_client(){
     create_dirs $username
     #rm -rf /etc/seafile/$username
 	get_ignoLink $local_dir
-	sudo -u $username seaf-cli init -c /etc/seafile/$username -d /home/seafile/$username
-	sudo -u $username seaf-cli start -c /etc/seafile/$username
-	sudo -u $username seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username" -u "$login_email" -p "$login_password"
+	sudo -u $username seaf-cli init -c /etc/seafile/$username/conf_dir -d /home/seafile/$username
+	sudo -u $username seaf-cli start -c /etc/seafile/$username/conf_dir
+	sudo -u $username seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username"/conf_dir -u "$login_email" -p "$login_password"
 	echo -e "seaf-cli start -c /etc/seafile/$username" >> /usr/local/bin/seafile_startup/start_"$username".sh
 	chown $username:$username /usr/local/bin/seafile_startup/start_"$username".sh
 	cron_line="@reboot bash /usr/local/bin/seafile_startup/start_"$username".sh"
@@ -132,8 +132,8 @@ arrayHomes=($(cd /home; ls -d */))
 #################variable initiation end###
 
 whiptail --title "Seafile installer" --menu "Choose a client to install. The installer cannot be cancelled." 25 120 16 \
-"Graphical" "Return to the main menu." \
-"Commandline" "Add a user to the system." \
+"Graphical" "Install the graphical Seafile-client." \
+"Commandline" "Install the Seafile command line client." \
 "Conflicts" "Select this if your folder conflicts with system path (see ecoevolpara.rtfd.io)." \
 "Uninstall" "Uninstall any previous installed Seafile client." \
 "Exit" "Exits the Installer." 2>clientSelect
