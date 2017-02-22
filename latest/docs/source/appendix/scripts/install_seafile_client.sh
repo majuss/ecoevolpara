@@ -123,10 +123,10 @@ install_cli_client(){
 	sudo -u $username seaf-cli init -c /etc/seafile/$username/conf_dir -d /home/seafile/$username
 	sudo -u $username seaf-cli start -c /etc/seafile/$username/conf_dir
 	sudo -u $username seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username"/conf_dir -u "$login_email" -p "$login_password"
-	echo -e "seaf-cli start -c /etc/seafile/$username" >> /usr/local/bin/seafile_startup/start_"$username".sh
+	echo -e "seaf-cli start -c /etc/seafile/$username/conf_dir" >> /usr/local/bin/seafile_startup/start_"$username".sh
 	chown $username:$username /usr/local/bin/seafile_startup/start_"$username".sh
 	cron_line="@reboot bash /usr/local/bin/seafile_startup/start_"$username".sh"
-	(crontab -l; echo "$cron_line" ) | sort | uniq | crontab -
+	(crontab -l -u $username; echo "$cron_line" ) | sort | uniq | crontab -
 }
 
 #################functions end###########
