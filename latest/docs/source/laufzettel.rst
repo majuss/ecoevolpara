@@ -3,9 +3,9 @@ Laufzettel
 ==========
 
 ====== ===========================
-Name    
-E-Mail  
-Mobile  
+Name
+E-Mail
+Mobile
 ====== ===========================
 
 **Please get a confirmation for every item from Emanuel.**

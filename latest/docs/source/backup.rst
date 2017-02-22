@@ -14,12 +14,10 @@ This will only allow rdiff-backup commands through this conenction in read-only 
 
 To restore any file from harriet you first have to login as the user rdiff-backup (password is found in the KeePassX-database), then you have to type:
 ::
-    
     rdiff-backup -r $days_to_go_back $file_to_restore $targed_path
 
 So for example to restore alices whole home director from 10 days ago:
 ::
-    
     rdiff-backup -r 10D /data/backup_harriet/localstorage/alice /data/backup_restore/alice
 
 The directory has to be owned by rdiff-backup so the user can write into it.

@@ -17,8 +17,13 @@ add_repo (){
 	wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
 	dpkg -i libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
 	aptitude_command "upgrade -y"
-	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/ccnet-init -P /usr/bin/
-	chmod +x /usr/bin/ccnet-init
+	if [ -e /usr/bin/ccnet-init ]
+		then
+		echo "ccnet-init already in place"
+		else
+		wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/ccnet-init -P /usr/bin/
+		chmod +x /usr/bin/ccnet-init
+	fi
 	echo "##### Software upgrade finished"
 	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
 	echo deb http://dl.bintray.com/seafile-org/deb jessie main | tee /etc/apt/sources.list.d/seafile.list
@@ -125,8 +130,11 @@ install_cli_client(){
 	sudo -u $username seaf-cli sync -l "$library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_dir" -c /etc/seafile/"$username"/conf_dir -u "$login_email" -p "$login_password"
 	echo -e "seaf-cli start -c /etc/seafile/$username/conf_dir" >> /usr/local/bin/seafile_startup/start_"$username".sh
 	chown $username:$username /usr/local/bin/seafile_startup/start_"$username".sh
-	cron_line="@reboot bash /usr/local/bin/seafile_startup/start_"$username".sh"
-	(crontab -l -u $username; echo "$cron_line" ) | sort | uniq | crontab -
+	echo "Please enter \"@reboot bash /usr/local/bin/seafile_startup/start_"$username".sh\" to \"crontab -e\" because it cannot be done automatically"
+	#cron_line="@reboot bash /usr/local/bin/seafile_startup/start_"$username".sh"
+	#editor=$(cat /home/$username/.selected_editor)
+	#if [ -z $editor ]; then select-editor; else "Editor already set"; fi
+	#(crontab -l -u $username 2>/dev/null; echo "$cron_line" ) | sort | uniq | crontab -
 }
 
 #################functions end###########

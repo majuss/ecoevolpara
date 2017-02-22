@@ -12,48 +12,6 @@ On the Client site there are 2 major branches. First of all there is Harriet, wh
 The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. Ìt's only available inside of the HU-network. This means to download and upload files from our cloud you need to have a working `VPN connection <http://ecoevolpara.readthedocs.io/en/latest/vpn.html>`_ when you're located outside the HU.
 
 
-Setting up the Server (Svalbard)
-================================
-
-The Server on which all seafile data is stored is Svalbard. On Svalbard a user named seafile drives the seafile-server software.
-
-Setting up the server can be devided into two steps
-- Installing and setting up a MySQL database
-- Downloading and instlling the server-software
-
-Steps here will only describe the procedure briefly since it will likely be completely different when the sever needs a new setup.
-
-To set up the seafile-gui client on a normal client computer with a clean debian install you need to first of all download it via aptitude, after adding the repo and key (LINK TO DL). When an error occurs while installing which includes the libssl1.0.0 you need to google the package for debian, download, and install it via dpkg -i.
-
-A seafile-ignore.txt should be included in every Library you wish to sync, espacially inside of the homes. The file should contain a wild card for all dot-files/directories. You should also exclude a directory which includes all github projects, to avoid sync conflicts with git.
-
-Acquiring HTTPS for the domain
-------------------------------
-
-
-Cut certs into chain. Get root cert from hu site
-
-Setting up init.d to control the server
----------------------------------------
-
-Copy the file from :download:`here <appendix/scripts/seafile-init.sh>`.
-
-Create a new file under /etc/init.d/seafile with vim or nano and paste the content of the downloaded file into it and save.
-
-Now you can control the server with commands like:
-::
-	/etc/init.d/seafile stop
-
-Note that only the user seafile can actually control the server. If you don't get any response from the init.d command it wasn't successful.
-
-See: https://manual.seafile.com/deploy/start_seafile_at_system_bootup.html
-
-Setting up the home-sync (Harriet)
-===================================
-
-
-Do lots of stuff
-
 Setting up a client
 ===================
 
@@ -136,7 +94,35 @@ Without installer
 
 You need the Library IDs of every Library you want to sync. You get it by opening seafile in a browser, open the library and copy it from the URL-bar.
 
-Follow the steps above for the GUI-client till the :code:`aptitude install`. For the CLI-client type:
+To install the Seafile-cli-client you need root-privileges.
+
+First you need to update your operating system:
+::
+	sudo aptitude update
+	sudo aptitude upgrade
+
+After that add the key of the Seafile-repo:
+::
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
+Then add the repo itself with:
+::
+	echo deb http://dl.bintray.com/seafile-org/deb jessie main | sudo tee /etc/apt/sources.list.d/seafile.list
+Replace jessie with the Debian release you're using (:code:`lsb_release -a | grep Codename`).
+Then run an update of the package-list.
+::
+	sudo aptitude update
+
+Download libssl1.0, which is required by the client, and install it:
+::
+	wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
+	dpkg -i libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
+
+Download the ccnet-init binary into place:
+::
+	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/ccnet-init -P /usr/bin/
+	chmod +x /usr/bin/ccnet-init
+
+To install the CLI-client type:
 ::
 	sudo aptitude install seafile-cli
 
@@ -156,14 +142,58 @@ Initialise the seafile-client with:
 ::
 	seaf-cli init -c /etc/seafile/$USER/conf_dir -d /home/seafile/$USER
 	seaf-cli start -c /etc/seafile/$USER
-	seaf-cli sync -l -s https://svalbard.biologie.hu-berlin.de -u $Seafile_useremail -p $Password -c /etc/seafile/$USER/conf_dir -d /home/$USER
+	seaf-cli sync -l "$seafile_library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_directory_to_sync" -c /etc/seafile/$USER/conf_dir -u "$seafile_login_email" -p "$login_password"
 
 Save a startup script and setup a cronjob
 ::
-	echo -e "seaf-cli start -c /etc/seafile/$USER/conf_dir >> /usr/local/bin/seafile_startup/start_$USER.sh
-	chown $USER:$USER /usr/local/bin/seafile_startup/start_$USER.sh
-	cron_line="@reboot bash /usr/local/bin/seafile_startup/start_$USER.sh"
-	(crontab -l; echo "$cron_line" ) | sort | uniq | crontab -
+	sudo echo -e "seaf-cli start -c /etc/seafile/$USER/conf_dir" >> /usr/local/bin/seafile_startup/start_$USER.sh
+	sudo chown $USER:$USER /usr/local/bin/seafile_startup/start_$USER.sh
+Run :code:`crontab -e` and enter:
+::
+	@reboot bash /usr/local/bin/seafile_startup/start_$USER.sh"
+
+Setting up the Server (Svalbard)
+================================
+
+The Server on which all seafile data is stored is Svalbard. On Svalbard a user named seafile drives the seafile-server software.
+
+Setting up the server can be devided into two steps
+- Installing and setting up a MySQL database
+- Downloading and instlling the server-software
+
+Steps here will only describe the procedure briefly since it will likely be completely different when the sever needs a new setup.
+
+To set up the seafile-gui client on a normal client computer with a clean debian install you need to first of all download it via aptitude, after adding the repo and key (LINK TO DL). When an error occurs while installing which includes the libssl1.0.0 you need to google the package for debian, download, and install it via dpkg -i.
+
+A seafile-ignore.txt should be included in every Library you wish to sync, espacially inside of the homes. The file should contain a wild card for all dot-files/directories. You should also exclude a directory which includes all github projects, to avoid sync conflicts with git.
+
+Acquiring HTTPS for the domain
+------------------------------
+
+
+Cut certs into chain. Get root cert from hu site
+
+Setting up init.d to control the server
+---------------------------------------
+
+Copy the file from :download:`here <appendix/scripts/seafile-init.sh>`.
+
+Create a new file under /etc/init.d/seafile with vim or nano and paste the content of the downloaded file into it and save.
+
+Now you can control the server with commands like:
+::
+	/etc/init.d/seafile stop
+
+Note that only the user seafile can actually control the server. If you don't get any response from the init.d command it wasn't successful.
+
+See: https://manual.seafile.com/deploy/start_seafile_at_system_bootup.html
+
+Setting up the home-sync (Harriet)
+===================================
+
+
+Do lots of stuff
+
 
 Official Seafile Links:
 
@@ -238,7 +268,7 @@ Login as the user seafile with :code:`sudo su seafile` and stop the running serv
 
 FAQ
 ===
-
+- Q: CLI client failing with "ccnet-init not found..." A: look at the tutorial above, download the ccnet-init binary manually
 - Q: no .ccnet directory found. A: you can't start seaf-cli without -c (confid dir)
 - no root
 - conflicts with system path
