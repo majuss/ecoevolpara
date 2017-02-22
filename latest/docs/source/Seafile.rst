@@ -88,18 +88,23 @@ With installer
 6. Enter your seafile login password.
 7. Enter the local directory you want to sync (/home/marius for example).
 8. Enter the seafile library ID. You get this ID if you log into seafile via a browser, click onto the library and copy the ID out of the URL.
+9. Add a cronjob to :code:`crontab -e` to run the client after a reboot: :code:`@reboot bash /usr/local/bin/seafile_startup/start_$USER.sh`
 
 Without installer
 ^^^^^^^^^^^^^^^^^
 
 You need the Library IDs of every Library you want to sync. You get it by opening seafile in a browser, open the library and copy it from the URL-bar.
 
-To install the Seafile-cli-client you need root-privileges.
+To install the Seafile-cli-client you need sudo-privileges.
 
 First you need to update your operating system:
 ::
 	sudo aptitude update
 	sudo aptitude upgrade
+
+Install :code:`dirmngr which enables you to add the Seafile rep.
+::
+	sudo aptitude install dirmngr
 
 After that add the key of the Seafile-repo:
 ::
@@ -115,12 +120,12 @@ Then run an update of the package-list.
 Download libssl1.0, which is required by the client, and install it:
 ::
 	wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
-	dpkg -i libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
+	sudo dpkg -i libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
 
 Download the ccnet-init binary into place:
 ::
-	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/ccnet-init -P /usr/bin/
-	chmod +x /usr/bin/ccnet-init
+	sudo wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/ccnet-init -P /usr/bin/
+	sudo chmod +x /usr/bin/ccnet-init
 
 To install the CLI-client type:
 ::
@@ -128,7 +133,7 @@ To install the CLI-client type:
 
 After installing the client you need to create several directories outside of your home directory to have a place where seafile can store the configuration files.
 ::
-	sudo mkdir /home/seafile /home/seafile/$USER /etc/seafile/$USER /usr/local/bin/seafile_startup
+	sudo mkdir -p /home/seafile /home/seafile/$USER /etc/seafile/$USER /usr/local/bin/seafile_startup
 
 Then you need to change the permissions:
 ::
@@ -136,21 +141,26 @@ Then you need to change the permissions:
 
 Now download the ignore-list to the local directory you want to sync:
 ::
-	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/seafile-ignore.txt -O /home/$USER
+	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/seafile-ignore.txt -P /home/$USER
 
 Initialise the seafile-client with:
 ::
 	seaf-cli init -c /etc/seafile/$USER/conf_dir -d /home/seafile/$USER
-	seaf-cli start -c /etc/seafile/$USER
+	seaf-cli start -c /etc/seafile/$USER/conf_dir
 	seaf-cli sync -l "$seafile_library_id" -s https://svalbard.biologie.hu-berlin.de -d "$local_directory_to_sync" -c /etc/seafile/$USER/conf_dir -u "$seafile_login_email" -p "$login_password"
 
 Save a startup script and setup a cronjob
 ::
-	sudo echo -e "seaf-cli start -c /etc/seafile/$USER/conf_dir" >> /usr/local/bin/seafile_startup/start_$USER.sh
+	sudo echo -e "seaf-cli start -c /etc/seafile/$USER/conf_dir" > /home/$USER/start_$USER.sh
+	sudo cp start_marius.sh /usr/local/bin/seafile_startup/
 	sudo chown $USER:$USER /usr/local/bin/seafile_startup/start_$USER.sh
 Run :code:`crontab -e` and enter:
 ::
-	@reboot bash /usr/local/bin/seafile_startup/start_$USER.sh"
+	@reboot bash /usr/local/bin/seafile_startup/start_$your_username.sh
+
+To check the status of the client run:
+::
+	seaf-cli status -c /etc/seafile/$USER/conf_dir
 
 Setting up the Server (Svalbard)
 ================================

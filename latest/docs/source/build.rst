@@ -25,4 +25,6 @@ This may always occur due to an change in the sphinx_rtd_theme repository.
 1. Ensure that there are no submodule sections in .git/config. If there are, remove them.
 2. Do git rm --cached <path_to_submodule>. (git rm --cached latest/docs/_themes/sphinx_rtd_theme)
 
+git rm -r -f --cached latest/docs/_themes
+
 `Source <https://stackoverflow.com/questions/4185365/no-submodule-mapping-found-in-gitmodule-for-a-path-thats-not-a-submodule>`_
