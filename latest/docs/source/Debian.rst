@@ -2,7 +2,7 @@
 Debian
 ******
 
-Debian is a common and completely free Linux distribution. It is released in 3 release-branches. Stable, stretch and experimental. We are using the stretch release, since debian-stable is very conservtive and updates getting rolled out pretty slow.
+Debian is a common and completely free Linux distribution. It is released in 3 release-branches. *Stable*, *stretch* and *experimental*. We are using the *stretch* release, since debian-stable is very conservtive and updates getting rolled out pretty slow.
 
 Administrator / Root privileges
 ===============================
@@ -32,7 +32,6 @@ Update and upgrade Debian
 =========================
 
 It is recommended to update and upgrade the system regulary.
-
 ::
 	aptitude update
 

@@ -50,7 +50,7 @@ check_env(){
 	if [ "$env_exists" -gt "0" ]
 		then echo "Env var already existend"
 	else
-		echo -e "CCNET_CONF_DIR=/etc/seafile/\$USER" >> /home/"$1"/.xsessionrc
+		echo -e "export CCNET_CONF_DIR=/etc/seafile/\$USER" >> /home/"$1"/.xsessionrc
 		sudo chown $1:$1 /home/$1/.xsessionrc
 	fi
 }

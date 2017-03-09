@@ -3,13 +3,13 @@ Seafile
 *******
 
 
-Seafile is a program which enables us to host our own cloud system very much like Dropbox, iCloud or Onedrive. The mainthought behind it, is to synchronize all /home/ directories between harriet, beagle and all clients like the Dell Optiplex and the Intel NUCs. This will enable every user to log into any client computer and syncs their homes to it.
+Seafile is a program which enables us to host our own cloud system very much like Dropbox, iCloud or Onedrive. The mainthought behind it, is to synchronize all *home* directories between harriet, beagle and all clients like the Dell Optiplex and the Intel NUCs. This will enable every user to log into any client computer and syncs their homes to it.
 
 
 On the Client site there are 2 major branches. First of all there is Harriet, who synces the home directories through the seaf-cli client which runs individually for every user on Harriet. On the normal clients every user can simply use the gui client or he can setup the cli client if desired.
 
 
-The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. Ìt's only available inside of the HU-network. This means to download and upload files from our cloud you need to have a working `VPN connection <http://ecoevolpara.readthedocs.io/en/latest/vpn.html>`_ when you're located outside the HU.
+The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. It's only available inside of the HU-network. This means to download and upload files from our cloud you need to have a working `VPN connection <http://ecoevolpara.readthedocs.io/en/latest/vpn.html>`_ when you're located outside the HU.
 
 
 Setting up a client
@@ -18,24 +18,24 @@ Setting up a client
 Debian GUI
 ----------
 
-It is recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI). If you want to use Seafile outside of the HU-network you need a HU-Account and a working VPN connection see :ref:`here for details <_vpn>`.
+It's recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI). If you want to use Seafile outside of the HU-network you need a HU-Account and a working `VPN connection <http://ecoevolpara.readthedocs.io/en/latest/vpn.html>`_.
 
 With installer
 ^^^^^^^^^^^^^^
 
 1. Download the installer from above.
-2. Run it in the terminal (open it with the search function) with :code:`sudo bash install_seafile_client.sh`. You need sudo-privileges for this, or you login in as root with :code:`su root`.
+2. Run it in the terminal (open it with the search function) with :code:`sudo bash install_seafile_client.sh`. You need `sudo-privileges for this <http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_.
 3. Choose graphical client. And follow the instructions.
 4. Search for :code:`seafile` and start it.
-5. In the first field enter the path: :code:`/home/seafile/$uername`
-6. In the next field, enter our server-url: :code:`https://svalbard.biologie.hu-berlin.de`, your user-email and password (both provided by the admin.
-7. When Seafile starts up right click your home_$username and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home.
+5. In the first field enter the path: :code:`/home/seafile/your_username`
+6. In the next field, enter our server-url: :code:`https://svalbard.biologie.hu-berlin.de`, your Seafile user-email and password (both provided by the workgroup-admin).
+7. When Seafile starts up right click in Seafile your *home_your_username* and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home (/home/marius).
 8. Add Seaflie to the autostart see `here <http://ecoevolpara.readthedocs.io/en/latest/Debian.html#add-programs-to-the-autostart>`_.
 
 Without installer
 ^^^^^^^^^^^^^^^^^
 
-To install the seafile-client you need root-privileges.
+To install the seafile-client you need `sudo-privileges<http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_.
 
 First you need to update your operating system:
 ::
@@ -69,7 +69,7 @@ Log out of your x-server and back in with:
 	sudo /etc/init.d/lightdm restart
 	sudo /etc/init.d/gdm restart
 
-Now follow the manual with the installer above from step 4.
+Now follow the manual with the installer `above from step 4 <http://ecoevolpara.readthedocs.io/en/latest/Seafile.html#with-installer>`_.
 
 
 For the official manual see: `Seafile-manual on github <https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md>`_.
@@ -81,28 +81,28 @@ With installer
 ^^^^^^^^^^^^^^
 
 1. Download the installer from :download:`here <appendix/scripts/install_seafile_client.sh>`
-2. Run it with :code:`sudo bash install_seafile_client.sh`. You need sudo-privileges for this.
+2. Run it with :code:`sudo bash install_seafile_client.sh`. You need `sudo-privileges<http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_ for this.
 3. Choose cli client.
 4. Enter your local short Debian username.
-5. Enter your seafile login email.
-6. Enter your seafile login password.
+5. Enter your Seafile login email.
+6. Enter your Seafile login password.
 7. Enter the local directory you want to sync (/home/marius for example).
-8. Enter the seafile library ID. You get this ID if you log into seafile via a browser, click onto the library and copy the ID out of the URL.
+8. Enter the Seafile library ID. You get this ID if you log into Seafile via a browser, click onto the library and copy the ID out of the URL.
 9. Add a cronjob to :code:`crontab -e` to run the client after a reboot: :code:`@reboot bash /usr/local/bin/seafile_startup/start_$USER.sh`
 
 Without installer
 ^^^^^^^^^^^^^^^^^
 
-You need the Library IDs of every Library you want to sync. You get it by opening seafile in a browser, open the library and copy it from the URL-bar.
+You need the Library IDs of every Library you want to sync. You get it by opening Seafile in a browser, open the library and copy it from the URL-bar.
 
-To install the Seafile-cli-client you need sudo-privileges.
+To install the Seafile-cli-client you need `sudo-privileges<http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_.
 
 First you need to update your operating system:
 ::
 	sudo aptitude update
 	sudo aptitude upgrade
 
-Install :code:`dirmngr which enables you to add the Seafile rep.
+Install :code:`dirmngr` which enables you to add the Seafile rep.
 ::
 	sudo aptitude install dirmngr
 
@@ -122,16 +122,11 @@ Download libssl1.0, which is required by the client, and install it:
 	wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
 	sudo dpkg -i libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
 
-Download the ccnet-init binary into place:
-::
-	sudo wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/ccnet-init -P /usr/bin/
-	sudo chmod +x /usr/bin/ccnet-init
-
 To install the CLI-client type:
 ::
 	sudo aptitude install seafile-cli
 
-After installing the client you need to create several directories outside of your home directory to have a place where seafile can store the configuration files.
+After installing the client you need to create several directories outside of your home directory to have a place where Seafile can store the configuration files.
 ::
 	sudo mkdir -p /home/seafile /home/seafile/$USER /etc/seafile/$USER /usr/local/bin/seafile_startup
 
@@ -165,21 +160,16 @@ To check the status of the client run:
 Setting up the Server (Svalbard)
 ================================
 
-The Server on which all seafile data is stored is Svalbard. On Svalbard a user named seafile drives the seafile-server software.
+The Server on which all Seafile data is stored is Svalbard. On Svalbard a user named *seafile* drives the Seafile-server software.
 
-Setting up the server can be devided into two steps
+Setting up the server can be devided into two steps:
 - Installing and setting up a MySQL database
 - Downloading and instlling the server-software
 
 Steps here will only describe the procedure briefly since it will likely be completely different when the sever needs a new setup.
 
-To set up the seafile-gui client on a normal client computer with a clean debian install you need to first of all download it via aptitude, after adding the repo and key (LINK TO DL). When an error occurs while installing which includes the libssl1.0.0 you need to google the package for debian, download, and install it via dpkg -i.
-
-A seafile-ignore.txt should be included in every Library you wish to sync, espacially inside of the homes. The file should contain a wild card for all dot-files/directories. You should also exclude a directory which includes all github projects, to avoid sync conflicts with git.
-
 Acquiring HTTPS for the domain
 ------------------------------
-
 
 Cut certs into chain. Get root cert from hu site
 
@@ -204,7 +194,6 @@ Setting up the home-sync (Harriet)
 
 Do lots of stuff
 
-
 Official Seafile Links:
 
 https://manual.seafile.com/
@@ -217,58 +206,11 @@ https://manual.seafile.com/deploy/https_with_nginx.html
 
 https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md
 
-Setting up Seafile-WebDAV
-=========================
-https://manual.seafile.com/extension/webdav.html
 
+Setting up Seafile-WebDAV to sync attachements with Zotero
+==========================================================
 
-/usr/local/bin/seafile-server/conf/seafdav.conf
-::
-	[WEBDAV]
-
-	# Default is false. Change it to true to enable SeafDAV server.
-	enabled = true
-
-	port = 8080
-
-	# Change the value of fastcgi to true if fastcgi is to be used
-	fastcgi = false
-
-	# If you deploy seafdav behind nginx/apache, you need to modify "share_name".
-	share_name = /seafdav
-
-
-/etc/nginx/sites-available/seafile.conf
-
-::
-	 location /zotero {
-        fastcgi_pass    127.0.0.1:8080;
-        fastcgi_param   SCRIPT_FILENAME     $document_root$fastcgi_script_name;
-        fastcgi_param   PATH_INFO           $fastcgi_script_name;
-
-        fastcgi_param   SERVER_PROTOCOL     $server_protocol;
-        fastcgi_param   QUERY_STRING        $query_string;
-        fastcgi_param   REQUEST_METHOD      $request_method;
-        fastcgi_param   CONTENT_TYPE        $content_type;
-        fastcgi_param   CONTENT_LENGTH      $content_length;
-        fastcgi_param   SERVER_ADDR         $server_addr;
-        fastcgi_param   SERVER_PORT         $server_port;
-        fastcgi_param   SERVER_NAME         $server_name;
-        fastcgi_param   HTTPS               on;
-        fastcgi_param   HTTP_SCHEME         https;
-
-        client_max_body_size 0;
-        proxy_connect_timeout  36000s;
-        proxy_read_timeout  36000s;
-        proxy_send_timeout  36000s;
-        send_timeout  36000s;
-
-        # This option is only available for Nginx >= 1.8.0. See more details below.
-        proxy_request_buffering off;
-
-        access_log      /var/log/nginx/seafdav.access.log;
-        error_log       /var/log/nginx/seafdav.error.log;
-    }
+Does not work with nginx or apache. Reasons are unknown, you are getting an authentication error when you try to login in via the Zotero browser extension (every other client is working well).
 
 
 Updating the server-software
