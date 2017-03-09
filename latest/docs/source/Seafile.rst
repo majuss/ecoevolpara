@@ -32,7 +32,7 @@ With installer
 7. When Seafile starts up right click in Seafile your *home_your_username* and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home (/home/marius).
 8. Add Seaflie to the autostart see `here <http://ecoevolpara.readthedocs.io/en/latest/Debian.html#add-programs-to-the-autostart>`_.
 
-Without installer
+Without installer 
 ^^^^^^^^^^^^^^^^^
 
 To install the seafile-client you need `sudo-privileges<http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_.
