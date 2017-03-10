@@ -76,10 +76,12 @@ get_local_dir(){
 }
 
 create_dirs(){
+mkdir /home/sharing
+chmod 0755 /home/sharing
 for i in "${arrayHomes[@]}"
 do
-	mkdir /home/seafile /home/seafile/"$i" /etc/seafile /etc/seafile/$i /usr/local/bin/seafile_startup
-	chown $i:$i /home/seafile/"$i" /etc/seafile/"$i"
+	mkdir /home/seafile /home/seafile/"$i" /etc/seafile /etc/seafile/"$i" /usr/local/bin/seafile_startup /home/sharing/"$i"
+	chown $i:$i /home/seafile/"$i" /etc/seafile/"$i" /home/sharing/"$i"
 	check_env $i
 done
 }
@@ -104,7 +106,7 @@ install_gui_client(){
 		case $restartChoice in
 			["Restart window manager now"]*)
 				/etc/init.d/lightdm restart
-				/etc/init.d/gdm restart
+				/etc/init.d/gdm3 restart
 				;;
 
 			["Restart window manager later"]*)

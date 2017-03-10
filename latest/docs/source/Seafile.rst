@@ -9,7 +9,7 @@ Seafile is a program which enables us to host our own cloud system very much lik
 On the Client site there are 2 major branches. First of all there is Harriet, who synces the home directories through the seaf-cli client which runs individually for every user on Harriet. On the normal clients every user can simply use the gui client or he can setup the cli client if desired.
 
 
-The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. It's only available inside of the HU-network. This means to download and upload files from our cloud you need to have a working `VPN connection <http://ecoevolpara.readthedocs.io/en/latest/vpn.html>`_ when you're located outside the HU.
+The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. It's now available even outside of the HU-network, you don't need to use the VPN anymore.
 
 
 Setting up a client
@@ -18,7 +18,7 @@ Setting up a client
 Debian GUI
 ----------
 
-It's recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI). If you want to use Seafile outside of the HU-network you need a HU-Account and a working `VPN connection <http://ecoevolpara.readthedocs.io/en/latest/vpn.html>`_.
+It's recommended to use our custom :download:`Installer <appendix/scripts/install_seafile_client.sh>` for the Seafile-Client (GUI or CLI).
 
 With installer
 ^^^^^^^^^^^^^^
@@ -32,7 +32,12 @@ With installer
 7. When Seafile starts up right click in Seafile your *home_your_username* and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home (/home/marius).
 8. Add Seaflie to the autostart see `here <http://ecoevolpara.readthedocs.io/en/latest/Debian.html#add-programs-to-the-autostart>`_.
 
-Without installer 
+.. important::
+
+   Beware killer rabbits!
+
+
+Without installer
 ^^^^^^^^^^^^^^^^^
 
 To install the seafile-client you need `sudo-privileges<http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_.
@@ -89,6 +94,8 @@ With installer
 7. Enter the local directory you want to sync (/home/marius for example).
 8. Enter the Seafile library ID. You get this ID if you log into Seafile via a browser, click onto the library and copy the ID out of the URL.
 9. Add a cronjob to :code:`crontab -e` to run the client after a reboot: :code:`@reboot bash /usr/local/bin/seafile_startup/start_$USER.sh`
+
+
 
 Without installer
 ^^^^^^^^^^^^^^^^^
@@ -156,6 +163,7 @@ Run :code:`crontab -e` and enter:
 To check the status of the client run:
 ::
 	seaf-cli status -c /etc/seafile/$USER/conf_dir
+
 
 Setting up the Server (Svalbard)
 ================================

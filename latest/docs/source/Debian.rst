@@ -85,8 +85,22 @@ This will open a window where you can add a printer. Click "Add" and have a look
 Add programs to the autostart
 =============================
 
-Hit the windows-key and search for "startup", open the first search result "Startup Applications". Click on "Add" and choose your desired software.
+Hit the windows-key and search for "startup", open the first search result "Startup Applications".
 
 .. figure:: appendix/pictures/startup1.jpg
+   :width: 450px
+   :alt: How to autostart a program
+
+Opening it up will show you this:
+
+.. figure:: appendix/pictures/startup2.jpg
+   :width: 450px
+   :alt: How to autostart a program
+
+.. figure:: appendix/pictures/startup3.jpg
+   :width: 450px
+   :alt: How to autostart a program
+
+.. figure:: appendix/pictures/startup4.jpg
    :width: 450px
    :alt: How to autostart a program
