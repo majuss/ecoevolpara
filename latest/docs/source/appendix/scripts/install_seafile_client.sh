@@ -87,7 +87,7 @@ done
 }
 
 get_ignoLink(){
-	dlPath=$(echo "$1"/seafile-ignore | tr -s /)
+	dlPath=$(echo "$1"/ | tr -s /)
 	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/seafile-ignore.txt -P $dlPath
 }
 

@@ -34,13 +34,13 @@ With installer
 
 .. important::
 
-   Beware killer rabbits!
+   You can not sync a shared folder into your home directory. Thats why the installer created the directory /home/shared/$USER/. You can sync your shared directories into that directory.
 
 
 Without installer
 ^^^^^^^^^^^^^^^^^
 
-To install the seafile-client you need `sudo-privileges<http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_.
+To install the seafile-client you need `sudo-privileges <http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_.
 
 First you need to update your operating system:
 ::
@@ -86,7 +86,7 @@ With installer
 ^^^^^^^^^^^^^^
 
 1. Download the installer from :download:`here <appendix/scripts/install_seafile_client.sh>`
-2. Run it with :code:`sudo bash install_seafile_client.sh`. You need `sudo-privileges<http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_ for this.
+2. Run it with :code:`sudo bash install_seafile_client.sh`. You need `sudo-privileges <http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_ for this.
 3. Choose cli client.
 4. Enter your local short Debian username.
 5. Enter your Seafile login email.

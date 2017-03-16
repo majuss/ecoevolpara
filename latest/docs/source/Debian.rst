@@ -93,14 +93,14 @@ Hit the windows-key and search for "startup", open the first search result "Star
 
 Opening it up will show you this:
 
-.. figure:: appendix/pictures/startup2.jpg
+.. figure:: appendix/pictures/startup2.png
    :width: 450px
    :alt: How to autostart a program
 
-.. figure:: appendix/pictures/startup3.jpg
+.. figure:: appendix/pictures/startup3.png
    :width: 450px
    :alt: How to autostart a program
 
-.. figure:: appendix/pictures/startup4.jpg
+.. figure:: appendix/pictures/startup4.png
    :width: 450px
    :alt: How to autostart a program
