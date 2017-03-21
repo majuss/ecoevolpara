@@ -12,8 +12,8 @@ On the Client site there are 2 major branches. First of all there is Harriet, wh
 The domain of the seafile server is :code:`svalbard.biologie.hu-berlin.de`. It's now available even outside of the HU-network, you don't need to use the VPN anymore.
 
 
-Setting up a client
-===================
+Setting up a client on Linux
+============================
 
 Debian GUI
 ----------
@@ -163,6 +163,15 @@ Run :code:`crontab -e` and enter:
 To check the status of the client run:
 ::
 	seaf-cli status -c /etc/seafile/$USER/conf_dir
+
+Setting up a client on Windows
+==============================
+
+1. Open the site :code:`https://www.seafile.com/en/download/` in a Browser.
+2. Download the Seafile Client.
+3. Open it and install it.
+4. On the first start Seafile will ask you for server and user-credentials. The Server URL you have to enter is: :code:`https://svalbard.biologie.hu-berlin.de`. The user-credentials will send to you by the local administrator.
+5. When Seafile has started sucessfully, right click the folder in Seafile you want to sync and choose the local destination.
 
 
 Setting up the Server (Svalbard)

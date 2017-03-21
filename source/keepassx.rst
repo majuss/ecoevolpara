@@ -1,0 +1,38 @@
+********
+KeePassX
+********
+
+KeePassX is an open source multiplatform password management program. You decrypt your database file with a masterpassword (and an optional key) and get access to all your saved user-credentials.
+
+
+Installing on Linux
+===================
+
+KeepassX is getting delivered in 2 different versions depending on your Linux distribution (as you can see here: :code:`https://packages.debian.org/search?keywords=keepassx`). The Debian stable release (Jessie) is only getting the old version of KeePassX 0.4.3. The testing release (Stretch) is getting the latest verison 2.0.3. It's highly recommended to only use the modern version 2.X to preserve compatibility.
+
+
+First of all you have to determine which Linux you're running by execute: :code:`cat /etc/os-release | grep VERSION`. If the output says :code:`stretch` you're good to go to just install it with :code:`sudo aptitude install keepassx`. If it says :code:`jessie` jump to the next step.
+
+
+Installing KeePassX via backports
+---------------------------------
+
+Add: :code:`deb http://ftp.debian.org/debian jessie-backports main` to :code:`/etc/apt/sources` to get packages from newer Debian distributions while running the stable release.
+
+Then run:
+::
+	apt-get update
+	aptitude -t jessie-backports install keepassx
+
+This will install the latest KeePassX version on Jessie (stable).
+
+
+Installing on Windows
+=====================
+
+Just visit the website and download the KeePassX installer: :code:`https://www.keepassx.org/downloads`.
+
+Installing on macOS
+===================
+
+Just visit the website and download the KeePassX diskimage: :code:`https://www.keepassx.org/downloads`.

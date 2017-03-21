@@ -14,16 +14,15 @@ Known issues
 ============
 
 Very often an error will occur on the readthedocs.org/projects/ecoevolpara/builds/ website:
-======================================================
+
 .. figure:: /appendix/pictures/git_submodule_error.png
    :width: 600px
    :alt: Git-Error
-======================================================
 
 This may always occur due to an change in the sphinx_rtd_theme repository.
 
 1. Ensure that there are no submodule sections in .git/config. If there are, remove them.
-2. Do git rm --cached <path_to_submodule>. (git rm --cached latest/docs/_themes/sphinx_rtd_theme)
+2. Do git rm --cached <path_to_submodule>. (git rm -r -f --cached latest/docs/_themes)
 
 git rm -r -f --cached latest/docs/_themes
 
