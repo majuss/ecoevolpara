@@ -19,27 +19,25 @@ and download an .iso file of an operating System. Thats all you need to get you 
 
 The usual QEMU-command we'll use is :code:`qemu-system-x86_64` (there are a lot of different one for other CPU-architectures).
 
-A typical command to start a QEMU-vm looks like that:
+A typical command to start a Windows-vm looks like that:
 ::
-	qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 2048M  -k de -cpu host -smp cores=1,threads=1,sockets=1 -vga qxl -vnc :0 -hda /data/VMs/jessie.qcow2 -net nic,model=virtio -net user,hostfwd=tcp::27001-:27001,hostfwd=tcp::3306-:3306,hostfwd=tcp::$vms_ssh_port-:22,hostfwd=tcp::49630-:49630 -spice port=15300,addr=$server_IP
+	qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 2048M  -k de -cpu host -smp cores=1,threads=1,sockets=1 -vga qxl -vnc :0 -hda /data/VMs/jessie.qcow2 -net nic,model=e1000 -net user,hostfwd=tcp::27001-:27001,hostfwd=tcp::3306-:3306,hostfwd=tcp::$vms_ssh_port-:22,hostfwd=tcp::49630-:49630 -spice port=15300,addr=$server_IP
 
 
-qemu-system-x86_64		QEMU command
 -nodefconfig			No default configuration
 -machine accel=kvm 		Sets the virtualization technology to KVM
--enable-kvm				enables the kvm acceleration
--m 2048M				amount of RAM you want to allocate to the VM
--k de 					keyboard layout
--cpu host 				pass the host-CPU identifier to the VM
--smp					enable smp
--cores=1				number of CPU cores
--threads=1				number of logical threads
--sockets=1				number of cpu sockets
--vga qxl				protocol to passthrough the graphics
+-enable-kvm				Enables the kvm acceleration
+-m 2048M				Amount of RAM you want to allocate to the VM
+-k de 					Keyboard layout
+-cpu host 				Pass the host-CPU identifier to the VM
+-smp					Nnable smp
+-cores=1				Number of CPU cores (try to not exceed )
+-vga qxl				protocol to passthrough the graphics (use std for setup)
 -vnc :0					VNC Port -> 5900
--hda					Path to harddisk
--net nic,model=virtio	model of networkadapter
--net user,hostfwd		forwarding ports from host to guest pe.: hostfwd=tcp::15000-:22 the ssh port of the vm is now reacheable through the port 15000 (:code:`ssh user@IP -p 15000`)
+-spice port=15310,addr=141.20.60.82,password=8aWDxZMqDb		Port for the Spice protocol (to get completely native feeling in a vm), IP address of the host, and spice-password to connect.
+-hda					Path to virtual harddisk
+-net nic,model=e1000	Model of networkadapter. Usual e1000 for intel and virtio for fullspeed.
+-net user,hostfwd		Forwarding ports from host to guest pe.: hostfwd=tcp::15000-:22 the ssh port of the vm is now reacheable through the port 15000 (:code:`ssh user@IP -p 15000`)
 
 
 Create a new Debian-stable VM
@@ -47,23 +45,44 @@ Create a new Debian-stable VM
 
 Connect to Beagle (or a different machine which should host the VM) and download the Debian-iso `from this site<https://www.debian.org/CD/http-ftp/>`_. Right click the link for the amd64 netinstall and copy the link. Then enter :code:`wget`. paste the link and hit enter. This will download the install-image into the current working directory (:code:`pwd`).
 
-qemu-img create -f qcow2 /home/marius/debian_seafile.qcow2 50G
+To create a virtual disk for the new vm tyoe:
+::
+	qemu-img create -f qcow2 /home/marius/debian_testing.qcow2 50G
 
-qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 4000M  -k de -cpu host -smp cores=4,threads=1,sockets=1 -vga std -vnc :1 -hda /home/marius/debian_seafile.qcow2 -cdrom /home/marius/debian-8.6.0-amd64-netinst.iso.1 -net nic,model=virtio -net user,hostfwd=tcp::15351-:22
+To start the vm simply type the command:
+::
+	qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 4000M  -k de -cpu host -smp cores=4 -vga std -vnc :1 -hda /home/marius/debian_testing.qcow2 -cdrom /home/marius/debian-8.6.0-amd64-netinst.iso -net nic,model=virtio -net user,hostfwd=tcp::15351-:22
 
-connect with a vnc client
+connect with a vnc client for example xtightvncviewer. Open xtightvncviewer via terminal and enter the IP of the host and the VNC-port (:code:`141.20.60.126:5901`).
 
 
 Create a new Windows VM
 -----------------------
-qemu-img create Windows10_iDrac.qcow2 50G -f qcow2
 
-sudo qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 4000M  -k de -cpu host -smp cores=4,threads=1,sockets=1 -vga std -vnc :1 -hda /home/marius/Windows10_iDrac.qcow2 -cdrom /home/marius/Win10_1607_EnglishInternational_x64.iso -net nic,model=e1000 -net user -usbdevice tablet
+Download the legal and free Windows 10 .iso from `this website <https://www.microsoft.com/de-de/software-download/windows10ISO>`_. This link only works on non Windows machines.
 
-Connect to a Windows VM using spice-client
-==========================================
+Create a new virtual disk for the Windows-vm:
+::
+	qemu-img create -f qcow2 Windows10_testing.qcow2 50G
 
-aptitude install tigervnc
+Start the vm with the following command:
+::
+	qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 4000M  -k de -cpu host -smp cores=4 -vga std -vnc :1 -hda /home/marius/Windows10_testing.qcow2 -cdrom /home/marius/Win10_1607_EnglishInternational_x64.iso -net nic,model=e1000 -net user -usbdevice tablet
+
+Connect to the vm with a VNC-client. Then install the `spice-guest-tools <https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe>`_ on the Windows vm.
+
+After that you have to forward a spice port to the vm.
+
+
+Connect to a Windows VM using spice-client under Linux
+======================================================
+
+.. Important::
+	The spice-guest-tools have to be installed on the windows guest. Otherwise the connection via spice-client will not work.
+
+Install the spice-client on the Linux machine: :code:`sudo aptitude install spice-client`.
+
+Then connect with the command: :code:`spicec -h 141.20.60.126 -p $spice_port -w spice_password`
 
 
 Connect to a Windows VM using spice-client

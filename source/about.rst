@@ -5,7 +5,7 @@ This documentation should help the next admin and all users of the working group
 
 Most of the commands must be invoked with root-priveleages. You need to add your name to visudo or use :code:`su root`.
 
-For a good Syntax reference see: `this <https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html>_
+For a good Syntax reference see: `this <https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html>`_
 
 
 
@@ -17,8 +17,7 @@ You can find the github repository `here <https://github.com/majuss/ecoevolpara>
 
 First see this `introduction-video <https://www.youtube.com/watch?v=oJsUvBQyHBs>`_.
 
-A good documentation for .rst and sphinx_rtd_theme: `.rst-documentation <https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html
->`_
+A good documentation for .rst and sphinx_rtd_theme: `rst-documentation <https://rest-sphinx-memo.readthedocs.io/en/latest/ReST.html>`_.
 
 Known issues
 ============

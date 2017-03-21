@@ -48,7 +48,7 @@ The SAN - storage area network - is a network storage attached over 8 Gbit fibre
 
 Follow :download:`this manual <appendix/pdfs/Multipathing-Ubuntu-1404.pdf>` to mount the external storage.
 
-*Additional to the manual see `this error <http://pissedoffadmins.com/os/mount-unknown-filesystem-type-lvm2_member.html/>`_ which will occur.*
+Additional to the manual see `this error <http://pissedoffadmins.com/os/mount-unknown-filesystem-type-lvm2_member.html/>`_ which will occur.*
 
 Scan logical volumes
 ::

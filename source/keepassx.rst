@@ -17,7 +17,7 @@ First of all you have to determine which Linux you're running by execute: :code:
 Installing KeePassX via backports
 ---------------------------------
 
-Add: :code:`deb http://ftp.debian.org/debian jessie-backports main` to :code:`/etc/apt/sources` to get packages from newer Debian distributions while running the stable release.
+Add: :code:`deb http://ftp.debian.org/debian jessie-backports main` to :code:`/etc/apt/sources.list` to get packages from newer Debian distributions while running the stable release.
 
 Then run:
 ::
@@ -32,9 +32,9 @@ This will install the latest KeePassX version on Jessie (stable).
 Installing on Windows
 =====================
 
-Just visit the website and download the KeePassX installer: :code:`https://www.keepassx.org/downloads`.
+Just visit the website and download the KeePassX installer: `KeePassX website: <https://www.keepassx.org/downloads>`_.
 
 Installing on macOS
 ===================
 
-Just visit the website and download the KeePassX diskimage: :code:`https://www.keepassx.org/downloads`.
+Just visit the website and download the KeePassX diskimage: `KeePassX website: <https://www.keepassx.org/downloads>`_.

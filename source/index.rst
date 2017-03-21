@@ -7,8 +7,8 @@ Welcome to ecoevolpara's documentation!
 =====================================================
 
 .. toctree::
-   :maxdepth: 0
-   
+   :maxdepth: 1
+
    Debian
    storage
    backup
@@ -19,8 +19,6 @@ Welcome to ecoevolpara's documentation!
    vms
    hardware
    about
-   build
-   help
    vpn
    appendix
    laufzettel
