@@ -2,24 +2,22 @@
 Virtual machines
 ****************
 
-Virtual machines or VMs proive a way to deploy software fast and easy (such as the geneious server). 
+Virtual machines or VMs proive a way to deploy software fast, easy and reliable (such as the geneious server or a Microsoft-Office).
 
 
 Create a VM using QEMU
 ======================
 
-QEMU is...
+QEMU is a virtualisation software which enables users to create virtual machines with different parameters.
 
 You need to install QEMU:
 ::
-	aptitude install qemu
+	sudo aptitude install qemu
 
-Download an .iso file of an operating System. 
-
-
+and download an .iso file of an operating System. Thats all you need to get you started.
 
 
-The usual QEMU-command we'll use is :code:`qemu-system-x86_64`.
+The usual QEMU-command we'll use is :code:`qemu-system-x86_64` (there are a lot of different one for other CPU-architectures).
 
 A typical command to start a QEMU-vm looks like that:
 ::
@@ -27,8 +25,8 @@ A typical command to start a QEMU-vm looks like that:
 
 
 qemu-system-x86_64		QEMU command
--nodefconfig			miau
--machine accel=kvm 		nodefconf
+-nodefconfig			No default configuration
+-machine accel=kvm 		Sets the virtualization technology to KVM
 -enable-kvm				enables the kvm acceleration
 -m 2048M				amount of RAM you want to allocate to the VM
 -k de 					keyboard layout
@@ -41,7 +39,7 @@ qemu-system-x86_64		QEMU command
 -vnc :0					VNC Port -> 5900
 -hda					Path to harddisk
 -net nic,model=virtio	model of networkadapter
--net user,hostfwd		forwarding ports from host to vm pe.: hostfwd=tcp::15000-:22 the ssh port of the vm is now reacheable through the port 15000
+-net user,hostfwd		forwarding ports from host to guest pe.: hostfwd=tcp::15000-:22 the ssh port of the vm is now reacheable through the port 15000 (:code:`ssh user@IP -p 15000`)
 
 
 Create a new Debian-stable VM

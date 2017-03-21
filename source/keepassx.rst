@@ -26,6 +26,8 @@ Then run:
 
 This will install the latest KeePassX version on Jessie (stable).
 
+.. Tip::
+	If you previously installed the 0.4.3 version just uninstall it with: :code:`sudo aptitude purge keepassx`.
 
 Installing on Windows
 =====================
