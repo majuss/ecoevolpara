@@ -7,7 +7,7 @@ Welcome to ecoevolpara's documentation!
 =====================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 0
    
    Debian
    storage
@@ -15,6 +15,7 @@ Welcome to ecoevolpara's documentation!
    cronjobs
    geneious
    Seafile
+   keepassx
    vms
    hardware
    about
