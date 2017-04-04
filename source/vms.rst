@@ -2,7 +2,7 @@
 Virtual machines
 ****************
 
-Virtual machines or VMs proive a way to deploy software fast, easy and reliable (such as the geneious server or a Microsoft-Office).
+Virtual machines or VMs proive a way to deploy software fast, easy and reliable (such as the geneious server or Microsoft-Office).
 
 
 Create a VM using QEMU
@@ -15,7 +15,6 @@ You need to install QEMU:
 	sudo aptitude install qemu
 
 and download an .iso file of an operating System. Thats all you need to get you started.
-
 
 The usual QEMU-command we'll use is :code:`qemu-system-x86_64` (there are a lot of different one for other CPU-architectures).
 
@@ -43,9 +42,9 @@ A typical command to start a Windows-vm looks like that:
 Create a new Debian-stable VM
 --------------------------------------
 
-Connect to Beagle (or a different machine which should host the VM) and download the Debian-iso `from this site<https://www.debian.org/CD/http-ftp/>`_. Right click the link for the amd64 netinstall and copy the link. Then enter :code:`wget`. paste the link and hit enter. This will download the install-image into the current working directory (:code:`pwd`).
+Connect to Beagle (or a different machine which should host the vm) and download the Debian-iso `from this site<https://www.debian.org/CD/http-ftp/>`_. Right click the link for the amd64 netinstall and copy the link. Then enter :code:`wget`. paste the link and hit enter. This will download the install-image into the current working directory (:code:`pwd`).
 
-To create a virtual disk for the new vm tyoe:
+To create a virtual disk for the new vm type:
 ::
 	qemu-img create -f qcow2 /home/marius/debian_testing.qcow2 50G
 
@@ -74,21 +73,11 @@ Connect to the vm with a VNC-client. Then install the `spice-guest-tools <https:
 After that you have to forward a spice port to the vm.
 
 
-Connect to a Windows VM using spice-client under Linux
-======================================================
-
-.. Important::
-	The spice-guest-tools have to be installed on the windows guest. Otherwise the connection via spice-client will not work.
-
-Install the spice-client on the Linux machine: :code:`sudo aptitude install spice-client`.
-
-Then connect with the command: :code:`spicec -h 141.20.60.126 -p $spice_port -w spice_password`
-
-
 Connect to a Windows VM using spice-client
 ==========================================
 
-The `spice-client <https://packages.debian.org/jessie/spice-client/>`_ available in the Debian repos, provides a way to connect to a virtual machine running Windows with a graphical interface. This allows the user to use Software like the Microsoft Office Suite. The software spice-gues-tools needs to be installed on windows first. To do so connect via VNC the first time you start the VM. Then install `these tools <https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-0.100.exe>`_.
+.. Important::
+	The `spice-client <https://packages.debian.org/jessie/spice-client/>`_ available in the Debian repos, provides a way to connect to a virtual machine running Windows with a graphical interface. This allows the user to use Software like the Microsoft Office Suite. The software spice-gues-tools needs to be installed on windows first. To do so connect via VNC the first time you start the VM. Then install `these tools <https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-0.100.exe>`_.
 
 Then you can install the spice-client on any debian machine using:
 ::
@@ -96,11 +85,22 @@ Then you can install the spice-client on any debian machine using:
 
 You invoke the spice-client with the command :code:`spicec`, additionally you have to provide an IP, a port and the password to connect to the vm.
 ::
-	spicec spicec -h $server_IP -p $port -w $password
+	spicec -h $server_IP -p $port -w $password
+
+A window will pop up you can control it with the following hot-keys.
+
+-shift + F12	Release the catched mouse
+-shift + F11	Toggel Fullscreen
 
 Connect to a Linux VM using ssh
 ===============================
 
+When starting the Linux vm with qemu you have to add a ssh-port forwarding rule with the parameter: :code:`net user,hostfwd`. For example you add: :code:`hostfwd=tcp::15000-:22` then you can connect to the vm with: :code:`ssh user@IP -p 15000` See INSERT LINK for details.
+
+
 Connect to a Linux VM using a VNC-client (GUI)
 ==============================================
+
+Install a vnc client on your local machine for example xtightvncviewer (:code:`aptitude install xtightvncviewer`).
+
 

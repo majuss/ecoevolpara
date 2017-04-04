@@ -30,7 +30,7 @@ With installer
 5. In the first field enter the path: :code:`/home/seafile/your_username`
 6. In the next field, enter our server-url: :code:`https://svalbard.biologie.hu-berlin.de`, your Seafile user-email and password (both provided by the workgroup-admin).
 7. When Seafile starts up right click in Seafile your *home_your_username* and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home (/home/marius).
-8. Add Seaflie to the autostart see `here <http://ecoevolpara.readthedocs.io/en/latest/Debian.html#add-programs-to-the-autostart>`_.
+8. Add Seaflie to the autostart see.
 
 .. important::
 
@@ -234,12 +234,3 @@ Updating the server-software
 ============================
 
 Login as the user seafile with :code:`sudo su seafile` and stop the running server with :code:`/etc/init.d/seafile stop`. Download the seafile-server-software from their site: https://www.seafile.com/en/download/ for example with: :code:`wget https://bintray.com/artifact/download/seafile-org/seafile/seafile-server_6.0.7_x86-64.tar.gz` then untar it: :code:`tar -xzf seafile-server_6.0.7_x86-64.tar.gz` and own it with :code:`sudo chown -R seafile:seafile seafile-server_6.0.7`. Copy the extracted directory to :code:`/usr/local/bin/seafile-server`. Then run the minor-upgrade script: :code:`bash /usr/local/bin/seafile-server/seafile-server-6.0.7/upgrade/minor-upgrade.sh`. After that start the server again with: :code:`/etc/init.d/seafile start` as the user seafile.
-
-FAQ
-===
-- Q: CLI client failing with "ccnet-init not found..." A: look at the tutorial above, download the ccnet-init binary manually
-- Q: no .ccnet directory found. A: you can't start seaf-cli without -c (confid dir)
-- no root
-- conflicts with system path
-- screenshot log init failed
-- the client indexing and uploading all the time and won't stop

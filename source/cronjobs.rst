@@ -36,7 +36,7 @@ For furthy documentation about vm check x.x. or 2.4 for information on Geneious.
 Maintenance report over Slack (Beagle, Harriet, Svalbard)
 =========================================================
 
-This job requires a setted up slack bot, smartcl and sensors 
+This job requires a setted up slack bot, smartcl and sensors
 
 
 This job will post a maintenance report every first sunday at 12:00.
