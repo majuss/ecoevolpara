@@ -16,6 +16,7 @@ Welcome to ecoevolpara's documentation!
    geneious
    Seafile
    keepassx
+   prism
    vms
    hardware
    about
