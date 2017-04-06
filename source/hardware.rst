@@ -2,6 +2,25 @@
 Hardware
 ********
 
+Setting up a new client computer
+================================
+
+You should use debian testing for new machines due to it's better compatibily with modern hardware.
+
+Get a working Linux client and `downlaod the Debian testing iso <http://cdimage.debian.org/cdimage/weekly-builds/amd64/iso-cd/>`_. Then transfer the image via the :code:`dd` command to the USB-stick.
+Determine the disk number of the USB-stick via the :code:`lsblk`.
+
+::
+	dd if=/home/username/downloads/debian.iso of=/dev/disk2
+
+When :code:`dd` is finished unplug the USB-drive and stick it into the new computer. Depending on the vendor you have to press a different F-key while booting the new machine (usually F12 or F2). Then you should get into the boot-menu from the computer and choose the USB-stick.
+
+The Debian-installer should show up now. Choose the non-graphical installer.
+
+And follow this video how to setup the operating system correctly.
+
+
+
 Svalbard
 ========
 
@@ -48,8 +67,8 @@ How to interpret the log from the Slack bot
 
 The logfile contains 2 crucial types of information:
 
-- the SMART status of all mass storage devices (LINKS TO SMART INTERPRETATION)
-- the result of the btrfs scrubbing (LINK TO BTRFS)
+- the SMART status of all mass storage devices (INSERT LINKS TO SMART INTERPRETATION)
+- the result of the btrfs scrubbing (INSERT LINK TO BTRFS)
 
 All you have to know about the SMART-status is, that it gives you a general overview of the disks health. How many hours is it spinning, how oftern turned it of and on, how recoverable errors is it producing. As long as the "SMART Health Status" is said to be "OK" you don't have to worry about it.
 If an harddisk does not pass the SMART test all the work on the affected server should be immideatly stopped. Continue with the appropriate section in the FAQ. LINK TO FAQ
@@ -111,22 +130,7 @@ IPMI
 Since Svalbard is not a Dell server he doesn't have a DRAC. Instead he's having a standard IPMI controller on the mainboard to control the server hardware remotely. The IP is also available in the table mentioned above. You can simply reach it with every standard webbrowser. A console is not available, since it would had required additional KVM hardware (as far as I know).
 
 
-Setting up a new client computer
-================================
 
-You should use debian testing for new machines due to it's better compatibily with modern hardware.
-
-Get a working Linux client and `downlaod the Debian testing iso <http://cdimage.debian.org/cdimage/weekly-builds/amd64/iso-cd/>`_. Then transfer the image via the :code:`dd` command to the USB-stick.
-Determine the disk number of the USB-stick via the :code:`lsblk`.
-
-::
-	dd if=/home/username/downloads/debian.iso of=/dev/disk2
-
-When :code:`dd` is finished unplug the USB-drive and stick it into the new computer. Depending on the vendor you have to press a different F-key while booting the new machine (usually F12 or F2). Then you should get into the boot-menu from the computer and choose the USB-stick.
-
-The Debian-installer should show up now. Choose the non-graphical installer.
-
-Installing steps...
 
 
 

@@ -20,23 +20,23 @@ The usual QEMU-command we'll use is :code:`qemu-system-x86_64` (there are a lot 
 
 A typical command to start a Windows-vm looks like that:
 ::
-	qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 2048M  -k de -cpu host -smp cores=1,threads=1,sockets=1 -vga qxl -vnc :0 -hda /data/VMs/jessie.qcow2 -net nic,model=e1000 -net user,hostfwd=tcp::27001-:27001,hostfwd=tcp::3306-:3306,hostfwd=tcp::$vms_ssh_port-:22,hostfwd=tcp::49630-:49630 -spice port=15300,addr=$server_IP
+	qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 2048M -k de -cpu host -smp cores=1,threads=1,sockets=1 -vga qxl -vnc :0 -hda /data/VMs/jessie.qcow2 -net nic,model=e1000 -net user,hostfwd=tcp::27001-:27001,hostfwd=tcp::3306-:3306,hostfwd=tcp::$vms_ssh_port-:22,hostfwd=tcp::49630-:49630 -spice port=15300,addr=$server_IP
 
 
--nodefconfig			No default configuration
--machine accel=kvm 		Sets the virtualization technology to KVM
--enable-kvm				Enables the kvm acceleration
--m 2048M				Amount of RAM you want to allocate to the VM
--k de 					Keyboard layout
--cpu host 				Pass the host-CPU identifier to the VM
--smp					Nnable smp
--cores=1				Number of CPU cores (try to not exceed )
--vga qxl				protocol to passthrough the graphics (use std for setup)
--vnc :0					VNC Port -> 5900
+-nodefconfig												No default configuration
+-machine accel=kvm 											Sets the virtualization technology to KVM
+-enable-kvm													Enables the kvm acceleration
+-m 2048M													Amount of RAM you want to allocate to the VM
+-k de 														Keyboard layout
+-cpu host 													Pass the host-CPU identifier to the VM
+-smp														Enable smp (multicore support)
+-cores=1													Number of CPU cores (try to not exceed )
+-vga qxl													protocol to passthrough the graphics (use std for setup)
+-vnc :0														VNC Port -> 5900
 -spice port=15310,addr=141.20.60.82,password=8aWDxZMqDb		Port for the Spice protocol (to get completely native feeling in a vm), IP address of the host, and spice-password to connect.
--hda					Path to virtual harddisk
--net nic,model=e1000	Model of networkadapter. Usual e1000 for intel and virtio for fullspeed.
--net user,hostfwd		Forwarding ports from host to guest pe.: hostfwd=tcp::15000-:22 the ssh port of the vm is now reacheable through the port 15000 (:code:`ssh user@IP -p 15000`)
+-hda														Path to virtual harddisk
+-net nic,model=e1000										Model of networkadapter. Usual e1000 for intel and virtio for fullspeed.
+-net user,hostfwd											Forwarding ports from host to guest pe.: hostfwd=tcp::15000-:22 the ssh port of the vm is now reacheable through the port 15000 (:code:`ssh user@IP -p 15000`)
 
 
 Create a new Debian-stable VM
@@ -53,6 +53,8 @@ To start the vm simply type the command:
 	qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 4000M  -k de -cpu host -smp cores=4 -vga std -vnc :1 -hda /home/marius/debian_testing.qcow2 -cdrom /home/marius/debian-8.6.0-amd64-netinst.iso -net nic,model=virtio -net user,hostfwd=tcp::15351-:22
 
 connect with a vnc client for example xtightvncviewer. Open xtightvncviewer via terminal and enter the IP of the host and the VNC-port (:code:`141.20.60.126:5901`).
+
+Then just follow this video how to setup the operating system.
 
 
 Create a new Windows VM

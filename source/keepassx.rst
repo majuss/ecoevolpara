@@ -21,8 +21,8 @@ Add: :code:`deb http://ftp.debian.org/debian jessie-backports main` to :code:`/e
 
 Then run:
 ::
-	apt-get update
-	aptitude -t jessie-backports install keepassx
+	sudo apt-get update
+	sudo aptitude -t jessie-backports install keepassx
 
 This will install the latest KeePassX version on Jessie (stable).
 
