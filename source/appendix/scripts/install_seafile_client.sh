@@ -21,7 +21,7 @@ add_repo (){
 		then
 		echo "ccnet-init already in place"
 		else
-		wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/ccnet-init -P /usr/bin/
+		wget https://github.com/majuss/ecoevolpara/raw/master/source/appendix/scripts/ccnet-init -P /usr/bin/
 		chmod +x /usr/bin/ccnet-init
 	fi
 	echo "##### Software upgrade finished"
@@ -88,7 +88,7 @@ done
 
 get_ignoLink(){
 	dlPath=$(echo "$1"/ | tr -s /)
-	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/latest/docs/source/appendix/scripts/seafile-ignore.txt -P $dlPath
+	wget https://raw.githubusercontent.com/majuss/ecoevolpara/master/source/appendix/scripts/seafile-ignore.txt -P $dlPath
 }
 
 install_gui_client(){

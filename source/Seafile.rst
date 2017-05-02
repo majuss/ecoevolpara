@@ -30,7 +30,7 @@ With installer
 5. In the first field enter the path: :code:`/home/seafile/your_username`
 6. In the next field, enter our server-url: :code:`https://svalbard.biologie.hu-berlin.de`, your Seafile user-email and password (both provided by the workgroup-admin).
 7. When Seafile starts up right click in Seafile your *home_your_username* and choose :code:`sync this library` then click :code:`sync with an existing folder` and enter the path to your home (/home/marius).
-8. Add Seaflie to the autostart see.
+8. Add Seafile to the autostart see `here <http://ecoevolpara.readthedocs.io/en/latest/Debian.html#add-programs-to-the-autostart>`_.
 
 .. important::
 

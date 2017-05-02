@@ -1,7 +1,6 @@
 #all Dotfiles
 .*
 .*/
-
 seafile_*
 seafile-data/
 seafile*
