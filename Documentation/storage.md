@@ -27,9 +27,9 @@ Additional to the manual see [this error] which will occur.
 
 To solve it you need to run:
 
-Scan logical volumes: `lvscan`
-Load device module: `modprobe dm-mod`
-Change the volumes that exist to active `vgchange -ay`
+Scan logical volumes: `lvscan`  
+Load device module: `modprobe dm-mod`  
+Change the volumes that exist to active `vgchange -ay`  
 Mount the logical partition `mkdir -p /mnt/VolGroup00/LogVol00 mount /dev/VolGroup00/LogVol00 /mnt/VolGroup00/LogVol00`
 
   [this error]: http://pissedoffadmins.com/os/mount-unknown-filesystem-type-lvm2_member.html/

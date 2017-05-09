@@ -8,7 +8,7 @@
     * [Geneious](Documentation/geneious.md)
     * [Cronjobs](Documentation/cronjobs.md)
     * [KeepassX](Documentation/keepassx.md)
-    * [Prism](Documenation/prism.md)
+    * [Prism](Documentation/prism.md)
     * [VPN](Documentation/vpn.md)
     * [Appendix](Documentation/appendix.md)
     * [Virtual Machines](Documentation/vms.md)

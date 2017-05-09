@@ -12,7 +12,7 @@ Setting up a client on Linux
 
 ### Debian GUI
 
-It’s recommended to use our custom Installer &lt;appendix/scripts/install\_seafile\_client.sh&gt; for the Seafile-Client (GUI or CLI).
+It’s recommended to use our [custom Installer] for the Seafile-Client (GUI or CLI).
 
 #### With installer
 
@@ -25,15 +25,28 @@ It’s recommended to use our custom Installer &lt;appendix/scripts/install\_sea
 7.  When Seafile starts up right click in Seafile your *home\_your\_username* and choose `sync this library` then click `sync with an existing folder` and enter the path to your home (/home/marius).
 8.  Add Seafile to the autostart see [here].
 
-You can not sync a shared folder into your home directory. Thats why the installer created the directory /home/shared/$USER/. You can sync your shared directories into that directory.
+
+---
+**Sync a shared directory**
+
+You can not sync a shared folder into your home directory. Thats why the installer created the directory */home/shared/your_username*. You can sync your shared directories into that directory.
+
+---
+
 
 #### Without installer
 
-To install the seafile-client you need [sudo-privileges][sudo-privileges for this].
+To install the seafile-client you need [sudo-privileges].
 
 First you need to update your operating system: :: sudo aptitude update sudo aptitude upgrade
 
-After that add the key of the Seafile-repo: :: sudo apt-key adv –keyserver hkp://keyserver.ubuntu.com:80 –recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61 Then add the repo itself with: :: echo deb <http://dl.bintray.com/seafile-org/deb> jessie main | sudo tee /etc/apt/sources.list.d/seafile.list Replace jessie with the Debian release you’re using (`lsb_release -a | grep Codename`). Then run an update of the package-list. :: sudo aptitude u
+After that add the key of the Seafile-repo:  
+`sudo apt-key adv –keyserver hkp://keyserver.ubuntu.com:80 –recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61`  
+Then add the repo itself with:  
+`echo deb <http://dl.bintray.com/seafile-org/deb> jessie main | sudo tee /etc/apt/sources.list.d/seafile.list`  
+Replace jessie with the Debian release you’re using (`lsb_release -a | grep Codename`). Then run an update of the package-list.  
+`sudo aptitude u
 
-  [sudo-privileges for this]: http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges
-  [here]: http://ecoevolpara.readthedocs.io/en/latest/Debian.html#add-programs-to-the-autostart
+  [sudo-privileges]: INSERT LINK
+  [here]: INSERT LINK
+  [custom Installer]: INSERT LINK
