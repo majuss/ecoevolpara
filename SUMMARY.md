@@ -1,5 +1,5 @@
 # Summary
 
-* [Documentation](Documentation/README.md)
+* [Documentation](Documentation/about.md)
     * [Debian](Documentation/debian.md)
     * [Seafile](Documentation/seafile.md)
