@@ -1,9 +1,10 @@
-Custom cronjobs
-===============
+# Custom cronjobs dsfsf
 
 You can look at the cronjobs with crontab -e. The scripts which get triggered by these jobs are usually located in /usr/local/bin. Make sure the scripts are executable (chmod +x).
 
-Example: :: 00 01 \* \* 7 \[ $(date +%d) -le 07 \] && /usr/local/bin/btrfs\_scrub.sh 00 12 \* \* 7 \[ $(date +%d) -le 07 \] && /usr/local/bin/maintenance\_svalbard.sh\`
+Example: 
+00 01 \* \* 7 \[ $(date +%d) -le 07 \] && /usr/local/bin/btrfs\_scrub.sh
+00 12 \* \* 7 \[ $(date +%d) -le 07 \] && /usr/local/bin/maintenance\_svalbard.sh\`
 
 Update blastdb nt, nr and taxdb (Harriet, Beagle)
 -------------------------------------------------

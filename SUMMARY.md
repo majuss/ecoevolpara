@@ -7,7 +7,7 @@
     * [Storage](Documentation/storage.md)
     * [Geneious](Documentation/geneious.md)
     * [Cronjobs](Documentation/cronjobs.md)
-    * [KeepassX](Documentation/keepassx.md)
+    * [KeePassX](Documentation/keepassx.md)
     * [Prism](Documentation/prism.md)
     * [VPN](Documentation/vpn.md)
     * [Appendix](Documentation/appendix.md)

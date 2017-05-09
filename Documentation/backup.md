@@ -1,5 +1,7 @@
-Incremental backup
-==================
+# Incremental backup
+
+
+## Backup with R-diff backup
 
 (outdated)
 
@@ -18,3 +20,6 @@ The directory has to be owned by rdiff-backup so the user can write into it.
 To delete old increments run: :: rdiff-backup –remove-older-than 90D /data/backup\_harriet This will delete all increments which are older than 90 days.
 
 How to setup: <https://www.howtoforge.com/linux_rdiff_backup>
+
+
+## TSM-backup

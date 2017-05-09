@@ -1,8 +1,6 @@
-Filesystem and harddiskmanagement
-=================================
+# Filesystem and harddiskmanagement
 
-btrfs
------
+## btrfs
 
 Btrfs is with ZFS the only filesystem that can detect and prevent silent-data-corruption when paired with ECC-RAM. Additionally you can create software-RAIDs very easily without any controller. We don’t use RAID 5 since restoring data is a pain. Also the prices for huge harddisks are now very low. Btrfs will only work satisfyingly with Kernel 4.4 and above. Thats why we are using Debian stretch/sid.
 
@@ -16,8 +14,7 @@ Here sdz1 getting added to the RAID `/`. You can create a complete new RAID 1 fr
 
 After adding devices to RAIDs you always have to balance the data between them: `btrfs balance start -mconvert=raid1 -dconvert=raid1 /`
 
-Mounting the SAN storage
-------------------------
+## Mounting the SAN storage
 
 The SAN - storage area network - is a network storage attached over 8 Gbit fibre channel. Currently we have 15 TB of storage mounted on harriet at `/SAN`.
 

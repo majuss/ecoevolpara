@@ -1,5 +1,4 @@
-Seafile
-=======
+# Seafile
 
 Seafile is a program which enables us to host our own cloud system very much like Dropbox, iCloud or Onedrive. The mainthought behind it, is to synchronize all *home* directories between harriet, beagle and all clients like the Dell Optiplex and the Intel NUCs. This will enable every user to log into any client computer and syncs their homes to it.
 
@@ -7,8 +6,7 @@ On the Client site there are 2 major branches. First of all there is Harriet, wh
 
 The domain of the seafile server is `svalbard.biologie.hu-berlin.de`. It’s now available even outside of the HU-network, you don’t need to use the VPN anymore.
 
-Setting up a client on Linux
-----------------------------
+## Setting up a client on Linux
 
 ### Debian GUI
 
