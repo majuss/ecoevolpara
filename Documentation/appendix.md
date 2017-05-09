@@ -1,31 +1,29 @@
 Appendix
 ========
 
-
 scripts
 -------
 
-:code:`seafile-init.sh`
+`seafile-init.sh`
 
 Enables the Seafile-server control over /etc/init.
 
-:code:`install_seafile_client.sh`
+`install_seafile_client.sh`
 
 Installs the Seafile-client-software
 
-:code:`maintenance_report.sh`
+`maintenance_report.sh`
 
 A custom bot that posts the results of SMART tests and the btrfs scrubbing into a slack channel.
 
-:code:`seafile-ignore.txt`
+`seafile-ignore.txt`
 
 A seafile-ignore list which lists for example all dotfiles and exclude them.
 
-:code:`update_blastdb_cran.sh`
+`update_blastdb_cran.sh`
 
 Updates blast DBs automatically.
 
-:download:`zotero-bot.sh <appendix/scripts/zotero-bot.sh>`
+zotero-bot.sh &lt;appendix/scripts/zotero-bot.sh&gt;
 
 Posts Slack messages when the Zotero Library got updated.
-
