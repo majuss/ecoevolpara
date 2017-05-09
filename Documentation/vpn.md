@@ -38,7 +38,7 @@ Or you can follow these steps:
 2.  Open the installed openVPN with right click and choose “with administrator privileges”.
 3.  Type in the credentials for your HU-account.
 
-  [HU-website:]: https://www.cms.hu-berlin.de/de/dl/netze/vpn
+  [HU-website]: https://www.cms.hu-berlin.de/de/dl/netze/vpn
   [This is the official manual from the HU for macOS]: https://www.cms.hu-berlin.de/de/dl/netze/vpn/openvpn/macosx/ovpn-macosx.pdf
   [Tunnelblick-website]: https://tunnelblick.net/
   [Download]: https://www.cms.hu-berlin.de/de/dl/netze/vpn/openvpn/hu-berlin.ovpn
