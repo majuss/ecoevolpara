@@ -44,7 +44,7 @@ Will upgrade all packages which are outdated.
 Software that needs regular manual updates
 ------------------------------------------
 - seafile server
-- rstudio server
+- rstudio server https://www.rstudio.com/products/rstudio/download-server/
 
 
 Connect to a server via ssh

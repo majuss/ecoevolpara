@@ -174,6 +174,10 @@ Setting up a client on Windows
 5. When Seafile has started sucessfully, right click the folder in Seafile you want to sync and choose the local destination.
 
 
+
+Synchronize a shared directory to your local computer
+
+
 Setting up the Server (Svalbard)
 ================================
 
