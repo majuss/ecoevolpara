@@ -1,5 +1,5 @@
 # Summary
 
 * [Documentation]
-    * [Debian](debian.rst)
+    * [Debian](debian.md)
     * [Seafile](seafile.md)
