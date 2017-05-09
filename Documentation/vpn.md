@@ -3,7 +3,7 @@ VPN
 
 VPN means virtual private network. It is a software which will make the computer think you’re inside of a different network. This will describe how to setup the VPN connection for the HU-network with an HU-account (required).
 
-Here is the official manual from the [HU-website:].
+Here is the official manual from the [HU-website].
 
 macOS
 -----
@@ -25,7 +25,7 @@ Or you can follow these steps:
 
 1.  Install open VPN on your system with: `sudo aptitude install openvpn` (actual command depends on Linux distribution).
 2.  [Download] the HU-VPN configuration file.
-3.  Run :code:\`sudo openvpn –config hu-berlin.ovpn
+3.  Run `sudo openvpn –config hu-berlin.ovpn`
 
 Windows
 -------
@@ -34,7 +34,7 @@ Windows
 
 Or you can follow these steps:
 
-1.  [Download openVPN] and install it.
+1.  [Download openVPN] (preconfigured version from the HU) and install it.
 2.  Open the installed openVPN with right click and choose “with administrator privileges”.
 3.  Type in the credentials for your HU-account.
 
