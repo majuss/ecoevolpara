@@ -32,7 +32,13 @@ Setting up a Geneious client
 
 This Tutorial will guide you from the start to set up the geneious license server on a completely new machine. It requires you in the first place to create a virtual machine with Debian stable. Stable because in the later releases, software which is required by the geneious license server was removed from Debian. So you need an Debian running a 3.X Kernel or earlier.
 
-Inside of the Debian stable VM you need to download the [server software]. Then start the scr
+Inside of the Debian stable VM you need to download the `server software <http://www.geneious.com/installers/licensingUtility/2_0_3/GeneiousLicenseServer_linux64_2_0_3_with_jre.sh/>`_. Then start the script with root priveleages. During the installing process you will be asked for the license key. It is located in our KeePassX-database. All other option can be left at default. The license-server is now installed in /path/to/
+
+## Setup the mysql database-server
+
+export the old database, import it, set some value higher
+`https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/`
+
   [this file]: https://github.com/majuss/ecoevolpara/raw/master/source/appendix/various/geneious/mysql-connector-java-5.1.30-bin.jar
   [here]: http://www.geneious.com/previous-versions/
   [Download the macOS-client.]: https://assets.geneious.com/installers/geneious/release/Geneious_mac64_6_1_8.dmg

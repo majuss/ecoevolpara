@@ -10,7 +10,7 @@ The domain of the seafile server is `svalbard.biologie.hu-berlin.de`. It’s now
 
 ### Debian GUI
 
-It’s recommended to use our [custom Installer] for the Seafile-Client (GUI or CLI).
+It’s recommended to use our [custom Installer] for the Seafile-Client (GUI or CLI). **Please read the underneath instructions very carefully!**
 
 #### With installer
 
@@ -20,7 +20,7 @@ It’s recommended to use our [custom Installer] for the Seafile-Client (GUI or 
 4.  Search for `seafile` and start it.
 5.  In the first field enter the path: `/home/seafile/your_username`
 6.  In the next field, enter our server-url: `https://svalbard.biologie.hu-berlin.de`, your Seafile user-email and password (both provided by the workgroup-admin).
-7.  When Seafile starts up right click in Seafile your *home\_your\_username* and choose `sync this library` then click `sync with an existing folder` and enter the path to your home (/home/marius).
+7.  When Seafile starts up right click in Seafile your *home_your_username* and choose `sync this library` then click `sync with an existing folder` and enter the path to your home (/home/marius).
 8.  Add Seafile to the autostart see [here].
 
 
