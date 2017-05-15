@@ -3,33 +3,101 @@
 
 ## Backup with R-diff backup
 
-(outdated)
+Our backup from harriet and its mounted fibrechannel-space SAN is realised with rdiff-backup (installed with: `aptitude install rdiff-backup`). The software has to be installed on the server and the machine which will get backed up. Additionally the server needs a working ssh-connection to all clients. 
 
-Our backup from harriet and its mounted fibrechannel-space SAN is realised with rdiff-backup (installed with: `aptitude install rdiff-backup`). The software has to be installed on the server and the machine which will get backed up. Additionally the server needs a working ssh-connection to all clients. This means you have to store the pub-key from the server on every client in /root/.ssh/authorized\_keys. See 2.3.2 for the description of the cronjob which will trigger the backup.
 
-The user rdiff-backup will connect via a root-ssh connection but onto the key in /root/.ssh/authorized\_keys we will append: :: command=“rdiff-backup –server –restrict-read-only /”,from=“141…”,no-port-forwarding,no-X11-forwarding,no-pty ssh-rsa AAAAB3Nz..
+### R-diff backup configuration
 
-This will only allow rdiff-backup commands through this conenction in read-only and only coming from svalbards IP.
+1. Install the software with:
 
-To restore any file from harriet you first have to login as the user rdiff-backup (password is found in the KeePassX-database), then you have to type:
+2. Create groups and a user:
 ```
-rdiff-backup -r $days_to_go_back $path_to_file_to_restore $targed_path
+groupadd -g 3500 rdiff-backup
+useradd -u 3500 -s /bin/false -d /backup -m -c "rdiff-backup" -g rdiff-backup rdiff-backup
+```
+3. Change to the user rdiff-backup:
+```
+su -m rdiff-backup
+```
+4. Create ssh-key:
+```
+cd /backup
+ssh-keygen
+```
+5. Create ssh shortcut and enter the simple name and the IP of the server you want to backup:
+```
+host harriet_backup
+hostname IP_of_server
+user root
+```
+4. Change the permissions of the ssh directory:
+```
+chmod -R go-rwx /backup/.ssh
+```
+5. Add the public key to the server you want to backup. Therefore connect to the remote server:
+```
+ssh user@harriet
+```
+Then get `root` or create the .ssh directory via sudo.
+```
+sudo mkdir /root/.ssh
+```
+And the pub-key of the backup server (Svalbard).
+```
+nano /root/.ssh/authorized_keys
+```
+After you added the key you need to append some commands in front of the key:
+```
+nano /root/.ssh/authorized_keys
+```
+and paste the following directly in front of the key:
+```
+command="rdiff-backup --server --restrict-read-only /",from="harriet.biologie.hu-berlin.de",no-port-forwarding,no-X11-forwarding,no-pty
+```
+So it should look similiar to this (you can get the domain adress of the server with: `dig -x IP_ADRESS`:
+```
+command="rdiff-backup --server --restrict-read-only /",from="harriet.biologie.hu-berlin.de",no-port-forwarding,no-X11-forwarding,no-pty ssh-rsa AAAAB3Nza[...]W1go9M= rdiff-backup@backup
+```
+Repair permissions of the .ssh directory:
+```
+chmod -R go-rwx /root/.ssh
+```
+6. Back on the backup-server type we test the backup with:
+```
+cd /backup
+rdiff-backup harriet_backup::/REMOTE_DIRECTORY LOCAL_DORECTORY
+```
+This will backup the typed remote directory into the local one. When this is running successfull we are creating a cronjob.
+
+7.  Run:
+```
+sudo crontab -e
+```
+And add something like this
+```
+40 2 * * * /usr/bin/rdiff-backup --exclude /tmp --exclude /mnt --exclude /proc --exclude /dev --exclude /cdrom --exclude /floppy server1_backup::/ /backup/backup_harriet
+```
+This is running the backup every night at 2:40 and is backing up `/` but excluding some recommend directories.
+
+### Restore files from the backup
+
+To restore any file from a backup you first have to login as the user rdiff-backup (password is found in the KeePassX-database), then you have to type:
+```
+rdiff-backup -r $days_to_go_back $path_to_file_to_restore $restore_targed_path
 ```
 So for example to restore alices whole home directory from 10 days ago:
 ```
-rdiff-backup -r 10D /data/backup/harriet/localstorage/alice /data/backup/restore/alice
+rdiff-backup -r 10D /data/backup_harriet/localstorage/alice /data/backup_restore/alice
 ```
-The directory has to be owned by rdiff-backup so the user can write into it.
+The restore directory has to be owned by rdiff-backup so the user can write into it.
 
-To delete old increments run: `rdiff-backup –remove-older-than 90D /data/backup/harriet` This will delete all increments which are older than 90 days.
+### Delete increments - free disk space
 
+To delete old increments run: `rdiff-backup –remove-older-than 90D /data/backup_harriet` This will delete all increments which are older than 90 days.
 
+### Back up the seafile-data
 
-- INSERT backing up the seafile-data
-- INSERT remove older backups manually
-
-How to setup: <https://www.howtoforge.com/linux_rdiff_backup>
-
+Additional to the server backups (harriet) you should backup the seafile-data directory. So in case of a corruption of these files you can restore all metadata.
 
 ## TSM-backup
 
@@ -42,7 +110,7 @@ Installing the client server on a Debian system running kernel 4.9+ is somewhat 
 
 1. Create a working directory and change into it: `mkdir tsm; cd tsm`
 
-2. Download the latest `.deb` package from: http://www-01.ibm.com/support/docview.wss?uid=swg24042956 OR Direct link: 
+2. Download the latest `.deb` package from the [IBM support site] OR via direct link: 
 ```
 wget ftp://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86_DEB/BA/v810/8.1.0.0-TIV-TSMBAC-LinuxX86_DEB.tar
 ```
@@ -92,20 +160,74 @@ Also have a look at the official [HU configuration manual].
 Open a new file:
 ```
 nano /opt/tivoli/tsm/client/ba/bin/dsm.sys
+```
+And paste the following but replace the bold entries with the parameters mentioned above:
+<pre>
+************************************************************************
+* Tivoli Storage Manager                                               *
+*                                                                      *
+* Sample Client System Options file for UNIX (dsm.sys.smp)             *
+************************************************************************
+* 
+*  This file contains the minimum options required to get started
+*  using TSM.  Copy dsm.sys.smp to dsm.sys.  In the dsm.sys file,
+*  enter the appropriate values for each option listed below and
+*  remove the leading asterisk (*) for each one.
+*
+*  If your client node communicates with multiple TSM servers, be
+*  sure to add a stanza, beginning with the SERVERNAME option, for
+*  each additional server.
+*
+************************************************************************
+SErvername  <b>TSM-SERVERNAME</b>
+   COMMMethod         TCPip
+   TCPPort            1500
+   TCPServeraddress   <b>TSM-SERVERNAME.cms.hu-berlin.de</b>
+NOdename    SVALBARD_BIO
+PASSWORDAccess  generate
+* EXCLUDE.DIR "/home/user/test"
+ERRORLOGName    /var/log/dsmerror.log
+ERRORLOGRETENTION       60
+SCHEDLOGName    /var/log/dsmsched.log
+SCHEDLOGRETENTION       30
+SCHEDMODE       PROMPTED
+MANAGEDSERVICES WEBCLIENT SCHEDULE
+* WEBPORTS 2123 2124
+</pre>
+Now create a new options file with:
+```
 nano /opt/tivoli/tsm/client/ba/bin/dsm.opt
+```
+Replace the bold entry and paste:
+<pre>
+************************************************************************
+*                                                                      *
+* Sample Client User Options file for UNIX (dsm.opt.smp)               *
+************************************************************************
 
+*  This file contains an option you can use to specify the
+*  server to contact if more than one is defined in your client
+*  system options file (dsm.sys).  Copy dsm.opt.smp to dsm.opt.
+*  If you enter a server name for the option below, remove the
+*  leading asterisk (*).
 
+************************************************************************
 
-
-
-//Hu configuration manual
-https://www.cms.hu-berlin.de/de/dl/systemservice/fileservice/tsm/konfiguration
+SERVERNAME	<b>TSM-SERVERNAME</b>
+SUbdir          yes
+QUIET
+DOMAIN ALL-LOCAL
+* DOMAIN "/"
+* DOMAIN "/home"
+</pre>
 
 ### Starting the TSM backup
 
-// commandline doc
-
-
-
+To start the TSM backup simply type:
+```
+sudo dsmc incremental
+```
+You may get asked for the TSM password. You can find the complete documentation of all command line parameter [here].
+  [IBM support site]: http://www-01.ibm.com/support/docview.wss?uid=swg24042956
   [HU configuration manual]: https://www.cms.hu-berlin.de/de/dl/systemservice/fileservice/tsm/konfiguration/tsm-client-linux
-  [IBM docu]: https://www.ibm.com/support/knowledgecenter/en/SSGSG7_6.4.0/com.ibm.itsm.client.doc/t_bac_cmdline.html
+  [here]: https://www.ibm.com/support/knowledgecenter/en/SSGSG7_6.4.0/com.ibm.itsm.client.doc/t_bac_cmdline.html
