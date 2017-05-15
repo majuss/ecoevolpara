@@ -9,6 +9,9 @@ Our backup from harriet and its mounted fibrechannel-space SAN is realised with 
 ### R-diff backup configuration
 
 1. Install the software with:
+```
+aptitude install rdiff-backup
+```
 
 2. Create groups and a user:
 ```

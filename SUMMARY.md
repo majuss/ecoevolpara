@@ -1,6 +1,7 @@
 # Summary
 
-* [Documentation](Documentation/about.md)
+* [Documentation]
+
     * [Debian](Documentation/debian.md)
     * [Seafile](Documentation/seafile.md)
     * [Backup](Documentation/backup.md)
