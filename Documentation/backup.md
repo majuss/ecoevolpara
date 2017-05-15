@@ -25,6 +25,9 @@ To delete old increments run: `rdiff-backup –remove-older-than 90D /data/backu
 
 
 
+- INSERT backing up the seafile-data
+- INSERT remove older backups manually
+
 How to setup: <https://www.howtoforge.com/linux_rdiff_backup>
 
 
@@ -41,12 +44,12 @@ Installing the client server on a Debian system running kernel 4.9+ is somewhat 
 
 2. Download the latest `.deb` package from: http://www-01.ibm.com/support/docview.wss?uid=swg24042956 OR Direct link: 
 ```
-wget: ftp://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86_DEB/BA/v810/8.1.0.0-TIV-TSMBAC-LinuxX86_DEB.tar
+wget ftp://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86_DEB/BA/v810/8.1.0.0-TIV-TSMBAC-LinuxX86_DEB.tar
 ```
 
 3. Decompress the downloaded `.tar` archive: `tar -xvf 8.1.0.0-TIV-TSMBAC-LinuxX86_DEB.tar`
 
-4. Delete the outdated Filepath source: `rm tivsm-filepath-source.tar.gz` for a Debian running Kernel 4.9.0-2 you can download this Filepath source: INSERT FILEPATH SOURCE LINK. For any other Kernel you can try the above, or the one inside the `.tar` package. If they don't compile you have to write an E-Mail to IBM-staff (tsmosreq@us.ibm.com).
+4. Delete the outdated Filepath source: `rm tivsm-filepath-source.tar.gz` for a Debian running Kernel 4.9.0-2 you can download this Filepath source: INSERT FILEPATH SOURCE LINK. For any other Kernel you can try the above, or the one inside the `.tar` package. If they don't compile you have to write an E-Mail to IBM-staff (tsmosreq@us.ibm.com). He will fix the source code to fit your kernel version.
 
 5. Check the release number of your TSM instance: `dpkg-deb -I tsmbackup/tivsm-api64.amd64.deb` and copy the `Version:` entry.
 
@@ -56,33 +59,53 @@ sudo aptitude update
 sudo aptitude install build-essential linux-headers-amd64
 ```
 
+Then extract the Filepath source: `tar -xf TIVsm-filepath-source_test.tar.gz`. Change into source directory: `cd jbb_gpl` and compile it with `make RELNUM=$copiedReleaseNumber deb`. If the compile can't finish successfull you can't continue, see step 4 for details. If `make` is not found you first have to run `sudo aptitude update` and then `sudo aptitude install build-essential linux-headers-amd64`. The compiling will create a `.deb` package in the `jbb_gpl` directory.
 
-Then extract the Filepath source: `tar -xf TIVsm-filepath-source_test.tar.gz`. Change into source directory: `cd jbb_gpl` and compile it with `make RELNUM=$copiedReleaseNumber deb`. If the compile can't finish successfull you can't continue, see step 4 for details. If `make` is not found you first have to run `sudo aptitude update` and then `sudo aptitude install build-essential linux-headers-amd64`.
-
-7. 
-
+7. Install all TSM components by running the following commands:
 ```
-sudo dpkg -i gskcrypt64_8.0-50.40.linux.x86_64.deb gskssl64_8.0-50.40.linux.x86_64.deb
+cd ..
+sudo dpkg -i jbb_gpl/tivsm-filepath-8.1.0-0.deb
+sudo dpkg -i gskcrypt64_8.0-50.66.linux.x86_64.deb
+sudo dpkg -i gskssl64_8.0-50.66.linux.x86_64.deb
 sudo dpkg -i tivsm-api64.amd64.deb
+sudo dpkg -i tivsm-apicit.amd64.deb
 sudo dpkg -i tivsm-ba.amd64.deb
 sudo dpkg -i tivsm-bacit.amd64.deb
-sudo dpkg -i tivsm-jbb.amd64.deb
 sudo dpkg -i tivsm-bahdw.amd64.deb
+sudo dpkg -i tivsm-jbb.amd64.deb
 ```
-
-
+When every package was sucessfully installed head over to the configuration.
 
 ### TSM Configuration
 
-alter init.d file 
+1. Firt of all you have to alter the `init.d` registration of TSM. Open `/etc/init.d/dsmcad` with your favorite editor and go to line 92. 
+Replace line 92 with: `if [ $ID = "debian" ]` this will make the script work correctly with Debian.
+Try the script with: `sudo /etc/init.d/dsmcad status`
 
-//Hu configuration doc
+2. You should got the login credentials for the TSM-server from the workgroup-systemadminstrator. These credentials should contain the following 4 parameters which are needed to access the HU TSM server:
+* A password
+* SErvername
+* TCPServeraddress
+* NOdename
+
+Also have a look at the official [HU configuration manual].
+Open a new file:
+```
+nano /opt/tivoli/tsm/client/ba/bin/dsm.sys
+nano /opt/tivoli/tsm/client/ba/bin/dsm.opt
+
+
+
+
+
+//Hu configuration manual
 https://www.cms.hu-berlin.de/de/dl/systemservice/fileservice/tsm/konfiguration
 
 ### Starting the TSM backup
 
 // commandline doc
-https://www.ibm.com/support/knowledgecenter/en/SSGSG7_6.4.0/com.ibm.itsm.client.doc/t_bac_cmdline.html
 
 
 
+  [HU configuration manual]: https://www.cms.hu-berlin.de/de/dl/systemservice/fileservice/tsm/konfiguration/tsm-client-linux
+  [IBM docu]: https://www.ibm.com/support/knowledgecenter/en/SSGSG7_6.4.0/com.ibm.itsm.client.doc/t_bac_cmdline.html

@@ -89,7 +89,7 @@ For the temperatures of the harddrives you need to use root and some code like t
 
 ## Remotely connect via iDRAC (Harriet) and IPMI (Svalbard)
 
-### iDrac
+### iDRAC
 
 With the integrated Dell Remote Access Controller you can manage the server remotely. It’s basically a tiny computer inside of the server.
 

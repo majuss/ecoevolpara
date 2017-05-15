@@ -1,3 +1,3 @@
 # ecoevolpara
 
-The builded documentation is available at: http://ecoevolpara.readthedocs.io/
+The builded documentation is available at: https://majuss.gitbooks.io/ecoevolpara/content/
