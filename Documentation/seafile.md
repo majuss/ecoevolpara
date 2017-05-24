@@ -180,9 +180,7 @@ seaf-cli status -c /etc/seafile/$USER/conf_dir
 4. On the first start Seafile will ask you for server and user-credentials. The Server URL you have to enter is: `https://svalbard.biologie.hu-berlin.de`. The user-credentials will send to you by the local administrator.
 5. When Seafile has started sucessfully, right click the folder in Seafile you want to sync and choose the local destination.
 
-
-[See here how to synchronize a shared directory to your local computer.]
-
+See here how to synchronize a [shared directory] to your local computer.
 
 ## Setting up the Server (Svalbard)
 
@@ -244,7 +242,7 @@ then untar it: `tar -xzf seafile-server_6.0.7_x86-64.tar.gz` and own it with `su
 
     [sudo-privileges for this]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#sudo
     [sudo-privileges]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#sudo
-    [See here how to synchronize a shared directory to your local computer.]: https://majuss.gitbooks.io/ecoevolpara/Documentation/seafile.html#sync_shared
+    [shared directory]: https://majuss.gitbooks.io/ecoevolpara/Documentation/seafile.html#sync_shared
     [custom Installer]: INSERT LINK 
     [above from step 4]: https://majuss.gitbooks.io/ecoevolpara/Documentation/seafile.html#gui_installer
     [Seafile-manual on Github]: https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md
