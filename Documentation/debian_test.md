@@ -2,13 +2,13 @@
 
 Debian is a common and completely free Linux distribution. It is released in 3 release-branches: *stable*, *testing* and *experimental*. We are using the *testing* release, since debian-stable is very conservative and updates getting rolled out pretty slow.
 
-## Administrator / Root privileges
+## <a name="sudo"></a>Administrator / Root privileges
 
 Normal users don’t have the privileges to install software and change system configurations like adding printers. The so called `root` user is the administrator. You can change to that user with `su root` if you know the password. Otherwise we use the program `sudo` to provide normal users admin privs without using the user root directly. The privileged users are entered in `visudo` with a line like that `victor ALL=(ALL:ALL) ALL`.
 
 Victor then have the privs to call a program as administrator (root) with the `sudo command`.
 
-**Never run programs as root unnecessary** such as `git` or you bioinformatical pipelines. You can actually **damage the server**s integrity.
+**Never run programs as root unnecessary** such as `git` or you bioinformatical pipelines. You can actually **damage the servers** integrity.
 
 [link]
 
@@ -22,12 +22,12 @@ This will list all findings, if nothing get’s posted your software is not insi
 
 If the search finds your desired software you can easily install it via:
 ```
-aptitude install $softwarename
+sudo aptitude install $softwarename
 ```
 
 ---
 **If Aptitude is not installed...**
-... you first need to install Aptitude with the command `sudo apt-get install aptitude`
+... you first need to install Aptitude with the command `sudo apt-get install aptitude`.
 
 ---
 
@@ -36,11 +36,11 @@ aptitude install $softwarename
 
 It is recommended to update and upgrade the system regulary.
 ```
-aptitude update
+sudo aptitude update
 ```
 Will update the package list/cache. Always run this before you upgrading or installing software!
 ```
-aptitude upgrade
+sudo aptitude upgrade
 ```
 Will upgrade all packages which are outdated.
 
@@ -55,7 +55,7 @@ On the client machine you have to create ssh keys with: `ssh-keygen`
 
 Then cat the created id_rsa.pub key: `cat ~/.ssh/id_rsa.pub`
 
-Copy the output. Now you need a already working connection to the server or you send the key to someone who can add it onto the server. To add the key on the server run (replace $username with your actual username on the server): `` nano /home/$username/.ssh/authorized_keys`
+Copy the output. Now you need a already working connection to the server or you send the key to someone who can add it onto the server. To add the key on the server run (replace $username with your actual username on the server): `nano /home/$username/.ssh/authorized_keys`
 
 Paste the key onto the end of the file. If `.ssh` doesn’t exist you can create it with `mkdir`. Now test your ssh connection to the server.
 
