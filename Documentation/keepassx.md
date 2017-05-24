@@ -25,10 +25,10 @@ If you previously installed the 0.4.3 version just uninstall it with: `sudo apti
 
 ## Installing on Windows
 
-Just visit the website and download the KeePassX installer: [KeePassX website:].
+Just visit the website and download the KeePassX installer: [KeePassX website].
 
 ## Installing on macOS
 
-Just visit the website and download the KeePassX diskimage: [KeePassX website:].
+Just visit the website and download the KeePassX diskimage: [KeePassX website].
 
-  [KeePassX website:]: https://www.keepassx.org/downloads
+  [KeePassX website]: https://www.keepassx.org/downloads
