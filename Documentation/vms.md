@@ -91,14 +91,12 @@ shift + F11 | Toggle Fullscreen
 
 When starting the Linux vm with qemu you have to add a ssh-port forwarding rule with the parameter: `net user,hostfwd`. For example you add: `hostfwd=tcp::15000-:22` then you can connect to the vm with: `ssh user@IP -p 15000` See [the table] for details.
 
-  [link text]
-
 ### Connect to a Linux VM using a VNC-client (GUI)
 
 Install a vnc client on your local machine for example xtightvncviewer (`aptitude install xtightvncviewer`).
 
 
-  [the table]: #vm_table
+  [the table]: https://majuss.gitbooks.io/ecoevolpara/Documentation/vms.html#vm_table
   [this website]: https://www.microsoft.com/de-de/evalcenter/evaluate-windows-10-enterprise
   [spice-guest-tools]: https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe
   [spice-client]: https://packages.debian.org/jessie/spice-client/
