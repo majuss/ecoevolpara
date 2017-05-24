@@ -17,7 +17,7 @@ A typical command to start a Windows-vm looks like that:
 qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 2048M -k de -cpu host -smp cores=1,threads=1,sockets=1 -vga qxl -vnc :0 -hda /data/VMs/jessie.qcow2 -net nic,model=e1000 -net user,hostfwd=tcp::27001-:27001,hostfwd=tcp::3306-:3306,hostfwd=tcp::$vms_ssh_port-:22,hostfwd=tcp::49630-:49630 -spice port=15300,addr=$server_IP
 ```
 
-Command | Meaning
+Command | Meaning <a name="vm_table"></a>
 --------|-------
 `nodefconfig` | No default configuration
 `machine accel=kvm` | Sets the virtualization technology to KVM
@@ -89,15 +89,16 @@ shift + F11 | Toggle Fullscreen
 
 ### Connect to a Linux VM using ssh
 
-When starting the Linux vm with qemu you have to add a ssh-port forwarding rule with the parameter: `net user,hostfwd`. For example you add: `hostfwd=tcp::15000-:22` then you can connect to the vm with: `ssh user@IP -p 15000` See INSERT LINK for details.
+When starting the Linux vm with qemu you have to add a ssh-port forwarding rule with the parameter: `net user,hostfwd`. For example you add: `hostfwd=tcp::15000-:22` then you can connect to the vm with: `ssh user@IP -p 15000` See [the table] for details.
 
   [link text]
 
 ### Connect to a Linux VM using a VNC-client (GUI)
 
-
 Install a vnc client on your local machine for example xtightvncviewer (`aptitude install xtightvncviewer`).
-  [link text]:(#Create a VM using QEMU) 
+
+
+  [the table]: #vm_table
   [this website]: https://www.microsoft.com/de-de/evalcenter/evaluate-windows-10-enterprise
   [spice-guest-tools]: https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe
   [spice-client]: https://packages.debian.org/jessie/spice-client/

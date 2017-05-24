@@ -10,8 +10,6 @@ Victor then have the privs to call a program as administrator (root) with the `s
 
 **Never run programs as root unnecessary** such as `git` or you bioinformatical pipelines. You can actually **damage the servers** integrity.
 
-[link]
-
 ## Install software
 
 First look if you can find the software you are looking for in the official debian repositories with:
