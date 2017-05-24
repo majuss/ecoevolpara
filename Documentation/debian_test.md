@@ -44,8 +44,8 @@ Will upgrade all packages which are outdated.
 
 ### Software that needs regular manual updates
 
--   seafile server INSERT LINK TO SEAFILE SERVER
--   rstudio server <https://www.rstudio.com/products/rstudio/download-server/>
+-   [Seafile server]
+-   [RStudio server]
 
 ## Connect to a server via ssh
 
@@ -84,3 +84,5 @@ INSERT RIGHT PICTURES
 Hit the windows-key and search for "startup", open the first search result "Startup Applications".
 
     [link]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#administrator--root-privileges
+    [Seafile server]: https://www.seafile.com/en/download/#server
+    [RStudio server]: https://www.rstudio.com/products/rstudio/download-server/

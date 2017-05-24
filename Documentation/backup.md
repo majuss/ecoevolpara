@@ -120,7 +120,7 @@ wget ftp://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/clie
 
 3. Decompress the downloaded `.tar` archive: `tar -xvf 8.1.0.0-TIV-TSMBAC-LinuxX86_DEB.tar`
 
-4. Delete the outdated Filepath source: `rm tivsm-filepath-source.tar.gz` for a Debian running Kernel 4.9.0-2 you can download this Filepath source: INSERT FILEPATH SOURCE LINK. For any other Kernel you can try the above, or the one inside the `.tar` package. If they don't compile you have to write an E-Mail to IBM-staff (tsmosreq@us.ibm.com). He will fix the source code to fit your kernel version.
+4. Delete the outdated Filepath source: `rm tivsm-filepath-source.tar.gz` for a Debian running Kernel 4.9.0-2 you can download this [Filepath source]. For any other Kernel you can try the above, or the one inside the `.tar` package. If they don't compile you have to write an E-Mail to IBM-staff (tsmosreq@us.ibm.com). He will fix the source code to fit your kernel version.
 
 5. Check the release number of your TSM instance: `dpkg-deb -I tsmbackup/tivsm-api64.amd64.deb` and copy the `Version:` entry.
 
@@ -232,7 +232,7 @@ sudo dsmc incremental
 ```
 You may get asked for the TSM password. You can find the complete documentation of all command line parameter [here].
 
-### Add a cornjob for the TSM-backup
+### Add a cronjob for the TSM-backup
 
 INSERT CRONJOB
 
@@ -241,3 +241,4 @@ INSERT CRONJOB
   [IBM support site]: http://www-01.ibm.com/support/docview.wss?uid=swg24042956
   [HU configuration manual]: https://www.cms.hu-berlin.de/de/dl/systemservice/fileservice/tsm/konfiguration/tsm-client-linux
   [here]: https://www.ibm.com/support/knowledgecenter/en/SSGSG7_6.4.0/com.ibm.itsm.client.doc/t_bac_cmdline.html
+  [Filepath source]: https://github.com/majuss/ecoevolpara/raw/master/source/appendix/various/TIVsm-filepath-source_test.tar.gz

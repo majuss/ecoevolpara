@@ -60,12 +60,10 @@ First of all you should take a look onto the monthly maintenance reports from ou
 
 The logfile contains 2 crucial types of information:
 
--   the SMART status of all mass storage devices (INSERT LINKS TO SMART INTERPRETATION)
--   the result of the btrfs scrubbing (INSERT LINK TO BTRFS)
+-   the SMART status of all mass storage devices [(interpretation help)]
+-   the result of the btrfs scrubbing [(`scrub manpage`)]
 
-All you have to know about the SMART-status is, that it gives you a general overview of the disks health. How many hours is it spinning, how oftern turned it of and on, how many recoverable errors is it producing. As long as the “SMART Health Status” is said to be “OK” you don’t have to worry about it. If an harddisk does not pass the SMART test all the work on the affe
-
-test all the work on the affected server should be immideatly stopped. Continue with the appropriate section in the FAQ. LINK TO FAQ
+All you have to know about the SMART-status is, that it gives you a general overview of the disks health. How many hours is it spinning, how oftern turned it of and on, how many recoverable errors is it producing. As long as the “SMART Health Status” is said to be “OK” you don’t have to worry about it. If an harddisk does not pass the SMART test all the work on the affected server should be immideatly stopped. Continue with the appropriate section in the FAQ. LINK TO FAQ
 
 The scrubbing of btrfs verifies the integrity of the filesystem. If the filesystem counted errors you are will likely loose data in the next moments. Errors here are mostly produced by the RAM or the harddisks. As long btrfs is scrubbing with “0 errors” you have nothing to worry about.
 
@@ -106,7 +104,7 @@ To use the java-console, you need to start a specific preconfigured vm and conne
 
 Since Svalbard is not a Dell server he doesn’t have a DRAC. Instead he’s having a standard IPMI controller on the mainboard to control the server hardware remotely. The IP is also available in the table mentioned above. You can simply reach it with every standard webbrowser. A console is not available, since it would had required additional KVM hardware (as far as I know).
 
-
-
+  [(`scrub manpage`)]: https://btrfs.wiki.kernel.org/index.php/Manpage/btrfs-scrub
+  [(interpretation help)]: http://www.z-a-recovery.com/manual/smart.aspx
   [here]: https://github.com/majuss/ecoevolpara/blob/master/source/appendix/pdfs/ChassisSC836.pdf
   [downlaod the Debian testing iso]: http://cdimage.debian.org/cdimage/weekly-builds/amd64/iso-cd/

@@ -34,7 +34,7 @@ qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 2048M -k de -c
 `net nic,model=e1000` | Model of virtualized networkadapter, usual e1000 for intel and `virtio` for fullspeed
 `net user,hostfwd` | Forwarding ports from host to guest pe.: `hostfwd=tcp::15000-:22` the ssh port of the vm is now reacheable through the port 15000 (`ssh user@IP -p 15000`)
 
-### Create a new Debian-stable VM
+<a name="stable"></a>### Create a new Debian-stable VM
 
 Connect to Beagle (or a different machine which should host the vm) and download the Debian-iso [from this site]. Right click the link for the amd64 netinstall and copy the link. Then enter `wget`. paste the link and hit enter. This will download the install-image into the current working directory (`pwd`).
 

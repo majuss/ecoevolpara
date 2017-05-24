@@ -28,14 +28,14 @@ A lot of members of the institute are using a software called *geneious* to anal
 
 ## Set up the Geneious License Server (Beagle)
 
-This Tutorial will guide you from the start to set up the geneious license server on a completely new machine. It requires you in the first place to create a virtual machine with Debian Jessie. Jessie because in the later releases, software which is required by the geneious license server was removed from Debian. So you need an Debian running a 3.X Kernel. INSERT LINK TO STABLE VM
+This Tutorial will guide you from the start to set up the geneious license server on a completely new machine. It requires you in the first place to create a virtual machine with Debian Jessie. Jessie because in the later releases, software which is required by the geneious license server was removed from Debian. So you need an Debian running a 3.X Kernel. It is recommended [to use a virtual machine].
 
 Inside of the Debian stable VM you need to download the server software:
 ```
 wget http://www.geneious.com/installers/licensingUtility/2_0_3/GeneiousLicenseServer_linux64_2_0_3_with_jre.sh/
 ```
 
-Then start the script with root priveleages. During the installing process you will be asked for the license key. It is located in our KeePassX-database. All other option can be left at default. The license-server is now installed in /path/to/ INSERT PATH TO LICENSESERVER
+Then start the script with root priveleages. During the installing process you will be asked for the license key. It is located in our KeePassX-database. All other option can be left at default. The license-server is now installed in `/usr/local`
 
 ## Setup the mysql database-server
 
@@ -59,3 +59,4 @@ set some value higher
   [Download the Windows-client]: https://assets.geneious.com/installers/geneious/release/Geneious_win64_6_1_8_with_jre.exe
   [Download the Linux-client]: https://assets.geneious.com/installers/geneious/release/Geneious_linux64_6_1_8_with_jre.sh
   [server software]: http://www.geneious.com/installers/licensingUtility/2_0_3/GeneiousLicenseServer_linux64_2_0_3_with_jre.sh/
+  [to use a virtual machine]: https://majuss.gitbooks.io/ecoevolpara/Documentation/vms.html#stable

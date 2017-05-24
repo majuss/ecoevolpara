@@ -10,14 +10,14 @@ The domain of the seafile server is `svalbard.biologie.hu-berlin.de`. It’s now
 
 ### Debian GUI
 
-It’s recommended to use our [custom Installer] for the Seafile-Client (GUI or CLI). **Please read the underneath instructions very carefully!**
+It’s recommended to use our <a href="https://raw.githubusercontent.com/majuss/ecoevolpara/master/source/appendix/scripts/install_seafile_client.sh" download>custom installer</a> for the Seafile-Client (GUI or CLI). **Please read the underneath instructions very carefully!**
 
-#### With installer
+<a name="gui_installer"></a>#### With installer
 
 1.  Download the installer from above.
-2.  Run it in the terminal (open it with the search function) with `sudo bash install_seafile_client.sh`. You need [sudo-privileges for this].
-3.  Choose graphical client. And follow the instructions.
-4.  Search for `seafile` and start it.
+2.  Run it in the terminal (open it with the search function) with `sudo bash ~/Downloads/install_seafile_client.sh`. You need [sudo-privileges for this].
+3.  Choose graphical client and follow the instructions.
+4.  When the installer is finished and you logged back in, search for `seafile` and start it.
 5.  In the first field enter the path: `/home/seafile/your_username`
 6.  In the next field, enter our server-url: `https://svalbard.biologie.hu-berlin.de`, your Seafile user-email and password (both provided by the workgroup-admin).
 7.  When Seafile starts up right click in Seafile your *home_your_username* and choose `sync this library` then click `sync with an existing folder` and enter the path to your home (/home/marius).
@@ -25,7 +25,7 @@ It’s recommended to use our [custom Installer] for the Seafile-Client (GUI or 
 
 
 ---
-**Sync a shared directory**
+<a name="sync_shared"></a>**Sync a shared directory**
 
 You can not sync a shared folder into your home directory. Thats why the installer created the directory */home/sharing/your_username*. You can sync your shared directories into that directory.
 
@@ -46,7 +46,7 @@ Replace jessie with the Debian release you’re using (`lsb_release -a | grep Co
 `sudo aptitude u
 
 
-To install the seafile-client you need `sudo-privileges <http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_.
+To install the seafile-client you need [sudo-privileges].
 
 First you need to update your operating system:
 ```
@@ -84,17 +84,16 @@ Log out of your x-server and back in with:
 sudo /etc/init.d/lightdm restart
 sudo /etc/init.d/gdm restart
 ```
-Now follow the manual with the installer `above from step 4 <http://ecoevolpara.readthedocs.io/en/latest/Seafile.html#with-installer>`_.
+Now follow the manual with the installer [above from step 4].
 
-
-For the official manual see: `Seafile-manual on github <https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md>`_.
+For the official manual see: [Seafile-manual on Github].
 
 ## Debian CLI
 
 ### With installer
 
-1. Download the installer from :download:`here <appendix/scripts/install_seafile_client.sh>`
-2. Run it with :code:`sudo bash ~/Downloads/install_seafile_client.sh`. You need `sudo-privileges <http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_ for this.
+1. Download the installer from <a href="https://raw.githubusercontent.com/majuss/ecoevolpara/master/source/appendix/scripts/install_seafile_client.sh" download>here</a>`
+2. Run it with `sudo bash ~/Downloads/install_seafile_client.sh`. You need [sudo-privileges] for this.
 3. Choose cli client.
 4. Enter your local short Debian username.
 5. Enter your Seafile login email.
@@ -108,9 +107,7 @@ For the official manual see: `Seafile-manual on github <https://github.com/haiwe
 
 You need the Library IDs of every Library you want to sync. You get it by opening Seafile in a browser, open the library and copy it from the URL-bar.
 
-To install the Seafile-cli-client you need `sudo-privileges<http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_. INSERT LINK
-
-[sudo-privileges]
+To install the Seafile-cli-client you need [sudo-privileges].
 
 First you need to update your operating system:
 ```
@@ -184,7 +181,7 @@ seaf-cli status -c /etc/seafile/$USER/conf_dir
 5. When Seafile has started sucessfully, right click the folder in Seafile you want to sync and choose the local destination.
 
 
-Synchronize a shared directory to your local computer INSERT_LINK
+[See here how to synchronize a shared directory to your local computer.]
 
 
 ## Setting up the Server (Svalbard)
@@ -239,10 +236,15 @@ Does not work with nginx or apache. Reasons are unknown, you are getting an auth
 
 ## Updating the server-software
 
-Login as the user seafile with `sudo su seafile` and stop the running server with `/etc/init.d/seafile stop`. Download the seafile-server-software from their site: https://www.seafile.com/en/download/ for example with: `wget https://bintray.com/artifact/download/seafile-org/seafile/seafile-server_6.0.7_x86-64.tar.gz` then untar it: `tar -xzf seafile-server_6.0.7_x86-64.tar.gz` and own it with `sudo chown -R seafile:seafile seafile-server_6.0.7`. Copy the extracted directory to `/usr/local/bin/seafile-server`. Then run the minor-upgrade script: `bash /usr/local/bin/seafile-server/seafile-server-6.0.7/upgrade/minor-upgrade.sh`. After that start the server again with: `/etc/init.d/seafile start` as the user seafile.
+Login as the user seafile with `sudo su seafile` and stop the running server with `/etc/init.d/seafile stop`. Download the seafile-server-software from their site: https://www.seafile.com/en/download/ for example with: 
+```
+wget https://bintray.com/artifact/download/seafile-org/seafile/seafile-server_6.0.7_x86-64.tar.gz
+```
+then untar it: `tar -xzf seafile-server_6.0.7_x86-64.tar.gz` and own it with `sudo chown -R seafile:seafile seafile-server_6.0.7`. Copy the extracted directory to `/usr/local/bin/seafile-server`. Then run the minor-upgrade script: `bash /usr/local/bin/seafile-server/seafile-server-6.0.7/upgrade/minor-upgrade.sh`. After that start the server again with: `/etc/init.d/seafile start` as the user seafile.
 
-
-
-  [sudo-privileges for this]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#sudo
-  [here]: INSERT LINK
-  [custom Installer]: INSERT LINK 
+    [sudo-privileges for this]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#sudo
+    [sudo-privileges]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#sudo
+    [See here how to synchronize a shared directory to your local computer.]: https://majuss.gitbooks.io/ecoevolpara/Documentation/seafile.html#sync_shared
+    [custom Installer]: INSERT LINK 
+    [above from step 4]: https://majuss.gitbooks.io/ecoevolpara/Documentation/seafile.html#gui_installer
+    [Seafile-manual on Github]: https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md
