@@ -44,7 +44,7 @@ Will upgrade all packages which are outdated.
 
 ### Software that needs regular manual updates
 
--   seafile server
+-   seafile server INSERT LINK TO SEAFILE SERVER
 -   rstudio server <https://www.rstudio.com/products/rstudio/download-server/>
 
 ## Connect to a server via ssh
@@ -78,6 +78,8 @@ sudo system-config-printer
 This will open a window where you can add a printer. Click **Add** and have a look at the list of network-printers. Mind the printers IP adress (there should be a sticker on the printer or you can look them up in the IP-mapping table).
 
 ## Add programs to the autostart WORK IN PROGRESS - PICTURES BROKEN
+
+INSERT RIGHT PICTURES
 
 Hit the windows-key and search for "startup", open the first search result "Startup Applications".
 

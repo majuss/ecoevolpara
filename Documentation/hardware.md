@@ -71,22 +71,27 @@ The scrubbing of btrfs verifies the integrity of the filesystem. If the filesyst
 
 ## CPU and RAM usage
 
-Install and run the utility htop: `aptitude install htop`.
+Install and run the utility *htop*: `aptitude install htop`.
 
 ## Harddisks / Storage
 
-To start a SMART-selftest of the drive sda (type `lsblk` to get a list of all drives and their identifiers) type: `smartctl -t short /dev/sda`
-
-To see the results of the test (the test will take ~3 minutes): `smartctl -a /dev/sda`
+To start a SMART-selftest of the drive sda (type `lsblk` to get a list of all drives and their identifiers) type:
+```
+smartctl -t short /dev/sda`
+```
+To see the results of the test (the test will take ~3 minutes)
+```
+smartctl -a /dev/sda
+```
 
 ## Temperatures
 
-To monitor the temperature it is best and fastest to use the programm sensors. You install it via “aptitude install sensors”. Then you hvae to detect all thermal sensors installed into the system.
+To monitor the temperature it is best and fastest to use the programm sensors. You install it via `aptitude install sensors`. Then you have to detect all thermal sensors installed into the system: `sensors detect --auto`
 
-`sensors detect --auto`
-
-For the temperatures of the harddrives you need to use root and some code like this: :: while true do sleep 2 for f in a b c d g h do echo “$f” smartctl -x “/dev/sd$f”|grep Temperature done echo "" done
-
+For the temperatures of the harddrives you need to use root and some code like this:
+```
+while true do sleep 2 for f in a b c d g h do echo “$f” smartctl -x “/dev/sd$f”|grep Temperature done echo "" done
+```
 ## Remotely connect via iDRAC (Harriet) and IPMI (Svalbard)
 
 ### iDRAC
@@ -95,7 +100,7 @@ With the integrated Dell Remote Access Controller you can manage the server remo
 
 The recent IP to connect to harriets DRAC you can find in the IP-routing table. You have to enter the IP into a browser and then you will be prompted with an username and password. Both can be found in the groups keepass-database. With the help of the DRAC and a java console you are able to mount .iso files into the system and install new operating systems remotely.
 
-To use the java-console, you need to start a specific preconfigured vm and connect to it, or you install java on your local computer and add a security-exception for the DRACs IP (<https://141>…).
+To use the java-console, you need to start a specific preconfigured vm and connect to it, or you install java on your local computer and add a security-exception for the DRACs IP (*https://141...*).
 
 ### IPMI
 

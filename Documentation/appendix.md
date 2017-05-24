@@ -27,3 +27,5 @@ Updates blast DBs automatically.
 zotero-bot.sh &lt;appendix/scripts/zotero-bot.sh&gt;
 
 Posts Slack messages when the Zotero Library got updated.
+
+INSERT ALL APPENDIX SCRIPTS

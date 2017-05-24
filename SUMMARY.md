@@ -2,6 +2,7 @@
 
 * [Documentation]
 
+    * [Getting started](Documentation/getting_started.md)
     * [Debian](Documentation/debian.md)
     * [Seafile](Documentation/seafile.md)
     * [Backup](Documentation/backup.md)

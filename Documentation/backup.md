@@ -231,6 +231,12 @@ To start the TSM backup simply type:
 sudo dsmc incremental
 ```
 You may get asked for the TSM password. You can find the complete documentation of all command line parameter [here].
+
+### Add a cornjob for the TSM-backup
+
+INSERT CRONJOB
+
+
   [IBM support site]: http://www-01.ibm.com/support/docview.wss?uid=swg24042956
   [HU configuration manual]: https://www.cms.hu-berlin.de/de/dl/systemservice/fileservice/tsm/konfiguration/tsm-client-linux
   [here]: https://www.ibm.com/support/knowledgecenter/en/SSGSG7_6.4.0/com.ibm.itsm.client.doc/t_bac_cmdline.html
