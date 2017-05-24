@@ -243,6 +243,6 @@ Login as the user seafile with `sudo su seafile` and stop the running server wit
 
 
 
-  [sudo-privileges]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#sudo
+  [sudo-privileges for this]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#sudo
   [here]: INSERT LINK
   [custom Installer]: INSERT LINK 
