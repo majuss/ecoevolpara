@@ -3,7 +3,7 @@
 * [Documentation]
 
     * [Getting started](Documentation/getting_started.md)
-    * [Debianfghf](Documentation/debian_test.md)
+    * [Debian](Documentation/debian_test.md)
     * [Seafile](Documentation/seafile.md)
     * [Backup](Documentation/backup.md)
     * [Storage](Documentation/storage.md)

@@ -85,4 +85,4 @@ INSERT RIGHT PICTURES
 
 Hit the windows-key and search for "startup", open the first search result "Startup Applications".
 
-    [link]:https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#administrator--root-privileges
+    [link]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#administrator--root-privileges
