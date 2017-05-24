@@ -17,7 +17,7 @@ A typical command to start a Windows-vm looks like that:
 qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 2048M -k de -cpu host -smp cores=1,threads=1,sockets=1 -vga qxl -vnc :0 -hda /data/VMs/jessie.qcow2 -net nic,model=e1000 -net user,hostfwd=tcp::27001-:27001,hostfwd=tcp::3306-:3306,hostfwd=tcp::$vms_ssh_port-:22,hostfwd=tcp::49630-:49630 -spice port=15300,addr=$server_IP
 ```
 
-Command | Meaning <a name="vm_table"></a>
+<a name="vm_table"></a> Command | Meaning 
 --------|-------
 `nodefconfig` | No default configuration
 `machine accel=kvm` | Sets the virtualization technology to KVM
