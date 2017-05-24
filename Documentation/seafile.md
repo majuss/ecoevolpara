@@ -110,6 +110,8 @@ You need the Library IDs of every Library you want to sync. You get it by openin
 
 To install the Seafile-cli-client you need `sudo-privileges<http://ecoevolpara.readthedocs.io/en/latest/Debian.html#administrator-root-privileges>`_. INSERT LINK
 
+[sudo-privileges]
+
 First you need to update your operating system:
 ```
 sudo aptitude update
@@ -202,7 +204,7 @@ Cut certs into chain. Get root cert from hu site
 
 ### Setting up init.d to control the server
 
-Copy the file from `here <appendix/scripts/seafile-init.sh>` INSERT LINK INIT.
+Copy the file from <a href="https://raw.githubusercontent.com/majuss/ecoevolpara/master/source/appendix/scripts/seafile-init.sh" download>here</a>.
 
 Create a new file under /etc/init.d/seafile with vim or nano and paste the content of the downloaded file into it and save.
 
@@ -241,6 +243,6 @@ Login as the user seafile with `sudo su seafile` and stop the running server wit
 
 
 
-  [sudo-privileges]: INSERT LINK
+  [sudo-privileges]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian.html#administrator-root-privileges
   [here]: INSERT LINK
-  [custom Installer]: INSERT LINK
+  [custom Installer]: INSERT LINK 
