@@ -1,6 +1,6 @@
 # Debian
 
-Debian is a common and completely free Linux distribution. It is released in 3 release-branches. *stable*, *testing* and *experimental*. We are using the *testing* release, since debian-stable is very conservative and updates getting rolled out pretty slow.
+Debian is a common and completely free Linux distribution. It is released in 3 release-branches: *stable*, *testing* and *experimental*. We are using the *testing* release, since debian-stable is very conservative and updates getting rolled out pretty slow.
 
 ## Administrator / Root privileges
 
@@ -9,6 +9,8 @@ Normal users don’t have the privileges to install software and change system c
 Victor then have the privs to call a program as administrator (root) with the `sudo command`.
 
 **Never run programs as root unnecessary** such as `git` or you bioinformatical pipelines. You can actually **damage the server**s integrity.
+
+[link]
 
 ## Install software
 
@@ -83,3 +85,4 @@ INSERT RIGHT PICTURES
 
 Hit the windows-key and search for "startup", open the first search result "Startup Applications".
 
+    [link]:https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#administrator--root-privileges
