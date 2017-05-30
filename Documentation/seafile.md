@@ -36,35 +36,21 @@ You can not sync a shared folder into your home directory. Thats why the install
 
 To install the seafile-client you need [sudo-privileges].
 
-First you need to update your operating system: :: sudo aptitude update sudo aptitude upgrade
-
-After that add the key of the Seafile-repo:  
-`sudo apt-key adv –keyserver hkp://keyserver.ubuntu.com:80 –recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61`  
-Then add the repo itself with:  
-`echo deb <http://dl.bintray.com/seafile-org/deb> jessie main | sudo tee /etc/apt/sources.list.d/seafile.list`  
-Replace jessie with the Debian release you’re using (`lsb_release -a | grep Codename`). Then run an update of the package-list.  
-`sudo aptitude u
-
-
-To install the seafile-client you need [sudo-privileges].
-
 First you need to update your operating system:
 ```
-sudo aptitude update
-sudo aptitude upgrade
+sudo aptitude update sudo aptitude upgrade
 ```
-After that add the key of the Seafile-repo:
+After that add the key of the Seafile-repo:  
 ```
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
+sudo apt-key adv –keyserver hkp://keyserver.ubuntu.com:80 –recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
 ```
-Then add the repo itself with:
+Then add the repo itself with:  
 ```
-echo deb http://dl.bintray.com/seafile-org/deb jessie main | sudo tee /etc/apt/sources.list.d/seafile.list
+echo deb <http://dl.bintray.com/seafile-org/deb> jessie main | sudo tee /etc/apt/sources.list.d/seafile.list
+``` 
+Replace jessie with the Debian release you’re using (`lsb_release -a | grep Codename`). Then run an update of the package-list.  
 ```
-Replace jessie with the Debian release you're using (`lsb_release -a | grep Codename`).
-Then run an update of the package-list.
-```
-sudo aptitude update
+sudo aptitude udate
 ```
 And finally install the Client:
 ```

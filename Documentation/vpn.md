@@ -1,12 +1,10 @@
-VPN
-===
+# VPN
 
 VPN means virtual private network. It is a software which will make the computer think you’re inside of a different network. This will describe how to setup the VPN connection for the HU-network with an HU-account (required).
 
 Here is the official manual from the [HU-website].
 
-macOS
------
+## macOS
 
 [This is the official manual from the HU for macOS]
 
@@ -16,8 +14,7 @@ Or you can follow these steps:
 2.  [Download] the HU-VPN configuration file and double click it.
 3.  Follow the Tunnelblick instructions and enter your account details. A small symbol will show up in the status bar.
 
-Linux
------
+## Linux
 
 [This is the official manual from the HU for Linux]
 
@@ -27,8 +24,7 @@ Or you can follow these steps:
 2.  [Download] the HU-VPN configuration file.
 3.  Run `sudo openvpn –config hu-berlin.ovpn`
 
-Windows
--------
+## Windows
 
 [This is the official manual from the HU for Windows]
 

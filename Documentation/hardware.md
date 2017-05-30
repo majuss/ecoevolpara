@@ -16,7 +16,9 @@ When `dd` is finished unplug the USB-drive and stick it into the new computer. D
 
 The Debian-installer should show up now. Choose the non-graphical installer.
 
-And follow this video how to setup the operating system correctly. INSERT VIDEO
+And follow this video how to install the operating system correctly.
+
+[![Debian installation on YouTube](https://img.youtube.com/vi/PSH3hcGrqWw/0.jpg)](https://www.youtube.com/watch?v=PSH3hcGrqWw)
 
 ## Svalbard
 

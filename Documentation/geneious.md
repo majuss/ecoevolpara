@@ -1,4 +1,4 @@
-# Geneious
+# <a name="geneious"></a>Geneious
 
 A lot of members of the institute are using a software called *geneious* to analyse DNA-data. We have 6 licenses which are only compatible with the version 6.1.8 (you can get this old version [here]). The server providing the licenses is *Beagle*. Additionally to the license server, Beagle is running a mysql server, which provides the *shared database* for all geneious-users at the institute.
 

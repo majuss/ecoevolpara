@@ -47,11 +47,11 @@ To start the vm simply type the command:
 qemu-system-x86_64 -nodefconfig -machine accel=kvm -enable-kvm -m 4000M -k de -cpu host -smp cores=4 -vga std -vnc :1 -hda /home/marius/debian_testing.qcow2 -cdrom /home/marius/debian-8.6.0-amd64-netinst.iso -net nic,model=virtio -net user,hostfwd=tcp::15351-:22
 ```
 
-Connect with a VNC client for example xtightvncviewer. Open xtightvncviewer via terminal and enter the IP of the host and the VNC-port (`141.20.60.126:5901`).
+Connect with a VNC client for example xtightvncviewer. Open xtightvncviewer via terminal and enter the IP of the host and the VNC-port (`141...:5901`).
 
 Then just follow this video how to setup the operating system.
 
-INSERT VIDEO
+[![Debian installation on YouTube](https://img.youtube.com/vi/PSH3hcGrqWw/0.jpg)](https://www.youtube.com/watch?v=PSH3hcGrqWw)
 
 ## Create a new Windows VM
 

@@ -21,9 +21,7 @@ This cronjob is starting a scrub every month on the first sunday at 01:00 by run
 
 ## Starting geneious VM (beagle)
 
-This cronjob will start a QEMU command to start the virtual machine running the Geneious license server. This license server is running in the vm due to incompatibilities with modern system libraries. Never update this VM!
-
-For furthy documentation about vm check x.x. or 2.4 for information on Geneious. INSERT LINK TO GENEIOUS AND VMS
+This cronjob will start a QEMU command to start the virtual machine running the [geneious](Geneious license server). This license server is running in the vm due to incompatibilities with modern system libraries. Never update this VM!
 
 ## Maintenance report over Slack (Beagle, Harriet, Svalbard)
 
@@ -36,3 +34,5 @@ To set this job and script up on a complete new Debian and btrfs driven server y
 
 INSERT FULL VM START
 INSERT TSM BACKUP
+
+    [geneious]: https://majuss.gitbooks.io/ecoevolpara/Documentation/geneious.html#geneious
