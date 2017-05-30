@@ -73,13 +73,13 @@ After that you have to forward a spice port to the VM.
 
 The [spice-client] available in the Debian repos, provides a way to connect to a virtual machine running Windows with a graphical interface. This allows the user to use Software like the Microsoft Office Suite. The software spice-gues-tools needs to be installed on Windows first. To do so connect via VNC the first time you start the VM. Then install [these tools].
 
-Then you can install the spice-client on any debian machine using:
+Then you can install the spice-client on any Debian machine using:
 ```
 sudo aptitude install spice-client
 ```
 You invoke the spice-client with the command `spicec`, additionally you have to provide an IP, a port and the password to connect to the VM. `spicec -h $server_IP -p $port -w $password`
 
-A window will pop up you can control it with the following hot-keys.
+A window will pop up you can control it with the following hot-keys:
 
 Key combination | Effect
 ----------------|-------
