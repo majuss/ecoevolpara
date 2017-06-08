@@ -54,7 +54,7 @@ To set this job and script up on a complete new Debian and btrfs driven server y
 ```
 
 
-INSERT FULL VM START ON SVALBARD
+## Starting Windows VMs on Svalbard
 ```
 @reboot /bin/bash /usr/local/bin/vm_start.sh
 ```

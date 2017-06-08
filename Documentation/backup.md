@@ -234,7 +234,15 @@ You may get asked for the TSM password. You can find the complete documentation 
 
 ### Add a cronjob for the TSM-backup
 
-INSERT CRONJOB
+You also should add a cronjob so the TSM-backup runs every week:
+
+```
+sudo crontab -e
+```
+Add the line:
+```
+@weekly /usr/bin/dsmc incremental
+```
 
 
 

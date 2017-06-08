@@ -16,6 +16,12 @@ First look if you can find the software you are looking for in the official debi
 ```
 aptitude search $softwarename
 ```
+
+---
+Note: If `aptitude` is not installed just install it with `apt-get install aptitude`. 
+
+---
+
 This will list all findings, if nothing get’s posted your software is not inside the official repos. Then you have to evaluate if you really need this software… When you really need it google for a download link. You should go for a package with the ending “.deb” which indicates a debian package. Often these packages are listed under Ubuntu, since Ubuntu is a Debian-derivate.
 
 If the search finds your desired software you can easily install it via:
@@ -30,7 +36,6 @@ sudo aptitude install $softwarename
 ---
 
 ## Update and upgrade Debian
--------------------------
 
 It is recommended to update and upgrade the system regulary.
 ```
@@ -83,6 +88,5 @@ INSERT RIGHT PICTURES
 
 Hit the windows-key and search for "startup", open the first search result "Startup Applications".
 
-    [link]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#administrator--root-privileges
     [Seafile server]: https://www.seafile.com/en/download/#server
     [RStudio server]: https://www.rstudio.com/products/rstudio/download-server/
