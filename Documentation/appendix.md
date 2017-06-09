@@ -1,12 +1,10 @@
-Appendix
-========
+# Appendix
 
-scripts
--------
+## Scripts
 
 `seafile-init.sh`
 
-Enables the Seafile-server control over /etc/init.
+Enables the Seafile-server control over `/etc/init`.
 
 `install_seafile_client.sh`
 
@@ -24,8 +22,8 @@ A seafile-ignore list which lists for example all dotfiles and exclude them.
 
 Updates blast DBs automatically.
 
-zotero-bot.sh &lt;appendix/scripts/zotero-bot.sh&gt;
+`zotero-bot.sh`
 
-Posts Slack messages when the Zotero Library got updated.
+Posts Slack messages whenever the Zotero Library got updated.
 
 INSERT ALL APPENDIX SCRIPTS

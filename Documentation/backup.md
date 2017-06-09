@@ -57,7 +57,7 @@ and paste the following directly in front of the key:
 ```
 command="rdiff-backup --server --restrict-read-only /",from="harriet.biologie.hu-berlin.de",no-port-forwarding,no-X11-forwarding,no-pty
 ```
-So it should look similiar to this (you can get the domain adress of the server with: `dig -x IP_ADRESS`:
+So it should look similiar to this (you can get the domain adress of the server with: `dig -x IP_ADRESS`):
 ```
 command="rdiff-backup --server --restrict-read-only /",from="harriet.biologie.hu-berlin.de",no-port-forwarding,no-X11-forwarding,no-pty ssh-rsa AAAAB3Nza[...]W1go9M= rdiff-backup@backup
 ```
