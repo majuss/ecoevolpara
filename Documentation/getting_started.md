@@ -1,1 +1,4 @@
-Just be quiet.
+You might want to check out general
+[Emanuel's supervisor expectations](./expectations.md). This should
+give you a good idea of the respectful and friendly way in which we
+want to work together. 
