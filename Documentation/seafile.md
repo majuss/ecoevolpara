@@ -42,7 +42,7 @@ sudo aptitude update sudo aptitude upgrade
 ```
 After that add the key of the Seafile-repo:  
 ```
-sudo apt-key adv –keyserver hkp://keyserver.ubuntu.com:80 –recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F765C9AC3CB6B85D62379CE192D401AB61
 ```
 Then add the repo itself with:  
 ```
@@ -226,9 +226,11 @@ wget https://bintray.com/artifact/download/seafile-org/seafile/seafile-server_6.
 ```
 then untar it: `tar -xzf seafile-server_6.0.7_x86-64.tar.gz` and own it with `sudo chown -R seafile:seafile seafile-server_6.0.7`. Copy the extracted directory to `/usr/local/bin/seafile-server`. Then run the minor-upgrade script: `bash /usr/local/bin/seafile-server/seafile-server-6.0.7/upgrade/minor-upgrade.sh`. After that start the server again with: `/etc/init.d/seafile start` as the user seafile.
 
+
+
     [sudo-privileges for this]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#sudo
     [sudo-privileges]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#sudo
     [shared directory]: https://majuss.gitbooks.io/ecoevolpara/Documentation/seafile.html#sync_shared
-    [custom Installer]: INSERT LINK 
+    [custom Installer]: https://github.com/majuss/ecoevolpara/blob/master/source/appendix/scripts/install_seafile_client.sh
     [above from step 4]: https://majuss.gitbooks.io/ecoevolpara/Documentation/seafile.html#gui_installer
     [Seafile-manual on Github]: https://github.com/haiwen/seafile-user-manual/blob/master/en/desktop/install-on-linux.md

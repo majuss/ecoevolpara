@@ -22,7 +22,7 @@ Or you can follow these steps:
 
 1.  Install open VPN on your system with: `sudo aptitude install openvpn` (actual command depends on Linux distribution).
 2.  [Download] the HU-VPN configuration file.
-3.  Run `sudo openvpn –config hu-berlin.ovpn`
+3.  Run `sudo openvpn --config hu-berlin.ovpn`
 
 ## Windows
 

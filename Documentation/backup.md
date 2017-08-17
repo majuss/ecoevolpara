@@ -96,7 +96,7 @@ The restore directory has to be owned by rdiff-backup so the user can write into
 
 ### Delete increments - free disk space
 
-To delete old increments run: `rdiff-backup –remove-older-than 90D /data/backup_harriet` This will delete all increments which are older than 90 days.
+To delete old increments run: `rdiff-backup --remove-older-than 90D /data/backup_harriet` This will delete all increments which are older than 90 days.
 
 ### Back up the seafile-data
 

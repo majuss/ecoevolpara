@@ -7,6 +7,7 @@
     * [Seafile](Documentation/seafile.md)
     * [Backup](Documentation/backup.md)
     * [Storage](Documentation/storage.md)
+    * [Acquire softare like Office and Photoshop](Documentation/office.md)
     * [Geneious](Documentation/geneious.md)
     * [Cronjobs](Documentation/cronjobs.md)
     * [KeePassX](Documentation/keepassx.md)
@@ -15,3 +16,4 @@
     * [Appendix](Documentation/appendix.md)
     * [Virtual Machines](Documentation/vms.md)
     * [Hardware](Documentation/hardware.md)
+    * [expectations](Documentation/expectations.md)
