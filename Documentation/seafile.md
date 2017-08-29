@@ -180,8 +180,8 @@ Steps here will only describe the procedure briefly since it will likely be comp
 
 ### Acquiring HTTPS for the domain
 
-
-Cut certs into chain. Get root cert from hu site
+Download the cert from the HU Parasitology website with openssl (something like: `openssl s_client -showcerts -connect www.biologie.hu-berlin.de/en/gruppenseiten-en/molpara-en/standardseite:443 </dev/null`). You should see 4 blobs under each other. You need to delete the first blob and paste the cert which you got from the HU pki service 
+https://www.cms.hu-berlin.de/de/dl/zertifizierung/anwendungen/server_htm
 
 ### Setting up init.d to control the server
 
