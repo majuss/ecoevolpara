@@ -1,4 +1,4 @@
-# Best: Don't use Prism use R. The latter is much more powerful and makes it possible to fullfill the requirments of good scientific practice, because you document the statitics you do in a reproducible way.
+# Best: Don't use Prism, use R! The latter is much more powerful and makes it possible to fullfill the requirments of good scientific practice, because you document the statitics you do in a reproducible way.
 
 Only if you are really desperate (and if you work outside the Heitlinger group, where R is mandatory) go ahead and... 
 
