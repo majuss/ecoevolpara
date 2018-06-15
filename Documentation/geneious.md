@@ -1,6 +1,6 @@
 # <a name="geneious"></a>Geneious
 
-A lot of members of the institute are using a software called *geneious* to analyse DNA-data. We have 6 licenses which are only compatible with the version 6.1.8 (you can get this old version [here]). The server providing the licenses is *Beagle*. Additionally to the license server, Beagle is running a mysql server, which provides the *shared database* for all geneious-users at the institute.
+A lot of members of the institute are using a software called *geneious* to analyse DNA-data. We have 6 licenses which are only compatible with the version 6.1.8 (you can get this old version [here]). The server providing the licenses is *Harriet*. Additionally to the license server, Harriet is running a mysql server, which provides the *shared database* for all geneious-users at the institute.
 
 ## Setting up a Geneious client
 
@@ -26,7 +26,7 @@ A lot of members of the institute are using a software called *geneious* to anal
 2.  Type into the username, password, Host. The database-name is **geneiousDB** and the **Port 3306**. For the database vendor choose MySQL. Then click on **More Options** and click the **Browse** button behind “Driver .jar file:” choose [this file].
 3.  Click “Ok”, you are now connected to the shared database.
 
-## Set up the Geneious License Server (Beagle)
+## Set up the Geneious License Server (Harriet)
 
 This Tutorial will guide you from the start to set up the geneious license server on a completely new machine. It requires you in the first place to create a virtual machine with Debian Jessie. Jessie because in the later releases, software which is required by the geneious license server was removed from Debian. So you need an Debian running a 3.X Kernel. It is recommended [to use a virtual machine].
 

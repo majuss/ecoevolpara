@@ -46,7 +46,14 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8756C4F76
 ```
 Then add the repo itself with:  
 ```
-echo deb <http://dl.bintray.com/seafile-org/deb> jessie main | sudo tee /etc/apt/sources.list.d/seafile.list
+# For Debian 7
+echo deb http://deb.seadrive.org wheezy main | sudo tee /etc/apt/sources.list.d/seafile.list
+
+# For Debian 8
+echo deb http://deb.seadrive.org jessie main | sudo tee /etc/apt/sources.list.d/seafile.list
+
+# For Debian 9
+echo deb http://deb.seadrive.org stretch main | sudo tee /etc/apt/sources.list.d/seafile.list
 ``` 
 Replace jessie with the Debian release you’re using (`lsb_release -a | grep Codename`). Then run an update of the package-list.  
 ```
@@ -222,11 +229,13 @@ Does not work with nginx or apache. Reasons are unknown, you are getting an auth
 
 Login as the user seafile with `sudo su seafile` and stop the running server with `/etc/init.d/seafile stop`. Download the seafile-server-software from their site: https://www.seafile.com/en/download/ for example with: 
 ```
-wget https://bintray.com/artifact/download/seafile-org/seafile/seafile-server_6.0.7_x86-64.tar.gz
+wget https://bintray.com/artifact/download/seafile-org/seafile/seafile-server_newVersion_x86-64.tar.gz
 ```
-then untar it: `tar -xzf seafile-server_6.0.7_x86-64.tar.gz` and own it with `sudo chown -R seafile:seafile seafile-server_6.0.7`. Copy the extracted directory to `/usr/local/bin/seafile-server`. Then run the minor-upgrade script: `bash /usr/local/bin/seafile-server/seafile-server-6.0.7/upgrade/minor-upgrade.sh`. After that start the server again with: `/etc/init.d/seafile start` as the user seafile.
+then untar it: `tar -xzf seafile-server__newVersion_x86-64.tar.gz` . 
 
+As root (simply `exit`): copy the extracted directory to `/usr/local/bin/seafile-server` and own it with `sudo chown -R seafile:seafile seafile-server_newVersion`. Then run the minor-upgrade script: `bash /usr/local/bin/seafile-server/seafile-server-newVersion/upgrade/minor-upgrade.sh`
 
+Change back to user seafile and start the server again with: `/etc/init.d/seafile start` as the user seafile.
 
     [sudo-privileges for this]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#sudo
     [sudo-privileges]: https://majuss.gitbooks.io/ecoevolpara/Documentation/debian_test.html#sudo
